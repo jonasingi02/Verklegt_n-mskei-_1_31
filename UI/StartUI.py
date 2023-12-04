@@ -2,13 +2,21 @@ from UI.EmployeeUI import EmployeeUI
 from UI.ShiftManagerUI import ShiftManagerUI
 from UI.FlightManagerUI import FlightManagerUI
 
+
 class StartUI:
     def __init__(self):
         pass
 
     def menu_output(self):
-        print("hvað má bjóða þér að sjá:\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nq: hætta")
-    
+        print("\n███    ██  █████  ███    ██      █████  ██ ██████")
+        print("████   ██ ██   ██ ████   ██     ██   ██ ██ ██   ██")
+        print("██ ██  ██ ███████ ██ ██  ██     ███████ ██ ██████  ")
+        print("██  ██ ██ ██   ██ ██  ██ ██     ██   ██ ██ ██   ██ ")
+        print("██   ████ ██   ██ ██   ████     ██   ██ ██ ██   ██ \n")
+        print(
+            "hvað má bjóða þér að sjá:\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nq: hætta"
+        )
+
     def input_prompt(self):
         self.menu_output()
         while True:
