@@ -1,0 +1,10 @@
+Vika 2
+
+Mánudagur 4. des
+Mæting 8:30
+
+Morgunfundur:
+Fara saman yfir komment í hönnunarskýrslu.
+Horfa á fyrirlestur.
+Tala mögulega við TA um komment í skýrslu.
+Hefja grunnvinnu við kóða.
