@@ -20,7 +20,7 @@ class StartUI:
     def input_prompt(self):
         self.menu_output()
         while True:
-            command = input("\nInnsláttarreitur: ")
+            command = input("\nInnsláttarreitur:")
             command = command.lower()
             if command == "1":
                 uie = EmployeeUI()
