@@ -1,6 +1,6 @@
-from UI.EmployeeUI import EmployeeUI
-from UI.ShiftManagerUI import ShiftManagerUI
-from UI.FlightManagerUI import FlightManagerUI
+from .EmployeeUI import EmployeeUI
+from .ShiftManagerUI import ShiftManagerUI
+from .FlightManagerUI import FlightManagerUI
 
 
 class StartUI:
@@ -14,13 +14,13 @@ class StartUI:
         print("██  ██ ██ ██   ██ ██  ██ ██     ██   ██ ██ ██   ██ ")
         print("██   ████ ██   ██ ██   ████     ██   ██ ██ ██   ██ \n")
         print(
-            "hvað má bjóða þér að sjá:\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nq: hætta"
+            "Hvað má bjóða þér að sjá:\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nQ: Hætta"
         )
 
     def input_prompt(self):
         self.menu_output()
         while True:
-            command = input("\nInsláttarreitur:")
+            command = input("\nInnsláttarreitur: ")
             command = command.lower()
             if command == "1":
                 uie = EmployeeUI()
@@ -34,4 +34,4 @@ class StartUI:
             elif command == "q":
                 break
             else:
-                print("virkaði ekki, reyndu aftur")
+                print("Virkaði ekki, reyndu aftur.")
