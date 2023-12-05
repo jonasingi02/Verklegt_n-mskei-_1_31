@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Verklegt_n-mskei-_1_31",
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.analysis.extraPaths": [
+			"./Code_files"
+		]
+	}
+}
