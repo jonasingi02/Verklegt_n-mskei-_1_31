@@ -18,3 +18,10 @@ Mæting 8:30
 
 Morgunfundur:
 Finna út hvaða csv file-a við þurfum og formatta þá.
+Gera checklista yfir kröfur svo við getum haldið utan um það sem komið er.
+Kóða - Skipta verkum
+
+Samantekt:
+Unnum í data og ui layernum. Skiptum verkum. 
+Ætlum að finna út úr wrapper-um fyrir morgundaginn.
+Lentum í smá git vandræðum en fundum út úr þeim. 
