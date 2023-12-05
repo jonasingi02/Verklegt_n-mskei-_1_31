@@ -21,7 +21,6 @@ class FlightManagerUI:
             elif command == "q":
                 break
             elif command == "b":
-                uie = StartUI
-                return uie
+                return "b"
             else:
                 print("Virkaði ekki, reyndu aftur.")

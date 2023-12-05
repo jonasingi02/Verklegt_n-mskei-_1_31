@@ -18,13 +18,15 @@ class StartUI:
         )
 
     def input_prompt(self):
-        self.menu_output()
         while True:
+            self.menu_output()
             command = input("\nInnsláttarreitur:")
             command = command.lower()
             if command == "1":
                 uie = EmployeeUI()
-                return uie
+                menu = uie.input_prompt()
+                if menu == "q":
+                    return "q"
             elif command == "2":
                 uie = ShiftManagerUI()
                 menu = uie.input_prompt()
@@ -32,7 +34,9 @@ class StartUI:
                     return "q"
             elif command == "3":
                 uie = FlightManagerUI()
-                return uie
+                menu = uie.input_prompt()
+                if menu == "q":
+                    return "q"
             elif command == "q":
                 break
             else:
