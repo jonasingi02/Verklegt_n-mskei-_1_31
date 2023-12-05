@@ -8,3 +8,7 @@ Fara saman yfir komment í hönnunarskýrslu.
 Horfa á fyrirlestur.
 Tala mögulega við TA um komment í skýrslu.
 Hefja grunnvinnu við kóða.
+
+Samantekt:
+Fara heim og horfa aftur á fyrirlestur.
+Allir komnir inn í git repo-ið.
