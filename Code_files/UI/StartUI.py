@@ -27,7 +27,9 @@ class StartUI:
                 return uie
             elif command == "2":
                 uie = ShiftManagerUI()
-                return uie
+                menu = uie.input_prompt()
+                if menu == "q":
+                    return "q"
             elif command == "3":
                 uie = FlightManagerUI()
                 return uie
