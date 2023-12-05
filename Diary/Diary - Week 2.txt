@@ -12,3 +12,9 @@ Hefja grunnvinnu við kóða.
 Samantekt:
 Fara heim og horfa aftur á fyrirlestur.
 Allir komnir inn í git repo-ið.
+
+Þriðjudagur 5. des
+Mæting 8:30
+
+Morgunfundur:
+Finna út hvaða csv file-a við þurfum og formatta þá.
