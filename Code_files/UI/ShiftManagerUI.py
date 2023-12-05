@@ -2,5 +2,5 @@ class ShiftManagerUI:
     def __init__(self):
         print("inside UI")
 
-    def test(self):
+    def input_prompt(self):
         print("Shift Manager")

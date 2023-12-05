@@ -5,4 +5,4 @@ from UI.FlightManagerUI import FlightManagerUI
 
 ui = StartUI()
 ui = ui.input_prompt()
-ui.test()
+ui.input_prompt()
