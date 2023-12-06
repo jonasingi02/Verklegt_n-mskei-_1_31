@@ -1,4 +1,5 @@
 from Code_files.model.employee import Employee
+from Code_files.UI.input_validators import *
 class ShiftManagerUI:
     def __init__(self):
         print("inside UI")
@@ -16,7 +17,14 @@ class ShiftManagerUI:
                 pass
             elif command == "2":
                 e = Employee()
-                e.name = input("Enter a name of an employee: ")
+                e.name = validate_name(input("Skráðu nafn starfsmanns : "))
+                e.kt = validate_name(input("Skráðu nafn starfsmanns : "))
+                e.phone_number  = int(input("Skráður símanúmer starfsmanns: "))
+                e.address = validate_name(input("Skráðu heimilisfang starfsmanns: "))
+                e.postal_code = int(input("Skráðu póstfang starfsmanns: "))
+                e.occupation = validate_name("Skráðu starfsgrein starfsmanns")
+
+
             elif command == "3":
                 
                 pass
