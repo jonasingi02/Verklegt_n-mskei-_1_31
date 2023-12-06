@@ -23,7 +23,7 @@ class ShiftManagerUI:
                 e.phone_number  = int(input("Skráður símanúmer starfsmanns: "))
                 e.address = validate_name(input("Skráðu heimilisfang starfsmanns: "))
                 e.postal_code = int(input("Skráðu póstfang starfsmanns: "))
-                e.occupation = validate_name("Skráðu starfsgrein starfsmanns")
+                e.occupation = validate_name("Skráðu starfsgrein starfsmanns: ")
 
 
             elif command == "3":
