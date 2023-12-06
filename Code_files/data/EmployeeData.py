@@ -40,14 +40,14 @@ class EmployeeData:
     def create_customer(self, employee):
         with open(self.file_name, 'a', newline='', encoding="utf-8") as csvfile:
             fieldnames = ["name", "kt", "phone_number", "address", "post_code", "occupation"]
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-        writer.writerow({
-            'name': employee.name, 
-            'kt': employee.kt,
-            'phone_number': employee.phone_number,
-            'address': employee.address, 
-            'post_code': employee.post_code,
-            'occupation': employee.occupation
-        })
+            writer.writerow({
+                'name': employee.name, 
+                'kt': employee.kt,
+                'phone_number': employee.phone_number,
+                'address': employee.address, 
+                'post_code': employee.post_code,
+                'occupation': employee.occupation
+            })
 

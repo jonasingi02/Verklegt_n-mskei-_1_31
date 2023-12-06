@@ -5,8 +5,8 @@ class data_wrapper:
     def __init__(self):
         self.plane_data = plane_data()
 
-    def get_all_customers(self):
+    def get_all_plane(self):
         return self.plane_data.read_all_planes()
 
-    def create_customer(self, customer):
-        return self.plane_data.create_plane(customer)
+    def create_plane(self, plane):
+        return self.plane_data.create_plane(plane)

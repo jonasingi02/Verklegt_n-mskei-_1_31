@@ -7,7 +7,7 @@ class Logic_wrapper:
         self.plane_logic = plane_logic(self.data_wrapper)
 
     def create_plane(self, plane):
-        """Takes in a customer object and forwards it to the data layer"""
+        """Takes in a plane object and forwards it to the data layer"""
         return self.plane_logic.create_plane(plane)
 
     def get_all_planes(self):

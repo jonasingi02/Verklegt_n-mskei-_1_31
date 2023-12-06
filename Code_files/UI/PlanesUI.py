@@ -1,9 +1,10 @@
 from model.planes import Planes
 from .input_validators import *
+from logic.logic_wrapper import Logic_wrapper
 
 class planesUI:
-    def __init__(self):
-        pass
+    def __init__(self, logic_connection):
+        self.logic_wrapper = logic_connection
 
     def menu_output(self):
         print("Velkomin/n ferðastjóri")

@@ -4,6 +4,7 @@ from .input_validators import *
 class ShiftManagerUI:
     def __init__(self):
         print("inside UI")
+        
 
     def menu_output(self):
         print("Velkomin/n vaktstjóri")

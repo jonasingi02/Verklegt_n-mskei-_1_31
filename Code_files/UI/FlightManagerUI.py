@@ -1,8 +1,9 @@
 from .PlanesUI import planesUI
+from logic.logic_wrapper import Logic_wrapper
 
 class FlightManagerUI:
     def __init__(self):
-        pass
+        self.logic_wrapper = Logic_wrapper()
 
     def menu_output(self):
         print("Velkomin/n ferðastjóri")
@@ -19,7 +20,7 @@ class FlightManagerUI:
             elif command == "2":
                 pass
             elif command == "3":
-                uip = planesUI()
+                uip = planesUI(self.logic_wrapper)
                 menu = uip.input_prompt()
                 if menu == "q":
                     return "q"

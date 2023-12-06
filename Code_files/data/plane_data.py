@@ -1,16 +1,17 @@
+import os
 import csv
 from model.planes import Planes
 
 class plane_data:
     def __init__(self):
-        self.file_name = "files/airplanes.csv"
+        self.file_name = "data/files/planes.csv"
     
     def read_all_planes(self):
         ret_list = []
         with open(self.file_name, newline='', encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                ret_list.append(plane(row["name"], row["type"], row["numseats"], row["manufacturer"]))
+                ret_list.append(Planes(row["name"], row["type"], row["numseats"], row["manufacturer"]))
         return ret_list
     
     def create_plane(self, plane):

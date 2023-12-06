@@ -1,5 +1,5 @@
-from Code_files.data.EmployeeData import EmployeeData
-from Code_files.model.employee import Employee
+from data.EmployeeData import EmployeeData
+from model.employee import Employee
 
 class EmployeeLogic:
     def __init__(self):
