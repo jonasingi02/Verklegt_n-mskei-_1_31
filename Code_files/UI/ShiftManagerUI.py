@@ -1,3 +1,4 @@
+from Code_files.model.employee import Employee
 class ShiftManagerUI:
     def __init__(self):
         print("inside UI")
@@ -14,8 +15,8 @@ class ShiftManagerUI:
                 
                 pass
             elif command == "2":
-               
-                pass
+                e = Employee()
+                e.name = input("Enter a name of an employee: ")
             elif command == "3":
                 
                 pass
