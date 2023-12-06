@@ -7,19 +7,25 @@ class EmployeeData:
         self.file_name = "Code_files/data/all_staff.csv"
 
     def get_all_employees(self):
+        """Input from user gets checked for valid input and if all inputs checks out 
+        it gets appended to the all_staff csv file."""
         employees = []
+        
         with open(self.file_name, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
+            
             for row in reader:
                 phone_number_str = row.get("phone_number", "")
                 post_code = 0
 
                 if len(phone_number_str) != 7:
                     raise ValueError(f"Invalid phone number length: {phone_number_str}")
+                
                 try:
                     phone_number = int(phone_number_str)
                 except ValueError:
                     raise ValueError(f"Invalid phone number format: {phone_number_str}")
+                
                 try:
                     post_code = int(row.get("post_code", 0))
                 except ValueError:
@@ -34,6 +40,7 @@ class EmployeeData:
                     occupation=row.get("occupation", "")
                 )
                 employees.append(employee)
+        
         return employees
 
 
