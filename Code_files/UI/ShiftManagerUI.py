@@ -6,6 +6,18 @@ class ShiftManagerUI:
         print("inside UI")
 
     def menu_output(self):
+        print("\n__  _")
+        print("\ `/ |")
+        print(" \__`!")
+        print(" / ,' `-.__________________")
+        print("'-'\_____                LI`-.")
+        print("   <____()-=O=O=O=O=O=[]====--)")
+        print("     `.___ ,-----,_______...-'")
+        print("          /    .'")
+        print("         /   .'")
+        print("        /  .'")         
+        print("        `-'\n")
+
         print("Velkomin/n vaktstjóri")
         print("Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka")
 
