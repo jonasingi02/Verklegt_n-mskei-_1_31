@@ -1,5 +1,6 @@
-from Code_files.model.employee import Employee
-from Code_files.UI.input_validators import *
+from model.employee import Employee
+from .input_validators import *
+
 class ShiftManagerUI:
     def __init__(self):
         print("inside UI")

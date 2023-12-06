@@ -1,5 +1,5 @@
 from model.planes import Planes
-from input_validators import *
+from .input_validators import *
 
 class planesUI:
     def __init__(self):
