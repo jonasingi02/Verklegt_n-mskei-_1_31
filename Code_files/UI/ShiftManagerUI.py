@@ -7,6 +7,18 @@ class ShiftManagerUI:
         
 
     def menu_output(self):
+        print("\n__  _")
+        print("\ `/ |")
+        print(" \__`!")
+        print(" / ,' `-.__________________")
+        print("'-'\_____                LI`-.")
+        print("   <____()-=O=O=O=O=O=[]====--)")
+        print("     `.___ ,-----,_______...-'")
+        print("          /    .'")
+        print("         /   .'")
+        print("        /  .'")         
+        print("        `-'\n")
+
         print("Velkomin/n vaktstjóri")
         print("Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka")
 
@@ -19,8 +31,8 @@ class ShiftManagerUI:
                 pass
             elif command == "2":
                 e = Employee()
-                e.name = validate_name(input("Skráðu nafn starfsmanns : "))
-                e.kt = validate_name(input("Skráðu nafn starfsmanns : "))
+                e.name = validate_name(input("Skráðu nafn starfsmanns: "))
+                e.kt = validate_name(input("Skráðu kennitölu starfsmanns: "))
                 e.phone_number  = int(input("Skráður símanúmer starfsmanns: "))
                 e.address = validate_name(input("Skráðu heimilisfang starfsmanns: "))
                 e.postal_code = int(input("Skráðu póstfang starfsmanns: "))
