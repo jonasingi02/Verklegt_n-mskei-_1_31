@@ -1,6 +1,7 @@
 from .plane_logic import plane_logic
+from data.data_wrapper import data_wrapper
 
-class Logic_Wrapper:
+class Logic_wrapper:
     def __init__(self):
         self.data_wrapper = data_wrapper()
         self.plane_logic = plane_logic(self.data_wrapper)
