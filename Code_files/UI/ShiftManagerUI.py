@@ -1,8 +1,11 @@
 from Code_files.model.employee import Employee
 from Code_files.UI.input_validators import *
+from Code_files.logic.EmployeeLogic import EmployeeLogic
+
 class ShiftManagerUI:
     def __init__(self):
         print("inside UI")
+        self.employee_logic = EmployeeLogic()
 
     def menu_output(self):
         print("Velkomin/n vaktstjóri")
@@ -22,7 +25,8 @@ class ShiftManagerUI:
                 e.phone_number  = int(input("Skráður símanúmer starfsmanns: "))
                 e.address = validate_name(input("Skráðu heimilisfang starfsmanns: "))
                 e.postal_code = int(input("Skráðu póstfang starfsmanns: "))
-                e.occupation = validate_name("Skráðu starfsgrein starfsmanns")
+                e.occupation = validate_name("Skráðu starfsgrein starfsmanns: ")
+                self.employee_logic.create_employee(e)
 
 
             elif command == "3":
