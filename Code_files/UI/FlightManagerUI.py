@@ -1,6 +1,8 @@
+from .PlanesUI import planesUI
+
 class FlightManagerUI:
     def __init__(self):
-        print("inside UI")
+        pass
 
     def menu_output(self):
         print("Velkomin/n ferðastjóri")
@@ -8,8 +10,8 @@ class FlightManagerUI:
 
     
     def input_prompt(self):
-        self.menu_output()
         while True:
+            self.menu_output()
             command = input("\nInnsláttarreitur:")
             command = command.lower()
             if command == "1":
@@ -17,9 +19,12 @@ class FlightManagerUI:
             elif command == "2":
                 pass
             elif command == "3":
-                pass
+                uip = planesUI()
+                menu = uip.input_prompt()
+                if menu == "q":
+                    return "q"
             elif command == "q":
-                break
+                return "q"
             elif command == "b":
                 return "b"
             else:

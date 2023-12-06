@@ -7,8 +7,8 @@ class ShiftManagerUI:
         print("Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka")
 
     def input_prompt(self):
-        self.menu_output()
         while True:
+            self.menu_output()
             command = input("Innsláttarreitur: ").lower()
             if command == "1":
                 
@@ -20,7 +20,7 @@ class ShiftManagerUI:
                 
                 pass
             elif command == "q":
-                break
+                return "q"
             elif command == "b":
                 return "b"
             else:
