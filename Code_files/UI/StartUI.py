@@ -41,3 +41,4 @@ class StartUI:
                 break
             else:
                 print("Virkaði ekki, reyndu aftur.")
+        
