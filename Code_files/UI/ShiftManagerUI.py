@@ -3,10 +3,11 @@ from model.employee import Employee
 from .input_validators import *
 
 class ShiftManagerUI:
-    def __init__(self, logic_connecton):
-        self.logic_wrapper = logic_connecton
+    def __init__(self, logic_connection):
+        self.logic_wrapper = logic_connection
 
         print("inside UI")
+        self.logic_wrapper = logic_connection
         
 
     def menu_output(self):
@@ -39,7 +40,7 @@ class ShiftManagerUI:
                 e.phone_number  = int(input("Skráður símanúmer starfsmanns: "))
                 e.address = validate_name(input("Skráðu heimilisfang starfsmanns: "))
                 e.postal_code = int(input("Skráðu póstfang starfsmanns: "))
-                e.occupation = validate_name("Skráðu starfsgrein starfsmanns: ")
+                e.occupation = input("Skráðu starfsgrein starfsmanns: ")
                 self.logic_wrapper.create_employee(e)
 
 

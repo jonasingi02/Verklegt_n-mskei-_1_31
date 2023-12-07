@@ -1,10 +1,10 @@
-from data.plane_data import plane_data
+from data.plane_data import PlaneData
 from data.destination_data import destination_data
 
 
 class data_wrapper:
     def __init__(self):
-        self.plane_data = plane_data()
+        self.plane_data = PlaneData()
         self.destination_data = destination_data()
 
     def get_all_plane(self):

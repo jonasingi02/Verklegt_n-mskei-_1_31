@@ -6,6 +6,7 @@ class EmployeeLogic:
         print("inside Logic")
         self.employee_data = EmployeeData()
         self.data_wrapper = data_connection
+        
 
     def create_employee(self, employee):
         """Takes an employee as an object and forwards it to the data layer"""

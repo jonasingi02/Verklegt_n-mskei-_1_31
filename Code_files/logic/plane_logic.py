@@ -2,7 +2,7 @@ from model.planes import Planes
 from data.plane_data import PlaneData
 
 
-class plane_logic:
+class PlaneData:
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
 

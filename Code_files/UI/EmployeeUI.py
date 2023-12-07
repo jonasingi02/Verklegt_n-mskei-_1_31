@@ -1,4 +1,5 @@
 from logic.logic_wrapper import Logic_wrapper
+from logic.logic_wrapper import Logic_wrapper
 class EmployeeUI:
     def __init__(self):
         print("inside UI")
