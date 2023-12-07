@@ -2,7 +2,7 @@ import os
 import csv
 from model.planes import Planes
 
-class plane_data:
+class PlaneData:
     def __init__(self):
         self.file_name = "data/files/planes.csv"
     

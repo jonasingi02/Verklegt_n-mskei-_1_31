@@ -1,8 +1,11 @@
+from logic.logic_wrapper import Logic_wrapper
 from model.employee import Employee
 from .input_validators import *
 
 class ShiftManagerUI:
-    def __init__(self):
+    def __init__(self, logic_connecton):
+        self.logic_wrapper = logic_connecton
+
         print("inside UI")
         
 
@@ -37,6 +40,8 @@ class ShiftManagerUI:
                 e.address = validate_name(input("Skráðu heimilisfang starfsmanns: "))
                 e.postal_code = int(input("Skráðu póstfang starfsmanns: "))
                 e.occupation = validate_name("Skráðu starfsgrein starfsmanns: ")
+                self.logic_wrapper.create_employee(e)
+
 
 
             elif command == "3":
