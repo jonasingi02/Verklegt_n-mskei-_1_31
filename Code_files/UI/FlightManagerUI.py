@@ -1,4 +1,5 @@
 from .PlanesUI import planesUI
+from .DestinationUI import destinationUI
 from logic.logic_wrapper import Logic_wrapper
 
 class FlightManagerUI:
@@ -18,7 +19,10 @@ class FlightManagerUI:
             if command == "1":
                 pass
             elif command == "2":
-                pass
+                uid = destinationUI(self.logic_wrapper)
+                menu = uid.input_prompt()
+                if menu == "q":
+                    return "q"
             elif command == "3":
                 uip = planesUI(self.logic_wrapper)
                 menu = uip.input_prompt()
