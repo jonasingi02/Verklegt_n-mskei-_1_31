@@ -1,4 +1,3 @@
-from .input_validators import *
 from logic.logic_wrapper import Logic_wrapper
 from model.destination import destination
 
@@ -8,7 +7,7 @@ class destinationUI:
 
     def menu_output(self):
         print("Velkomin/n ferðastjóri")
-        print("Hvað má bjóða þér að gera:\n\n1: birta alla áfangastaði\n2: bæta við áfangastað\n3: uppfæra upplýsingar um áfangastað\nQ: Hætta\nB: til baka")
+        print("Hvað má bjóða þér að gera:\n\n1: birta öll hálfkláraðar vinnuferðir\n2: bæta við hálfkláraðri vinnuferð\n3: uppfæra hálfklárðar vinnuferðir\nQ: Hætta\nB: til baka")
 
     
     def input_prompt(self):
@@ -17,9 +16,7 @@ class destinationUI:
             command = input("\nInnsláttarreitur:")
             command = command.lower()
             if command == "1":
-                result = self.logic_wrapper.get_all_destinations()
-                for elem in result:
-                    print(f"country: {elem.country}, airport: {elem.airport}")
+                pass
             elif command == "2":
                 d = destination()
                 d.country = input("nafn áfangastaðs (string):")
