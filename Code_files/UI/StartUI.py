@@ -1,6 +1,7 @@
 from .EmployeeUI import EmployeeUI
 from .ShiftManagerUI import ShiftManagerUI
 from .FlightManagerUI import FlightManagerUI
+from .ascii_art import AsciiArt
 
 
 class StartUI:
@@ -8,11 +9,8 @@ class StartUI:
         pass
 
     def menu_output(self):
-        print("\n███    ██  █████  ███    ██      █████  ██ ██████")
-        print("████   ██ ██   ██ ████   ██     ██   ██ ██ ██   ██")
-        print("██ ██  ██ ███████ ██ ██  ██     ███████ ██ ██████  ")
-        print("██  ██ ██ ██   ██ ██  ██ ██     ██   ██ ██ ██   ██ ")
-        print("██   ████ ██   ██ ██   ████     ██   ██ ██ ██   ██ \n")
+        AsciiArt.nan_logo
+
         print(
             "Hvað má bjóða þér að sjá:\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nQ: Hætta"
         )
@@ -41,4 +39,3 @@ class StartUI:
                 break
             else:
                 print("Virkaði ekki, reyndu aftur.")
-        
