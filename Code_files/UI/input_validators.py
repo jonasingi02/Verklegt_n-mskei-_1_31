@@ -44,9 +44,7 @@ class ValidatingStaffInput:
 
     def validate_occupation(self):
         lower_occupation = self.lower()
-
-        if lower_occupation == "flugþjónn" or lower_occupation == "flugmaður":
-            pass
+        pass
 
 
 # Validate plane information
@@ -72,3 +70,27 @@ class ValidatePlaneInfo:
             raise NameLengthException()
         else:
             return self
+
+
+# Validate Voyage information
+class ValidateVoyageInput:
+    def __init__(self) -> None:
+        pass
+
+    def validate_voyage_string(self):
+        """Check length of input"""
+        if len(self) >= 50:
+            raise NameLengthException()
+        else:
+            return self
+
+    def validate_length_km(self):
+        pass
+
+    def validate_contact_phone_number(self):
+        valid = self.isnumeric()
+
+        if valid:
+            return self
+        else:
+            return None

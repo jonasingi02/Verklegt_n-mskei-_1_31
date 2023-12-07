@@ -9,16 +9,16 @@ class StartUI:
         pass
 
     def menu_output(self):
-        AsciiArt.nan_logo
+        AsciiArt.nan_logo()
 
         print(
-            "Hvað má bjóða þér að sjá:\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nQ: Hætta"
+            "\nHvað má bjóða þér að sjá:\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nQ: Hætta"
         )
 
     def input_prompt(self):
         while True:
             self.menu_output()
-            command = input("\nInnsláttarreitur:")
+            command = input("\nInnsláttarreitur: ")
             command = command.lower()
             if command == "1":
                 uie = EmployeeUI()

@@ -1,18 +1,18 @@
-# Ascii art keeper
+# Ascii Art keeper
 
 
 class AsciiArt:
     def __init__(self) -> None:
         pass
 
-    def nan_logo(self):
+    def nan_logo():
         print("\n███    ██  █████  ███    ██      █████  ██ ██████")
         print("████   ██ ██   ██ ████   ██     ██   ██ ██ ██   ██")
         print("██ ██  ██ ███████ ██ ██  ██     ███████ ██ ██████  ")
         print("██  ██ ██ ██   ██ ██  ██ ██     ██   ██ ██ ██   ██ ")
         print("██   ████ ██   ██ ██   ████     ██   ██ ██ ██   ██ \n")
 
-    def airplane_1(self):
+    def airplane_1_ascii():
         print("\n__  _")
         print("\ `/ |")
         print(" \__`!")

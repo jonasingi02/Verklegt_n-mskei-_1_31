@@ -1,18 +1,17 @@
 from model.employee import Employee
-from .input_validators import *
+from .input_validators import ValidatingStaffInput
 from .ascii_art import AsciiArt
 
 
 class ShiftManagerUI:
     def __init__(self):
-        print("inside UI")
+        pass
 
     def menu_output(self):
-        AsciiArt.airplane_1()
-
+        AsciiArt.airplane_1_ascii()
         print("Velkomin/n vaktstjóri")
         print(
-            "Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka"
+            "Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka\n"
         )
 
     def input_prompt(self):
@@ -23,12 +22,34 @@ class ShiftManagerUI:
                 pass
             elif command == "2":
                 e = Employee()
-                e.name = validate_name(input("Skráðu nafn starfsmanns: "))
-                e.kt = validate_name(input("Skráðu kennitölu starfsmanns: "))
-                e.phone_number = int(input("Skráður símanúmer starfsmanns: "))
-                e.address = validate_name(input("Skráðu heimilisfang starfsmanns: "))
+
+                e.name = ValidatingStaffInput.validate_name(
+                    input("Skráðu nafn starfsmanns: ")
+                )
+
+                e.kt = ValidatingStaffInput.validate_kt(
+                    input("Skráðu kennitölu starfsmanns: ")
+                )
+                while e.kt == None:
+                    e.kt = ValidatingStaffInput.validate_kt(
+                        input("Skráðu kennitölu starfsmanns: ")
+                    )
+
+                e.phone_number = ValidatingStaffInput.validate_phone_number(
+                    input("Skráðu símanúmer starfsmanns: ")
+                )
+                while e.phone_number == None:
+                    e.phone_number = ValidatingStaffInput.validate_phone_number(
+                        input("Skráðu símanúmer starfsmanns: ")
+                    )
+
+                e.address = ValidatingStaffInput.validate_name(
+                    input("Skráðu heimilisfang starfsmanns: ")
+                )
                 e.postal_code = int(input("Skráðu póstfang starfsmanns: "))
-                e.occupation = validate_name("Skráðu starfsgrein starfsmanns: ")
+                e.occupation = ValidatingStaffInput.validate_name(
+                    "Skráðu starfsgrein starfsmanns (Flugmaður/Flugþjónn): "
+                )
 
             elif command == "3":
                 pass

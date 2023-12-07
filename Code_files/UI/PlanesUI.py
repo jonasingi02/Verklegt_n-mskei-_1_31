@@ -1,6 +1,6 @@
 from model.planes import Planes
-from logic.logic_wrapper import Logic_wrapper
 from .input_validators import ValidatePlaneInfo
+from logic.logic_wrapper import Logic_wrapper
 
 
 class planesUI:
@@ -10,7 +10,7 @@ class planesUI:
     def menu_output(self):
         print("Velkomin/n ferðastjóri")
         print(
-            "Hvað má bjóða þér að gera:\n\n1: birta allar flugvélar\n2: bæta við flugvél\n3: uppfæra flugvél\nQ: Hætta\nB: til baka\n"
+            "Hvað má bjóða þér að gera:\n\n1: birta allar flugvélar\n2: bæta við flugvél\n3: uppfæra flugvél\nQ: Hætta\nB: til baka"
         )
 
     def input_prompt(self):
@@ -18,13 +18,15 @@ class planesUI:
             self.menu_output()
             command = input("\nInnsláttarreitur: ")
             command = command.lower()
+
             if command == "1":
                 pass
+
             elif command == "2":
                 p = Planes()
-                valid = True
 
-                while valid:
+                input_field = True
+                while input_field:
                     p.name = ValidatePlaneInfo.validate_plane_string(
                         input("Nafn vélar: ")
                     )
@@ -36,30 +38,33 @@ class planesUI:
                     p.type = ValidatePlaneInfo.validate_plane_string(
                         input("Tegund vélar: ")
                     )
-                    while p.name == None:
+                    while p.type == None:
                         p.type = ValidatePlaneInfo.validate_plane_string(
-                            "Tegund vélar: "
+                            input("Tegund vélar: ")
                         )
 
                     p.numseats = ValidatePlaneInfo.validate_num_seats(
                         input("Fjöldi sæta: ")
                     )
                     while p.numseats == None:
-                        p.numseats = ValidatePlaneInfo.validate_num_seats(
+                        p.numseats = p.type = ValidatePlaneInfo.validate_num_seats(
                             input("Fjöldi sæta: ")
                         )
 
                     self.logic_wrapper.create_plane(p)
                     print(
-                        f"\nÞú hefur bætt við flugvélinni: {p.name}, {p.type}, fjöldi sæta {p.numseats}\n\n"
+                        f"\nÞú hefur bætt við flugvélinni: {p.name}, {p.type}, fjöldi sæta {p.numseats}\n\n."
                     )
-                    valid = False
+                    input_field = False
 
             elif command == "3":
                 pass
+
             elif command == "q":
                 return "q"
+
             elif command == "b":
                 return "b"
+
             else:
                 print("Virkaði ekki, reyndu aftur.")

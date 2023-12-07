@@ -2,15 +2,17 @@ from .input_validators import *
 from logic.logic_wrapper import Logic_wrapper
 from model.destination import destination
 
+
 class destinationUI:
     def __init__(self, logic_connection):
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
         print("Velkomin/n ferðastjóri")
-        print("Hvað má bjóða þér að gera:\n\n1: birta alla áfangastaði\n2: bæta við áfangastað\n3: uppfæra upplýsingar um áfangastað\nQ: Hætta\nB: til baka")
+        print(
+            "Hvað má bjóða þér að gera:\n\n1: birta alla áfangastaði\n2: bæta við áfangastað\n3: uppfæra upplýsingar um áfangastað\nQ: Hætta\nB: til baka"
+        )
 
-    
     def input_prompt(self):
         while True:
             self.menu_output()
@@ -25,9 +27,9 @@ class destinationUI:
                 d.country = input("nafn áfangastaðs (string):")
                 d.airport = input("nafn flugvallar (string):")
                 d.flighttime = input("flugtími (datetime hours):")
-                d.distance = input ("vegalengd í km (int):")
-                d.name = input ("nafn tengiliðs (string):")
-                d.phone = input ("símanúmer tengiliðs (int):")
+                d.distance = input("vegalengd í km (int):")
+                d.name = input("nafn tengiliðs (string):")
+                d.phone = input("símanúmer tengiliðs (int):")
                 self.logic_wrapper.create_destination(d)
             elif command == "3":
                 pass
