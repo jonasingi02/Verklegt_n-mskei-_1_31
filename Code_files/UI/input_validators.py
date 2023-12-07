@@ -23,6 +23,7 @@ def validate_kt(kt):
 
 
 def validate_phone_number(phone_number):
+    """Check validity of phone number by checking if it's only numerical numbers"""
     valid = phone_number.isnumeric()
 
     if valid != True:
@@ -34,4 +35,7 @@ def validate_address(address, postal_code, place):
 
 
 def validate_occupation(occupation):
-    pass
+    lower_occupation = occupation.lower()
+
+    if lower_occupation == "flugþjónn" or lower_occupation == "flugmaður":
+        pass
