@@ -1,5 +1,6 @@
 from model.employee import Employee
 from UI.staff_input_validators import ValidatingStaffInput
+from .ascii_art import AsciiArt
 
 
 class ShiftManagerUI:
@@ -7,9 +8,10 @@ class ShiftManagerUI:
         pass
 
     def menu_output(self):
+        AsciiArt.airplane_1_ascii()
         print("Velkomin/n vaktstjóri")
         print(
-            "Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka"
+            "Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka\n"
         )
 
     def input_prompt(self):

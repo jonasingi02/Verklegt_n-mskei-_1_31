@@ -1,5 +1,5 @@
 from model.planes import Planes
-from .staff_input_validators import *
+from .staff_input_validators import ValidatingStaffInput
 from logic.logic_wrapper import Logic_wrapper
 
 
@@ -25,7 +25,7 @@ class planesUI:
                 while True:
                     p.name = input("nafn vélar (string): ")
                     try:
-                        validate_name(p.name)
+                        ValidatingStaffInput.validate_name(p.name)
                         break
                     except NameLengthException:
                         pass
@@ -34,7 +34,7 @@ class planesUI:
                 while True:
                     p.type = input("tegund vélar (string): ")
                     try:
-                        validate_name(p.type)
+                        ValidatingStaffInput.validate_name(p.type)
                         break
                     except NameLengthException:
                         pass
@@ -44,7 +44,7 @@ class planesUI:
                 while True:
                     p.manufacturer = input("framleiðandi vélar (string):")
                     try:
-                        validate_name(p.type)
+                        ValidatingStaffInput.validate_name(p.type)
                         break
                     except NameLengthException:
                         pass

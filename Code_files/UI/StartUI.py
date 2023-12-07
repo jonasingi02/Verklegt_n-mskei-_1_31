@@ -9,7 +9,7 @@ class StartUI:
         pass
 
     def menu_output(self):
-        print(AsciiArt.nan_logo())
+        AsciiArt.nan_logo()
 
         print(
             "Hvað má bjóða þér að sjá:\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nQ: Hætta"
