@@ -1,5 +1,6 @@
 from model.planes import Planes
-from data.plane_data import plane_data
+from data.plane_data import PlaneData
+
 
 class plane_logic:
     def __init__(self, data_connection):

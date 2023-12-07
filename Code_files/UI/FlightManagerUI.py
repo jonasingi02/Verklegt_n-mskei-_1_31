@@ -2,15 +2,17 @@ from .PlanesUI import planesUI
 from .DestinationUI import destinationUI
 from logic.logic_wrapper import Logic_wrapper
 
+
 class FlightManagerUI:
     def __init__(self):
         self.logic_wrapper = Logic_wrapper()
 
     def menu_output(self):
         print("Velkomin/n ferðastjóri")
-        print("Hvað má bjóða þér að gera:\n\n1: uppfæra vinnuferðir\n2: uppfæra áfangastaðalista\n3: uppfæra flugvélaflota\nQ: Hætta\nB: til baka")
+        print(
+            "Hvað má bjóða þér að gera:\n\n1: uppfæra vinnuferðir\n2: uppfæra áfangastaðalista\n3: uppfæra flugvélaflota\nQ: Hætta\nB: til baka"
+        )
 
-    
     def input_prompt(self):
         while True:
             self.menu_output()

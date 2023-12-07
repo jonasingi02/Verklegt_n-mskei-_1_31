@@ -25,3 +25,19 @@ Samantekt:
 Unnum í data og ui layernum. Skiptum verkum. 
 Ætlum að finna út úr wrapper-um fyrir morgundaginn.
 Lentum í smá git vandræðum en fundum út úr þeim. 
+
+Miðvikudagur 6. des
+Mæting 8:30
+
+Morgunfundur:
+Kóða, kóða og kóða.
+Byrja á uppfærslu hönnunarskýrslu (Vinna í samhliða kóðavinnu)
+Leggja áherslu á create og read.
+
+Samantekt:
+Kóðuðum.
+Bara smá frustration í dag.
+Lærðum á import vesen (vinna í réttum möppum)
+
+Fimmtudagur 7. des
+
