@@ -1,1 +1,3 @@
-destination,airport,flight_time,distance,contact,contact_phone_number
+country,airport,flighttime,distance,name,phone
+Iceland,Reykjavíkurflugvöllur,0,0,á ekki við,
+Greenland,Mittarfik Nuuk,4,1432,Malik,00299330001

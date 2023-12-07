@@ -1,5 +1,5 @@
 from model.planes import Planes
-from data.plane_data import PlaneData
+from data.plane_data import plane_data
 
 
 class plane_logic:
