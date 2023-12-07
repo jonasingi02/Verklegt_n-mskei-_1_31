@@ -45,8 +45,8 @@ class EmployeeData:
 
 
     def create_empoyee(self, employee):
-        pilots_csv_file = "Code_files/data/pilots.csv"
-        flight_attendants_csv_file = "Code_files/data/flight_attendants.csv"
+        self.pilots_csv_file = "Code_files/data/pilots.csv"
+        self.flight_attendants_csv_file = "Code_files/data/flight_attendants.csv"
 
         with open(self.file_name, 'a', newline='', encoding="utf-8") as csvfile:
             fieldnames = ["name", "kt", "phone_number", "address", "post_code", "occupation"]
