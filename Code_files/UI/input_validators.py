@@ -18,8 +18,12 @@ def validate_kt(kt):
 
     if len(kt) != 10:
         print("Úps, þessi kennitala virðist ekki vera rétt. Reyndu aftur.")
+        return False
     elif valid != True:
         print("Úps, þessi kennitala virðist ekki vera rétt. Reyndu aftur.")
+        return False
+    else:
+        return True
 
 
 def validate_phone_number(phone_number):
@@ -28,6 +32,9 @@ def validate_phone_number(phone_number):
 
     if valid != True:
         print("Úps, þetta símanúmer virðist ekki vera rétt. Reyndu aftur.")
+        return False
+    else:
+        return True
 
 
 def validate_address(address, postal_code, place):
