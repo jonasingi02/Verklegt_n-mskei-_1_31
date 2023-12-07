@@ -30,6 +30,7 @@ class ShiftManagerUI:
                     input("Skráðu kennitölu starfsmanns: ")
                 )
                 e.phone_number = int(input("Skráður símanúmer starfsmanns: "))
+
                 e.address = ValidatingStaffInput.validate_name(
                     input("Skráðu heimilisfang starfsmanns: ")
                 )
