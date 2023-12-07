@@ -1,5 +1,5 @@
 from model.employee import Employee
-from UI.staff_input_validators import ValidatingStaffInput
+from .input_validators import ValidatingStaffInput
 from .ascii_art import AsciiArt
 
 
@@ -26,17 +26,29 @@ class ShiftManagerUI:
                 e.name = ValidatingStaffInput.validate_name(
                     input("Skráðu nafn starfsmanns: ")
                 )
+
                 e.kt = ValidatingStaffInput.validate_kt(
                     input("Skráðu kennitölu starfsmanns: ")
                 )
-                e.phone_number = int(input("Skráður símanúmer starfsmanns: "))
+                while e.kt == None:
+                    e.kt = ValidatingStaffInput.validate_kt(
+                        input("Skráðu kennitölu starfsmanns: ")
+                    )
+
+                e.phone_number = ValidatingStaffInput.validate_phone_number(
+                    input("Skráðu símanúmer starfsmanns: ")
+                )
+                while e.phone_number == None:
+                    e.phone_number = ValidatingStaffInput.validate_phone_number(
+                        input("Skráðu símanúmer starfsmanns: ")
+                    )
 
                 e.address = ValidatingStaffInput.validate_name(
                     input("Skráðu heimilisfang starfsmanns: ")
                 )
                 e.postal_code = int(input("Skráðu póstfang starfsmanns: "))
                 e.occupation = ValidatingStaffInput.validate_name(
-                    "Skráðu starfsgrein starfsmanns: "
+                    "Skráðu starfsgrein starfsmanns (Flugmaður/Flugþjónn): "
                 )
 
             elif command == "3":

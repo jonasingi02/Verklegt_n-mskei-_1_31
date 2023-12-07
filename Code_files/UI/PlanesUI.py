@@ -1,5 +1,5 @@
 from model.planes import Planes
-from .staff_input_validators import ValidatingStaffInput, ValidatePlaneInfo
+from .input_validators import ValidatePlaneInfo
 from logic.logic_wrapper import Logic_wrapper
 
 

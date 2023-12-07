@@ -12,7 +12,7 @@ class StartUI:
         AsciiArt.nan_logo()
 
         print(
-            "Hvað má bjóða þér að sjá:\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nQ: Hætta"
+            "\nHvað má bjóða þér að sjá:\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nQ: Hætta"
         )
 
     def input_prompt(self):
