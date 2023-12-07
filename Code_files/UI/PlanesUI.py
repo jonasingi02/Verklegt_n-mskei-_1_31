@@ -1,6 +1,7 @@
 from model.planes import Planes
-from .input_validators import *
+from .staff_input_validators import *
 from logic.logic_wrapper import Logic_wrapper
+
 
 class planesUI:
     def __init__(self, logic_connection):
@@ -8,9 +9,10 @@ class planesUI:
 
     def menu_output(self):
         print("Velkomin/n ferðastjóri")
-        print("Hvað má bjóða þér að gera:\n\n1: birta allar flugvélar\n2: bæta við flugvél\n3: uppfæra flugvél\nQ: Hætta\nB: til baka")
+        print(
+            "Hvað má bjóða þér að gera:\n\n1: birta allar flugvélar\n2: bæta við flugvél\n3: uppfæra flugvél\nQ: Hætta\nB: til baka"
+        )
 
-    
     def input_prompt(self):
         while True:
             self.menu_output()
@@ -29,7 +31,7 @@ class planesUI:
                         pass
                     except:
                         print("some error")
-                while (True):
+                while True:
                     p.type = input("tegund vélar (string): ")
                     try:
                         validate_name(p.type)
@@ -39,7 +41,7 @@ class planesUI:
                     except:
                         print("some error")
                 p.numseats = input("fjöldi sæta (int):")
-                while(True):
+                while True:
                     p.manufacturer = input("framleiðandi vélar (string):")
                     try:
                         validate_name(p.type)
