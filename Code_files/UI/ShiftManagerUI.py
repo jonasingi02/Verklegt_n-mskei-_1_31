@@ -1,11 +1,12 @@
+from logic.logic_wrapper import Logic_wrapper
 from model.employee import Employee
 from .input_validators import ValidatingStaffInput
 from .ascii_art import AsciiArt
 
 
 class ShiftManagerUI:
-    def __init__(self, logic_connection):
-        self.data_wrapper = logic_connection
+    def __init__(self):
+        self.logic_wrapper = Logic_wrapper()
 
     def menu_output(self):
         AsciiArt.airplane_1_ascii()
@@ -46,11 +47,11 @@ class ShiftManagerUI:
                 e.address = ValidatingStaffInput.validate_name(
                     input("Skráðu heimilisfang starfsmanns: ")
                 )
-                e.postal_code = int(input("Skráðu póstfang starfsmanns: "))
+                e.postal_code = ValidatingStaffInput.validate_postal_code(input("Skráðu póstfang starfsmanns: "))
                 e.occupation = ValidatingStaffInput.validate_name(
                     "Skráðu starfsgrein starfsmanns (Flugmaður/Flugþjónn): "
                 )
-                self.data_wrapper.create_employee(e)
+                self.logic_wrapper.create_employee(e)
                 print(f"\nÞú hefur bætt við starfsmanninum: {e.name}.")
 
             elif command == "3":

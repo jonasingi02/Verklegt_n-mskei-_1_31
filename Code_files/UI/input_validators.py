@@ -14,6 +14,9 @@ class ValidatingStaffInput:
         """Check length of name"""
         if len(self) >= 50:
             raise NameLengthException()
+        else: 
+            return ""
+        
 
     def validate_kt(self):
         """Check if kennitala is 10 digits and all numeric characters.
@@ -21,10 +24,12 @@ class ValidatingStaffInput:
         valid = self.isnumeric()
 
         if len(self) != 10:
-            print("Úps, þessi kennitala virðist ekki vera rétt. Reyndu aftur.")
+            print("Þessi kennitala virðist ekki vera rétt. Reyndu aftur.")
             return False
         elif valid != True:
-            print("Úps, þessi kennitala virðist ekki vera rétt. Reyndu aftur.")
+            print(
+                "Þessi kennitala virðist ekki vera rétt. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi."
+            )
             return None
         else:
             return self
@@ -34,13 +39,28 @@ class ValidatingStaffInput:
         valid = self.isnumeric()
 
         if valid != True:
-            print("Úps, þetta símanúmer virðist ekki vera rétt. Reyndu aftur.")
+            print(
+                "Þetta símanúmer virðist ekki vera rétt. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi."
+            )
             return None
         else:
             return self
 
     def validate_address(self, address, postal_code, place):
         pass
+    
+    def validate_postal_code(self):
+            if len(self) == 3:
+                try: 
+                    self = int(self)
+                    return self
+                except ValueError:
+                    print("Ekki gilt, reyndu aftur. ")
+                    return None
+            else:
+                print("Ekki gilt, reyndu aftur. ")
+                return None
+
 
     def validate_occupation(self):
         lower_occupation = self.lower()
@@ -60,7 +80,7 @@ class ValidatePlaneInfo:
             return self
         else:
             print(
-                "Hmm.. Þetta virðist hafa farið úrskeiðis. Reyndu aftur. (Einungis tölustafir)"
+                "Þetta virðist hafa farið úrskeiðis. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi."
             )
             return 0
 
@@ -85,7 +105,25 @@ class ValidateVoyageInput:
             return self
 
     def validate_length_km(self):
+        """Check if user input for kilometers is a float."""
+        try:
+            self = float(self)
+            return self
+        except ValueError:
+            return None
+
+
+# Validate Destination inputs
+class ValidateDestinationInputs:
+    def __init__(self) -> None:
         pass
+
+    def validate_destination_string(self):
+        """Check length of input"""
+        if len(self) >= 50:
+            raise NameLengthException()
+        else:
+            return self
 
     def validate_contact_phone_number(self):
         valid = self.isnumeric()
@@ -93,8 +131,11 @@ class ValidateVoyageInput:
         if valid:
             return self
         else:
-            return None
-        
+            print(
+                "Hmm.. Þetta virðist ekki rétt. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi."
+            )
+            return None        
+
 class ValidateFMVoyageInfo:
     def __init__(self, logic_connection):
         self.logic_wrapper = logic_connection
@@ -114,3 +155,12 @@ class ValidateFMVoyageInfo:
                 return plane
         print("engin flugvél í kerfinu með þetta nafn.")
         return ""
+
+
+# d.country = input("nafn áfangastaðs (string):")
+# d.airport = input("nafn flugvallar (string):")
+# d.flighttime = input("flugtími (datetime hours):")
+# d.distance = input("vegalengd í km (int):")
+# d.name = input("nafn tengiliðs (string):")
+# d.phone = input("símanúmer tengiliðs (int):")
+# self.logic_wrapper.create_destination(d)
