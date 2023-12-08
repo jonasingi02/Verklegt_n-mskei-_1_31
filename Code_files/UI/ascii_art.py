@@ -62,6 +62,7 @@ class AsciiArt:
         print("     _ .                         ( `  ) . )")
         print("   (  _ )_                      (_, _(  ,_)_)")
         print(" (_  _(_ ,)")
+        print()
 
     def airport_1_ascii():
         print()

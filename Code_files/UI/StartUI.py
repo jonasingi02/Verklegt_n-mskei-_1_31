@@ -36,6 +36,8 @@ class StartUI:
                 if menu == "q":
                     return "q"
             elif command == "q":
+                AsciiArt.airplane_3_ascii()
+                print(f"Njóttu dagsins!\n")
                 break
             else:
                 print("Virkaði ekki, reyndu aftur.")
