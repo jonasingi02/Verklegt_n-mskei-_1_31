@@ -24,5 +24,5 @@ class Logic_wrapper:
     def get_all_destinations(self):
         return self.destination_logic.get_all_destinations()
     
-    def create_employee(self, e):
-        return self.employee_logic.create_employee(e)
+    def create_employee(self, employee):
+        return self.employee_logic.create_employee(employee)
