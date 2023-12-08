@@ -1,5 +1,6 @@
 from .PlanesUI import planesUI
 from .DestinationUI import destinationUI
+from .FMVoyageUI import FMVoyageUI
 from logic.logic_wrapper import Logic_wrapper
 
 
@@ -19,7 +20,10 @@ class FlightManagerUI:
             command = input("\nInnsláttarreitur:")
             command = command.lower()
             if command == "1":
-                pass
+                uiv = FMVoyageUI(self.logic_wrapper)
+                menu = uiv.input_prompt()
+                if menu == "q":
+                    return "q"
             elif command == "2":
                 uid = destinationUI(self.logic_wrapper)
                 menu = uid.input_prompt()

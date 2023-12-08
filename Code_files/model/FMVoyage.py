@@ -1,6 +1,6 @@
 from datetime import datetime
 
-class fmvoyage:
+class FMvoyage:
     def __init__(self, date = "", plane = "", destination = "", id = 0):
         id += 1
         self.date = date

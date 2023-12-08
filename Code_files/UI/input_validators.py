@@ -94,3 +94,23 @@ class ValidateVoyageInput:
             return self
         else:
             return None
+        
+class ValidateFMVoyageInfo:
+    def __init__(self, logic_connection):
+        self.logic_wrapper = logic_connection
+
+    def validate_voyage_dest(self, dest):
+        result = self.logic_wrapper.get_all_destinations()
+        for elem in result:
+            if elem.airport == dest:
+                return dest
+        print("engin áfangastaður í kerfinu með þennan flugvöll.")
+        return ""
+
+    def validate_voyage_plane(self, plane):
+        result = self.logic_wrapper.get_all_planes()
+        for elem in result:
+            if elem.airport == plane:
+                return plane
+        print("engin flugvél í kerfinu með þetta nafn.")
+        return ""

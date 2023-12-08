@@ -1,8 +1,9 @@
 from logic.logic_wrapper import Logic_wrapper
-from model.FMVoyage import fmvoyage
+from model.FMVoyage import FMvoyage
+from .input_validators import ValidateFMVoyageInfo
 
 
-class destinationUI:
+class FMVoyageUI:
     def __init__(self, logic_connection):
         self.logic_wrapper = logic_connection
 
@@ -13,6 +14,7 @@ class destinationUI:
         )
 
     def input_prompt(self):
+        Validator = ValidateFMVoyageInfo(self.logic_wrapper)
         while True:
             self.menu_output()
             command = input("\nInnsláttarreitur:")
@@ -20,14 +22,25 @@ class destinationUI:
             if command == "1":
                 pass
             elif command == "2":
-                v = fmvoyage()
+                v = FMvoyage()
+
+                while v.destination == "" :
+                    print("allir áfangastaðir í kerfinu:")
+                    result = self.logic_wrapper.get_all_destinations()
+                    for elem in result:
+                        print(elem)
+                    v.destination = Validator.validate_voyage_dest(input("hvaða áfangastað (flugvöll):"))
+
+                while v.plane == "" :
+                    print("allar flugvélar í kerfinu:")
+                    result = self.logic_wrapper.get_all_planes()
+                    for elem in result:
+                        print(elem)
+                    v.plane = Validator.validate_voyage_plane(input("hvaða flugvél villt þú nota (nafn):"))
+
                 v.date = input("Brottfarartími:")
-                d.airport = input("Nafn flugvallar (string):")
-                d.flighttime = input("Flugtími (datetime hours):")
-                d.distance = input("Vegalengd í km (int):")
-                d.name = input("Nafn tengiliðs (string):")
-                d.phone = input("Símanúmer tengiliðs (int):")
-                self.logic_wrapper.create_destination(d)
+                
+                self.logic_wrapper.create_fmvoyage(v)
             elif command == "3":
                 pass
             elif command == "q":
