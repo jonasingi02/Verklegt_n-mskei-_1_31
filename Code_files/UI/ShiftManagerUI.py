@@ -4,8 +4,8 @@ from .ascii_art import AsciiArt
 
 
 class ShiftManagerUI:
-    def __init__(self):
-        pass
+    def __init__(self, logic_connection):
+        self.data_wrapper = logic_connection
 
     def menu_output(self):
         AsciiArt.airplane_1_ascii()
@@ -50,6 +50,8 @@ class ShiftManagerUI:
                 e.occupation = ValidatingStaffInput.validate_name(
                     "Skráðu starfsgrein starfsmanns (Flugmaður/Flugþjónn): "
                 )
+                self.data_wrapper.create_employee(e)
+                print(f"\nÞú hefur bætt við starfsmanninum: {e.name}.")
 
             elif command == "3":
                 pass
