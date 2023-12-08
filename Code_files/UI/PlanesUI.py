@@ -20,35 +20,33 @@ class planesUI:
             command = command.lower()
 
             if command == "1":
-                pass
-
+                result = self.logic_wrapper.get_all_planes()
+                for elem in result:
+                    print(f"tegund:{elem.manufacturer} {elem.type}, nafn: {elem.name}")
             elif command == "2":
                 p = Planes()
 
                 input_field = True
                 while input_field:
-                    p.name = ValidatePlaneInfo.validate_plane_string(
-                        input("Nafn vélar: ")
-                    )
-                    while p.name == None:
+
+                    while p.name == "":
                         p.name = ValidatePlaneInfo.validate_plane_string(
                             input("Nafn vélar: ")
                         )
-
-                    p.type = ValidatePlaneInfo.validate_plane_string(
-                        input("Tegund vélar: ")
-                    )
-                    while p.type == None:
+                 
+                    while p.type == "":
                         p.type = ValidatePlaneInfo.validate_plane_string(
                             input("Tegund vélar: ")
                         )
 
-                    p.numseats = ValidatePlaneInfo.validate_num_seats(
-                        input("Fjöldi sæta: ")
-                    )
-                    while p.numseats == None:
-                        p.numseats = p.type = ValidatePlaneInfo.validate_num_seats(
+                    while p.numseats == 0:
+                        p.numseats = ValidatePlaneInfo.validate_num_seats(
                             input("Fjöldi sæta: ")
+                        )
+
+                    while p.manufacturer == "":
+                        p.manufacturer= ValidatePlaneInfo.validate_plane_string(
+                            input("Nafn framleiðanda:")
                         )
 
                     self.logic_wrapper.create_plane(p)

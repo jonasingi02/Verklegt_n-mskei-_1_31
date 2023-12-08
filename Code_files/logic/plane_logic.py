@@ -11,5 +11,5 @@ class plane_logic:
 
         self.data_wrapper.create_plane(plane)
 
-    def get_all_customers(self):
+    def get_all_planes(self):
         return self.data_wrapper.get_all_planes()

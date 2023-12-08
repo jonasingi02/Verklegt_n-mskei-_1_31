@@ -7,7 +7,7 @@ class data_wrapper:
         self.plane_data = PlaneData()
         self.destination_data = destination_data()
 
-    def get_all_plane(self):
+    def get_all_planes(self):
         return self.plane_data.read_all_planes()
 
     def create_plane(self, plane):

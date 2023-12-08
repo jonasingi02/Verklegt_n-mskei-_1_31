@@ -62,14 +62,14 @@ class ValidatePlaneInfo:
             print(
                 "Hmm.. Þetta virðist hafa farið úrskeiðis. Reyndu aftur. (Einungis tölustafir)"
             )
-            return None
+            return 0
 
     def validate_plane_string(self):
         """Check length of input"""
         if len(self) >= 50:
             raise NameLengthException()
         else:
-            return self
+            return ""
 
 
 # Validate Voyage information
