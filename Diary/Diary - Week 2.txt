@@ -40,10 +40,20 @@ Bara smá frustration í dag.
 Lærðum á import vesen (vinna í réttum möppum)
 
 Fimmtudagur 7. des
-Mæting snemma
 
+<<<<<<< Updated upstream
+=======
 Morgunfundur:
 Kóða
 
 Samantekt:
 Kóði og merge conflict
+
+Föstudagur 8. des
+Mæting 8:30
+
+Morgunfundur:
+Kóða
+Fara aðeins yfir merge conflict-ið í gær
+
+>>>>>>> Stashed changes
