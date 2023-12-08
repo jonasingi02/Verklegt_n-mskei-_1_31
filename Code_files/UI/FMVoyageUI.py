@@ -1,5 +1,5 @@
 from logic.logic_wrapper import Logic_wrapper
-from model.destination import destination
+from model.FMVoyage import fmvoyage
 
 
 class destinationUI:
@@ -20,8 +20,8 @@ class destinationUI:
             if command == "1":
                 pass
             elif command == "2":
-                d = destination()
-                d.country = input("Nafn áfangastaðs:")
+                v = fmvoyage()
+                v.date = input("Brottfarartími:")
                 d.airport = input("Nafn flugvallar (string):")
                 d.flighttime = input("Flugtími (datetime hours):")
                 d.distance = input("Vegalengd í km (int):")
