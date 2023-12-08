@@ -23,31 +23,19 @@ class ShiftManagerUI:
                 pass
             elif command == "2":
                 e = Employee()
+                
+                validating_input = ValidatingStaffInput()
+                e.name = validating_input.get_validated_name()
+                e.kt = validating_input.get_validated_kennitala()
+                e.phone_number = validating_input.get_validated_phone_number()
 
-                e.name = ValidatingStaffInput.validate_name(
-                    input("Skráðu nafn starfsmanns: ")
-                )
-
-                e.kt = ValidatingStaffInput.validate_kt(
-                    input("Skráðu kennitölu starfsmanns: ")
-                )
-                while e.kt == None:
-                    e.kt = ValidatingStaffInput.validate_kt(
-                        input("Skráðu kennitölu starfsmanns: ")
-                    )
-
-                e.phone_number = ValidatingStaffInput.validate_phone_number(
-                    input("Skráðu símanúmer starfsmanns: ")
-                )
-                while e.phone_number == None:
-                    e.phone_number = ValidatingStaffInput.validate_phone_number(
-                        input("Skráðu símanúmer starfsmanns: ")
-                    )
 
                 e.address = ValidatingStaffInput.validate_name(
                     input("Skráðu heimilisfang starfsmanns: ")
                 )
-                e.postal_code = ValidatingStaffInput.validate_postal_code(input("Skráðu póstfang starfsmanns: "))
+                e.postal_code = ValidatingStaffInput.validate_postal_code(
+                    input("Skráðu póstfang starfsmanns: ")
+                )
                 e.occupation = ValidatingStaffInput.validate_name(
                     "Skráðu starfsgrein starfsmanns (Flugmaður/Flugþjónn): "
                 )

@@ -10,62 +10,127 @@ class ValidatingStaffInput:
     def __init__(self) -> None:
         pass
 
-    def validate_name(self):
+    def validate_name_and_string(self, name):
         """Check length of name"""
-        if len(self) >= 50:
-            raise NameLengthException()
-        else: 
-            return ""
-        
 
-    def validate_kt(self):
+        if len(name) >= 50:
+            return None
+        elif len(name) <= 0:
+            return None
+        else:
+            return name
+
+    def get_validated_name(self):
+        valid = True
+        while valid:
+            user_input = input("Nafn starfsmanns: ")
+            validated_name = self.validate_name_and_string(user_input)
+
+            if validated_name != None:
+                valid = False
+                return validated_name
+            else:
+                print("Vinsamlegast sláðu inn nafn starfsmanns.")
+
+    def validate_kt(self, kt):
         """Check if kennitala is 10 digits and all numeric characters.
         If not prints out error message, try again."""
-        valid = self.isnumeric()
+        valid = kt.isnumeric()
 
-        if len(self) != 10:
-            print("Þessi kennitala virðist ekki vera rétt. Reyndu aftur.")
-            return False
+        if len(kt) != 10:
+            print("Þessi kennitala var ekki 10 tölustafir.")
+            return None
         elif valid != True:
-            print(
-                "Þessi kennitala virðist ekki vera rétt. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi."
-            )
             return None
         else:
-            return self
+            return kt
+        
+    def get_validated_kennitala(self):
+        valid = True
+        while valid:
+            user_input = input("Kennitala starfsmanns: ")
+            validated_kt = self.validate_kt(user_input)
 
-    def validate_phone_number(self):
+            if validated_kt != None:
+                valid = False
+                return validated_kt
+            else:
+                print("Vinsamlegast sláðu inn kennitölu starfsmanns.")
+
+    def validate_phone_number(self, pn):
         """Check validity of phone number by checking if it's only numerical numbers"""
-        valid = self.isnumeric()
+        valid = pn.isnumeric()
 
         if valid != True:
-            print(
-                "Þetta símanúmer virðist ekki vera rétt. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi."
-            )
+            print("Vinsamlegast sláið einungis inn tölustafi. Dæmi: 5812345")
+            return None
+        elif len(pn) != 7:
+            print("Þetta símanúmer er ekki 7 stafir.")
             return None
         else:
-            return self
+            return pn
+        
+    def get_validated_phone_number(self):
+        valid = True
+        while valid:
+            user_input = input("Símanúmer starfsmanns: ")
+            validated_pn = self.validate_phone_number(user_input)
 
-    def validate_address(self, address, postal_code, place):
-        pass
-    
-    def validate_postal_code(self):
-            if len(self) == 3:
-                try: 
-                    self = int(self)
-                    return self
-                except ValueError:
-                    print("Ekki gilt, reyndu aftur. ")
-                    return None
+            if validated_pn != None:
+                valid = False
+                return validated_pn
             else:
+                print("Vinsamlegast sláðu inn símanúmer starfsmanns.")
+
+
+    def get_validated_address(self):
+        valid = True
+        while valid:
+            user_input = input("Heimilisfang: ")
+            validated_address = self.validate_phone_number(user_input)
+
+            if validated_address != None:
+                valid = False
+                return validated_address
+            else:
+                print("Vinsamlegast sláðu inn heimilisfang starfsmanns.")
+
+
+    def validate_postal_code(self, pc):
+        if len(pc) == 3:
+            try:
+                self = int(pc)
+                return pc
+            except ValueError:
                 print("Ekki gilt, reyndu aftur. ")
                 return None
+        else:
+            print("Ekki gilt, reyndu aftur. ")
+            return None
+        
+    def get_validated_pc(self):
+        valid = True
+        while valid:
+            user_input = input("Póstnúmer starfsmanns: ")
+            validated_pc = self.validate_phone_number(user_input)
 
+            if validated_pc != None:
+                valid = False
+                return validated_pc
+            else:
+                print("Vinsamlegast sláðu inn póstnúmer starfsmanns.")
 
-    def validate_occupation(self):
-        lower_occupation = self.lower()
-        pass
+    def validate_occupation(self, occupation):
+        lower_occupation = occupation.lower()
 
+        if lower_occupation != "flugmaður" or lower_occupation != "flugþjónn":
+            return None
+        else:
+            return occupation
+        
+    
+    def get_validated_occupation(self):
+        print("Skrifaðu inn annað hvort flugmaður eða flugþjónn.")
 
 # Validate plane information
 class ValidatePlaneInfo:
@@ -126,6 +191,7 @@ class ValidateDestinationInputs:
             return self
 
     def validate_contact_phone_number(self):
+        """Validate that the contact phone number is only numerical characters."""
         valid = self.isnumeric()
 
         if valid:
@@ -134,7 +200,8 @@ class ValidateDestinationInputs:
             print(
                 "Hmm.. Þetta virðist ekki rétt. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi."
             )
-            return None        
+            return None
+
 
 class ValidateFMVoyageInfo:
     def __init__(self, logic_connection):
