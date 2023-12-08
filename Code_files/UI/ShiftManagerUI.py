@@ -47,7 +47,7 @@ class ShiftManagerUI:
                 e.address = ValidatingStaffInput.validate_name(
                     input("Skráðu heimilisfang starfsmanns: ")
                 )
-                e.postal_code = input("Skráðu póstfang starfsmanns: ")
+                e.postal_code = ValidatingStaffInput.validate_postal_code(input("Skráðu póstfang starfsmanns: "))
                 e.occupation = ValidatingStaffInput.validate_name(
                     "Skráðu starfsgrein starfsmanns (Flugmaður/Flugþjónn): "
                 )

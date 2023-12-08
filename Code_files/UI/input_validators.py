@@ -14,8 +14,9 @@ class ValidatingStaffInput:
         """Check length of name"""
         if len(self) >= 50:
             raise NameLengthException()
-        else:
-            return self
+        else: 
+            return ""
+        
 
     def validate_kt(self):
         """Check if kennitala is 10 digits and all numeric characters.
@@ -47,6 +48,19 @@ class ValidatingStaffInput:
 
     def validate_address(self, address, postal_code, place):
         pass
+    
+    def validate_postal_code(self):
+            if len(self) == 3:
+                try: 
+                    self = int(self)
+                    return self
+                except ValueError:
+                    print("Ekki gilt, reyndu aftur. ")
+                    return None
+            else:
+                print("Ekki gilt, reyndu aftur. ")
+                return None
+
 
     def validate_occupation(self):
         lower_occupation = self.lower()
@@ -91,12 +105,11 @@ class ValidateVoyageInput:
             return self
 
     def validate_length_km(self):
-        """Check if user input for kilometers can be changed into a float."""
+        """Check if user input for kilometers is a float."""
         try:
             self = float(self)
             return self
         except ValueError:
-            print("Eitthvað fór úrskeiðis. Reyndu aftur.")
             return None
 
 
@@ -122,3 +135,12 @@ class ValidateDestinationInputs:
                 "Hmm.. Þetta virðist ekki rétt. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi."
             )
             return None
+
+
+# d.country = input("nafn áfangastaðs (string):")
+# d.airport = input("nafn flugvallar (string):")
+# d.flighttime = input("flugtími (datetime hours):")
+# d.distance = input("vegalengd í km (int):")
+# d.name = input("nafn tengiliðs (string):")
+# d.phone = input("símanúmer tengiliðs (int):")
+# self.logic_wrapper.create_destination(d)
