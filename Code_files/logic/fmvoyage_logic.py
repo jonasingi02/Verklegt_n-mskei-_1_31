@@ -1,6 +1,6 @@
 from model.FMVoyage import FMvoyage
-from model.voyagexdest import voyagexdest
-from model.voyagexplane import voyagexplane
+#from model.voyagexdest import voyagexdest
+#from model.voyagexplane import voyagexplane
 from data.plane_data import PlaneData
 
 class FmvoyageLogic:

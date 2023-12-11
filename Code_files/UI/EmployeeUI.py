@@ -9,8 +9,8 @@ class EmployeeUI:
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
-        AsciiArt.airplane_1_ascii()
-        print("Velkomin/n vaktstjóri")
+        # AsciiArt.airplane_1_ascii()
+        # print("Velkomin/n vaktstjóri")
         print("Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka\n")
 
     def input_prompt(self):
@@ -18,7 +18,10 @@ class EmployeeUI:
             self.menu_output()
             command = input("Innsláttarreitur: ").lower()
             if command == "1":
-                pass
+                result = self.logic_wrapper.get_all_employees()
+                for elem in result:
+                   print(f"Nafn {elem.name}, Kennitala: {elem.kt}") 
+
             elif command == "2":
                 e = Employee()
                 
