@@ -5,48 +5,23 @@ from model.employee import Employee
 class EmployeeData:
     def __init__(self):
         print("inside data")
-        self.file_name = "Code_files/data/all_staff.csv"
+        self.file_name = "data/all_staff.csv"
+        self.pilots_csv_file = "data/files/pilots.csv"
+        self.flight_attendants_csv_file = "data/files/flight_attendants.csv"
 
-    def get_all_employees(self):
-        """Input from user gets checked for valid input and if all inputs checks out
-        it gets appended to the all_staff csv file."""
-        employees = []
-
-        with open(self.file_name, newline="") as csvfile:
+    def read_all_employees(self):
+        ret_list = [] 
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
-
             for row in reader:
-                phone_number_str = row.get("phone_number", "")
-                post_code = 0
-
-                if len(phone_number_str) != 7:
-                    raise ValueError(f"Invalid phone number length: {phone_number_str}")
-
-                try:
-                    phone_number = int(phone_number_str)
-                except ValueError:
-                    raise ValueError(f"Invalid phone number format: {phone_number_str}")
-
-                try:
-                    post_code = int(row.get("post_code", 0))
-                except ValueError:
-                    pass
-
-                employee = Employee(
-                    name=row.get("name", ""),
-                    kt=row.get("kt", ""),
-                    phone_number=phone_number,
-                    address=row.get("address", ""),
-                    post_code=post_code,
-                    occupation=row.get("occupation", ""),
+                ret_list.append(
+                    Employee(
+                        row["name"], row["kt"], row["phone_number"], row["address"] , row["postal_code"], row["occupation"]
+                    )
                 )
-                employees.append(employee)
+        return ret_list
 
-        return employees
-
-    def create_empoyee(self, employee):
-        self.pilots_csv_file = "Code_files/data/pilots.csv"
-        self.flight_attendants_csv_file = "Code_files/data/flight_attendants.csv"
+    def create_employee(self, employee):
 
         with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
@@ -65,13 +40,13 @@ class EmployeeData:
                     "kt": employee.kt,
                     "phone_number": employee.phone_number,
                     "address": employee.address,
-                    "post_code": employee.post_code,
+                    "post_code": employee.postal_code,
                     "occupation": employee.occupation,
                 }
             )
 
             if employee.occupation == "flugmaður":
-                with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
+                with open(self.pilots_csv_file, "a", newline="", encoding="utf-8") as csvfile2:
                     fieldnames = [
                         "name",
                         "kt",
@@ -80,7 +55,7 @@ class EmployeeData:
                         "post_code",
                         "occupation",
                     ]
-                    pilots_writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                    pilots_writer = csv.DictWriter(csvfile2, fieldnames=fieldnames)
 
                     pilots_writer.writerow(
                         {
@@ -88,13 +63,13 @@ class EmployeeData:
                             "kt": employee.kt,
                             "phone_number": employee.phone_number,
                             "address": employee.address,
-                            "post_code": employee.post_code,
+                            "post_code": employee.postal_code,
                             "occupation": employee.occupation,
                         }
                     )
 
             if employee.occupation == "flugþjónn":
-                with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
+                with open(self.flight_attendants_csv_file, "a", newline="", encoding="utf-8") as csvfile3:
                     fieldnames = [
                         "name",
                         "kt",
@@ -104,7 +79,7 @@ class EmployeeData:
                         "occupation",
                     ]
                     flight_attendants_writer = csv.DictWriter(
-                        csvfile, fieldnames=fieldnames
+                        csvfile3, fieldnames=fieldnames
                     )
 
                     flight_attendants_writer.writerow(
@@ -113,7 +88,7 @@ class EmployeeData:
                             "kt": employee.kt,
                             "phone_number": employee.phone_number,
                             "address": employee.address,
-                            "post_code": employee.post_code,
+                            "post_code": employee.postal_code,
                             "occupation": employee.occupation,
                         }
                     )

@@ -11,9 +11,7 @@ class ShiftManagerUI:
     def menu_output(self):
         AsciiArt.airplane_1_ascii()
         print("Velkomin/n vaktstjóri")
-        print(
-            "Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka\n"
-        )
+        print("Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka\n")
 
     def input_prompt(self):
         while True:
@@ -23,36 +21,17 @@ class ShiftManagerUI:
                 pass
             elif command == "2":
                 e = Employee()
+                
+                validating_input = ValidatingStaffInput()
+                e.name = validating_input.get_validated_name()
+                e.kt = validating_input.get_validated_kennitala()
+                e.phone_number = validating_input.get_validated_phone_number()
+                e.address = validating_input.get_validated_address()
+                e.postal_code = validating_input.get_validated_pc()
+                e.occupation = validating_input.get_validated_occupation()
 
-                e.name = ValidatingStaffInput.validate_name(
-                    input("Skráðu nafn starfsmanns: ")
-                )
-
-                e.kt = ValidatingStaffInput.validate_kt(
-                    input("Skráðu kennitölu starfsmanns: ")
-                )
-                while e.kt == None:
-                    e.kt = ValidatingStaffInput.validate_kt(
-                        input("Skráðu kennitölu starfsmanns: ")
-                    )
-
-                e.phone_number = ValidatingStaffInput.validate_phone_number(
-                    input("Skráðu símanúmer starfsmanns: ")
-                )
-                while e.phone_number == None:
-                    e.phone_number = ValidatingStaffInput.validate_phone_number(
-                        input("Skráðu símanúmer starfsmanns: ")
-                    )
-
-                e.address = ValidatingStaffInput.validate_name(
-                    input("Skráðu heimilisfang starfsmanns: ")
-                )
-                e.postal_code = ValidatingStaffInput.validate_postal_code(input("Skráðu póstfang starfsmanns: "))
-                e.occupation = ValidatingStaffInput.validate_name(
-                    "Skráðu starfsgrein starfsmanns (Flugmaður/Flugþjónn): "
-                )
                 self.logic_wrapper.create_employee(e)
-                print(f"\nÞú hefur bætt við starfsmanninum: {e.name}.")
+                print(f"\nÞú hefur bætt við starfsmanninum: {e.name}, {e.occupation}.")
 
             elif command == "3":
                 pass

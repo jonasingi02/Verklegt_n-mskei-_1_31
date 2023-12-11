@@ -9,10 +9,10 @@ class EmployeeLogic:
 
     def create_employee(self, employee):
         """Takes an employee as an object and forwards it to the data layer"""
-        self.data_wrapper.create_customer(employee)
+        self.data_wrapper.create_employee(employee)
 
     def get_all_employees(self):
-        return self.data_wrapper.get_all_employees()
+        return self.data_wrapper.read_all_employees()
       
 
 

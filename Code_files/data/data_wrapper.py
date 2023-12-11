@@ -27,13 +27,7 @@ class data_wrapper:
         return self.employee_data.get_all_employees()
     
     def create_employee(self, employee): 
-        return self.employee_data.create_empoyee(employee)
-    
-    def create_voyagexplane(self, vxp):
-        return self.voyagexplane.create_voyagexplane(vxp)
-
-    def create_voyagexdest(self, vxd):
-        return self.voyagexdest.create_voyagexdest(vxd)
+        return self.employee_data.create_employee(employee)
     
     def create_fmvoyage(self, fmvoyage):
         return self.FmvoyageData.create_fmvoyage(fmvoyage)
