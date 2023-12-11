@@ -1,12 +1,11 @@
 from datetime import datetime
 
 class FMvoyage:
-    def __init__(self, date = "", plane = "", destination = "", id = 0):
-        id += 1
-        self.date = date
+    def __init__(self, id = "", date = "", plane = "", airport = ""):
         self.id = id
+        self.date = date
         self.plane = plane
-        self.destination = destination
+        self.airport = airport
 
     def __str__(self):
-        return f"id: {self.id}, date: {self.date}, plane: {self.plane}, destination: {self.destination}"
+        return f"id: {self.id}, date: {self.date}, plane: {self.plane}, airport: {self.airport}"

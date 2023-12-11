@@ -145,15 +145,15 @@ class ValidateFMVoyageInfo:
         for elem in result:
             if elem.airport == dest:
                 return dest
-        print("engin áfangastaður í kerfinu með þennan flugvöll.")
+        print("\nengin áfangastaður í kerfinu með þennan flugvöll.")
         return ""
 
     def validate_voyage_plane(self, plane):
         result = self.logic_wrapper.get_all_planes()
         for elem in result:
-            if elem.airport == plane:
+            if elem.name == plane:
                 return plane
-        print("engin flugvél í kerfinu með þetta nafn.")
+        print("\nengin flugvél í kerfinu með þetta nafn.")
         return ""
 
 
