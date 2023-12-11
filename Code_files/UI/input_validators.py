@@ -11,8 +11,7 @@ class ValidatingStaffInput:
         pass
 
     def validate_name_and_string(self, name):
-        """Check length of name"""
-
+        """Check length of name and strings."""
         if len(name) >= 50:
             return None
         elif len(name) <= 0:
@@ -21,6 +20,7 @@ class ValidatingStaffInput:
             return name
 
     def get_validated_name(self):
+        """Validate that a name was put in."""
         valid = True
         while valid:
             user_input = input("Nafn starfsmanns: ")
@@ -46,6 +46,7 @@ class ValidatingStaffInput:
             return kt
         
     def get_validated_kennitala(self):
+        """Get user input for kennitala and validate it."""
         valid = True
         while valid:
             user_input = input("Kennitala: ")
@@ -71,6 +72,7 @@ class ValidatingStaffInput:
             return pn
         
     def get_validated_phone_number(self):
+        """Ask the user for input and check if it's a valid phone number."""
         valid = True
         while valid:
             user_input = input("Símanúmer: ")
@@ -80,9 +82,8 @@ class ValidatingStaffInput:
                 valid = False
                 return validated_pn
 
-
-
     def get_validated_address(self):
+        """Ask the user for input until a valid address is put in."""
         valid = True
         while valid:
             user_input = input("Heimilisfang: ")
@@ -94,8 +95,8 @@ class ValidatingStaffInput:
             else:
                 print("Vinsamlegast sláðu inn heimilisfang starfsmanns.")
 
-
     def validate_postal_code(self, pc):
+        """Validate postal codes by icelandic standards. Three number and only numerical."""
         if len(pc) == 3:
             try:
                 self = int(pc)
@@ -108,6 +109,7 @@ class ValidatingStaffInput:
             return None
         
     def get_validated_pc(self):
+        """Ask the user for input and check if it is valid. Return only a valid postal code"""
         valid = True
         while valid:
             user_input = input("Póstnúmer: ")
@@ -120,7 +122,7 @@ class ValidatingStaffInput:
                 print("Vinsamlegast sláðu inn póstnúmer starfsmanns.")
 
     def validate_occupation(self, occupation):
-        """Validate occupation"""
+        """Validate occupation title by checking if it is either a pilot or a flight attendant."""
         lower_occupation = occupation.lower()
 
         if lower_occupation == "flugmaður" or lower_occupation == "flugþjónn":
@@ -129,11 +131,10 @@ class ValidatingStaffInput:
             print("Vinsamlegast skrifaðu eingöngu flugmaður eða flugþjónn.")
             return None
         
-    
     def get_validated_occupation(self):
         """Get the validated occupation, as of this update 
         there are only 2 options to add as occupations"""
-        print("Skrifaðu inn annað hvort flugmaður eða flugþjónn.")
+        print("\nSkrifaðu inn annað hvort flugmaður eða flugþjónn.")
         valid = True
 
         while valid:
