@@ -28,17 +28,10 @@ class ShiftManagerUI:
                 e.name = validating_input.get_validated_name()
                 e.kt = validating_input.get_validated_kennitala()
                 e.phone_number = validating_input.get_validated_phone_number()
+                e.address = validating_input.get_validated_address()
+                e.postal_code = validating_input.get_validated_pc()
+                e.occupation = validating_input.get_validated_occupation()
 
-
-                e.address = ValidatingStaffInput.validate_name(
-                    input("Skráðu heimilisfang starfsmanns: ")
-                )
-                e.postal_code = ValidatingStaffInput.validate_postal_code(
-                    input("Skráðu póstfang starfsmanns: ")
-                )
-                e.occupation = ValidatingStaffInput.validate_name(
-                    "Skráðu starfsgrein starfsmanns (Flugmaður/Flugþjónn): "
-                )
                 self.logic_wrapper.create_employee(e)
                 print(f"\nÞú hefur bætt við starfsmanninum: {e.name}.")
 

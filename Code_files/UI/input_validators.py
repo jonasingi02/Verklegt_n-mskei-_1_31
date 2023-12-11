@@ -79,15 +79,14 @@ class ValidatingStaffInput:
             if validated_pn != None:
                 valid = False
                 return validated_pn
-            else:
-                print("Vinsamlegast sláðu inn símanúmer starfsmanns.")
+
 
 
     def get_validated_address(self):
         valid = True
         while valid:
             user_input = input("Heimilisfang: ")
-            validated_address = self.validate_phone_number(user_input)
+            validated_address = self.validate_name_and_string(user_input)
 
             if validated_address != None:
                 valid = False
@@ -112,7 +111,7 @@ class ValidatingStaffInput:
         valid = True
         while valid:
             user_input = input("Póstnúmer starfsmanns: ")
-            validated_pc = self.validate_phone_number(user_input)
+            validated_pc = self.validate_postal_code(user_input)
 
             if validated_pc != None:
                 valid = False
@@ -123,14 +122,24 @@ class ValidatingStaffInput:
     def validate_occupation(self, occupation):
         lower_occupation = occupation.lower()
 
-        if lower_occupation != "flugmaður" or lower_occupation != "flugþjónn":
-            return None
-        else:
+        if lower_occupation == "flugmaður" or lower_occupation == "flugþjónn":
             return occupation
+        else:
+            print("Vinsamlegast skrifaðu eingöngu flugmaður eða flugþjónn.")
+            return None
         
     
     def get_validated_occupation(self):
         print("Skrifaðu inn annað hvort flugmaður eða flugþjónn.")
+        valid = True
+
+        while valid:
+            user_input = input("Starfsheiti: ")
+            validated_occupation = self.validate_occupation(user_input)
+            if validated_occupation != None:
+                valid = False
+                return validated_occupation
+
 
 # Validate plane information
 class ValidatePlaneInfo:

@@ -25,6 +25,6 @@ class data_wrapper:
         return self.employee_data.get_all_employees()
     
     def create_employee(self, employee): 
-        return self.employee_data.create_empoyee(employee)
+        return self.employee_data.create_employee(employee)
 
 

@@ -5,7 +5,7 @@ from model.employee import Employee
 class EmployeeData:
     def __init__(self):
         print("inside data")
-        self.file_name = "Code_files/data/all_staff.csv"
+        self.file_name = "data/all_staff.csv"
 
     def read_all_employees(self):
         ret_list = [] 
@@ -19,9 +19,9 @@ class EmployeeData:
                 )
         return ret_list
 
-    def create_empoyee(self, employee):
-        self.pilots_csv_file = "Code_files/data/pilots.csv"
-        self.flight_attendants_csv_file = "Code_files/data/flight_attendants.csv"
+    def create_employee(self, employee):
+        self.pilots_csv_file = "data/pilots.csv"
+        self.flight_attendants_csv_file = "data/flight_attendants.csv"
 
         with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
@@ -40,7 +40,7 @@ class EmployeeData:
                     "kt": employee.kt,
                     "phone_number": employee.phone_number,
                     "address": employee.address,
-                    "post_code": employee.post_code,
+                    "post_code": employee.postal_code,
                     "occupation": employee.occupation,
                 }
             )
@@ -63,7 +63,7 @@ class EmployeeData:
                             "kt": employee.kt,
                             "phone_number": employee.phone_number,
                             "address": employee.address,
-                            "post_code": employee.post_code,
+                            "post_code": employee.postal_code,
                             "occupation": employee.occupation,
                         }
                     )
@@ -88,7 +88,7 @@ class EmployeeData:
                             "kt": employee.kt,
                             "phone_number": employee.phone_number,
                             "address": employee.address,
-                            "post_code": employee.post_code,
+                            "post_code": employee.postal_code,
                             "occupation": employee.occupation,
                         }
                     )
