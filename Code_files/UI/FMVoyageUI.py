@@ -24,12 +24,20 @@ class FMVoyageUI:
             elif command == "2":
                 v = FMvoyage()
 
-                while v.destination == "" :
+                v.id = 1
+                result = self.logic_wrapper.get_all_fmvoyages()
+
+                for elem in result:
+                    if int(elem.id) + 1 > int(v.id):
+                        v.id = int(elem.id) + 1
+                    v.id = str(v.id)
+
+                while v.airport == "" :
                     print("allir áfangastaðir í kerfinu:")
                     result = self.logic_wrapper.get_all_destinations()
                     for elem in result:
                         print(elem)
-                    v.destination = Validator.validate_voyage_dest(input("hvaða áfangastað (flugvöll):"))
+                    v.airport = Validator.validate_voyage_dest(input("hvaða áfangastað (flugvöll):"))
 
                 while v.plane == "" :
                     print("allar flugvélar í kerfinu:")
@@ -38,7 +46,7 @@ class FMVoyageUI:
                         print(elem)
                     v.plane = Validator.validate_voyage_plane(input("hvaða flugvél villt þú nota (nafn):"))
 
-                v.date = input("Brottfarartími:")
+                v.date = input("Brottfarartími(01-01-01 12:00):")
                 
                 self.logic_wrapper.create_fmvoyage(v)
             elif command == "3":
