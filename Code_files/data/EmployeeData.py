@@ -6,6 +6,8 @@ class EmployeeData:
     def __init__(self):
         print("inside data")
         self.file_name = "data/all_staff.csv"
+        self.pilots_csv_file = "data/files/pilots.csv"
+        self.flight_attendants_csv_file = "data/files/flight_attendants.csv"
 
     def read_all_employees(self):
         ret_list = [] 
@@ -20,8 +22,6 @@ class EmployeeData:
         return ret_list
 
     def create_employee(self, employee):
-        self.pilots_csv_file = "data/pilots.csv"
-        self.flight_attendants_csv_file = "data/flight_attendants.csv"
 
         with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
@@ -46,7 +46,7 @@ class EmployeeData:
             )
 
             if employee.occupation == "flugmaður":
-                with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
+                with open(self.pilots_csv_file, "a", newline="", encoding="utf-8") as csvfile2:
                     fieldnames = [
                         "name",
                         "kt",
@@ -55,7 +55,7 @@ class EmployeeData:
                         "post_code",
                         "occupation",
                     ]
-                    pilots_writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                    pilots_writer = csv.DictWriter(csvfile2, fieldnames=fieldnames)
 
                     pilots_writer.writerow(
                         {
@@ -69,7 +69,7 @@ class EmployeeData:
                     )
 
             if employee.occupation == "flugþjónn":
-                with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
+                with open(self.flight_attendants_csv_file, "a", newline="", encoding="utf-8") as csvfile3:
                     fieldnames = [
                         "name",
                         "kt",
@@ -79,7 +79,7 @@ class EmployeeData:
                         "occupation",
                     ]
                     flight_attendants_writer = csv.DictWriter(
-                        csvfile, fieldnames=fieldnames
+                        csvfile3, fieldnames=fieldnames
                     )
 
                     flight_attendants_writer.writerow(

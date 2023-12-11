@@ -11,9 +11,7 @@ class ShiftManagerUI:
     def menu_output(self):
         AsciiArt.airplane_1_ascii()
         print("Velkomin/n vaktstjóri")
-        print(
-            "Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka\n"
-        )
+        print("Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka\n")
 
     def input_prompt(self):
         while True:
@@ -33,7 +31,7 @@ class ShiftManagerUI:
                 e.occupation = validating_input.get_validated_occupation()
 
                 self.logic_wrapper.create_employee(e)
-                print(f"\nÞú hefur bætt við starfsmanninum: {e.name}.")
+                print(f"\nÞú hefur bætt við starfsmanninum: {e.name}, {e.occupation}.")
 
             elif command == "3":
                 pass

@@ -48,7 +48,7 @@ class ValidatingStaffInput:
     def get_validated_kennitala(self):
         valid = True
         while valid:
-            user_input = input("Kennitala starfsmanns: ")
+            user_input = input("Kennitala: ")
             validated_kt = self.validate_kt(user_input)
 
             if validated_kt != None:
@@ -73,7 +73,7 @@ class ValidatingStaffInput:
     def get_validated_phone_number(self):
         valid = True
         while valid:
-            user_input = input("Símanúmer starfsmanns: ")
+            user_input = input("Símanúmer: ")
             validated_pn = self.validate_phone_number(user_input)
 
             if validated_pn != None:
@@ -110,7 +110,7 @@ class ValidatingStaffInput:
     def get_validated_pc(self):
         valid = True
         while valid:
-            user_input = input("Póstnúmer starfsmanns: ")
+            user_input = input("Póstnúmer: ")
             validated_pc = self.validate_postal_code(user_input)
 
             if validated_pc != None:
@@ -120,16 +120,19 @@ class ValidatingStaffInput:
                 print("Vinsamlegast sláðu inn póstnúmer starfsmanns.")
 
     def validate_occupation(self, occupation):
+        """Validate occupation"""
         lower_occupation = occupation.lower()
 
         if lower_occupation == "flugmaður" or lower_occupation == "flugþjónn":
-            return occupation
+            return lower_occupation
         else:
             print("Vinsamlegast skrifaðu eingöngu flugmaður eða flugþjónn.")
             return None
         
     
     def get_validated_occupation(self):
+        """Get the validated occupation, as of this update 
+        there are only 2 options to add as occupations"""
         print("Skrifaðu inn annað hvort flugmaður eða flugþjónn.")
         valid = True
 
@@ -207,7 +210,7 @@ class ValidateDestinationInputs:
             return self
         else:
             print(
-                "Hmm.. Þetta virðist ekki rétt. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi."
+                "Þetta virðist ekki rétt. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi."
             )
             return None
 
@@ -221,7 +224,7 @@ class ValidateFMVoyageInfo:
         for elem in result:
             if elem.airport == dest:
                 return dest
-        print("engin áfangastaður í kerfinu með þennan flugvöll.")
+        print("Það er enginn áfangastaður í kerfinu með þennan flugvöll.")
         return ""
 
     def validate_voyage_plane(self, plane):
@@ -229,7 +232,7 @@ class ValidateFMVoyageInfo:
         for elem in result:
             if elem.airport == plane:
                 return plane
-        print("engin flugvél í kerfinu með þetta nafn.")
+        print("Það er engin flugvél í kerfinu með þetta nafn.")
         return ""
 
 
