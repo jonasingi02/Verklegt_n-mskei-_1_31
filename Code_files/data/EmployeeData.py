@@ -4,7 +4,7 @@ from model.employee import Employee
 
 class EmployeeData:
     def __init__(self):
-        self.file_name = "data/all_staff.csv"
+        self.file_name = "data/files/all_staff.csv"
         self.pilots_csv_file = "data/files/pilots.csv"
         self.flight_attendants_csv_file = "data/files/flight_attendants.csv"
 
@@ -30,6 +30,7 @@ class EmployeeData:
                 "address",
                 "post_code",
                 "occupation",
+                
             ]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 

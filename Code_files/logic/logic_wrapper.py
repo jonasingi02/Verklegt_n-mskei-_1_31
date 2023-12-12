@@ -36,6 +36,12 @@ class Logic_wrapper:
     def get_all_pilots(self): 
         return self.employee_logic.get_all_pilots()
     
+    def get_all_fmvoyages(self):
+        return self.fmvoyage_logic.get_all_fmvoyages()
+    
+    def get_all_employees(self):
+        return self.employee_logic.get_all_employees()
+
     def get_all_flight_attendants(self): 
         return self.employee_logic.get_all_flight_attendantds()
     
