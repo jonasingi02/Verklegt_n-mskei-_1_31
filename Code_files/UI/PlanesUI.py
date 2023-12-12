@@ -10,13 +10,13 @@ class planesUI:
     def menu_output(self):
         print("Velkomin/n ferðastjóri")
         print(
-            "Hvað má bjóða þér að gera:\n\n1: birta allar flugvélar\n2: bæta við flugvél\n3: uppfæra flugvél\nQ: Hætta\nB: til baka"
+            "Hvað má bjóða þér að gera?\n\n1: Birta allar flugvélar\n2: Bæta við flugvél\n3: Uppfæra flugvél\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
         while True:
             self.menu_output()
-            command = input("\nInnsláttarreitur: ")
+            command = input("\nInnsláttareitur: ")
             command = command.lower()
 
             if command == "1":

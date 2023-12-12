@@ -9,7 +9,7 @@ class ShiftManagerUI:
     def menu_output(self):
         print("Velkomin/n Vaktstjóri")
         print(
-            "Hvað má bjóða þér að gera:\n\n1: uppfæra starfsmenn\n2: uppfæra vinnuferðir\n3: uppfæra x\nQ: Hætta\nB: til baka"
+            "Hvað má bjóða þér að gera?\n\n1: Uppfæra starfsmenn\n2: Uppfæra vinnuferðir\n3: Birta alla starfsmenn\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
