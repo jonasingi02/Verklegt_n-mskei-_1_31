@@ -1,3 +1,4 @@
-name,kt,phone_number,home_address,postal_code,occupation
+name,kt,phone_number,address,postal_code,occupation
 Jóhanna,2503002090,8459840,Lyngás 2,210,flugmaður
 
+Ingi,1234567890,1234567,Kambosel,109,flugmaður

@@ -7,6 +7,9 @@ class Employee:
         self.postal_code = post_code
         self.occupation = occupation
 
-    def __repr__(self):
-        return f"Employee(name='{self.name}', kt='{self.kt}', phone_number='{self.phone_number}', address='{self.address}', postal_code='{self.postal_code}', occupation='{self.occupation}')"
+    #def __repr__(self):
+     #   return f"Employee(name='{self.name}', kt='{self.kt}', phone_number='{self.phone_number}', address='{self.address}', postal_code='{self.postal_code}', occupation='{self.occupation}')"
+    def __str__(self):
+        return f"name='{self.name}', kt='{self.kt}', phone_number='{self.phone_number}', address='{self.address}', postal_code='{self.postal_code}', occupation='{self.occupation}')"
+
 

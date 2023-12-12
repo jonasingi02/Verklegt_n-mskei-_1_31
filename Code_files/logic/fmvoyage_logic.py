@@ -1,4 +1,5 @@
 from model.FMVoyage import FMvoyage
+
 from data.plane_data import PlaneData
 
 class FmvoyageLogic:

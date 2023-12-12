@@ -1,2 +1,5 @@
-name,kt,phone_number,address,postal_code,occupation
+name,kt,phone_number,address,postal_code,postal_code,occupation
 Guðjón,0304042110,8450446,Nónhæð 44,111,flugmaður
+
+IngiAsm,1234567890,1234567,RettaKambasel,109,flugþjónn
+asdad,1234567890,1234567,squad,109,flugmaður
