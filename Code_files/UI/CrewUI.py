@@ -19,7 +19,7 @@ class CrewUI:
             command = input("Innsláttarreitur: ").lower()
             
             if command == "1":
-                result = self.logic_wrapper.get_all_employees()
+                result = self.logic_wrapper.read_all_employees()
                 for elem in result:
                    print(f"Nafn {elem.name}, Kennitala: {elem.kt}")
 

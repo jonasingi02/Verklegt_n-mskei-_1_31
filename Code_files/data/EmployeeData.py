@@ -117,20 +117,7 @@ class EmployeeData:
                 writer = csv.writer(file_name)
                 writer.writerows(rows)
             os.replace(update_employee_path, self.file_name)
-                
-
-    # def update_employee(self, kt_employee_to_update, column_to_update, new_info):
-    #     tempfile = NamedTemporaryFile(mode="w", delete=False)
-
-    #     fields = ["name", "kt", "phone_number", "home_address", "postal_code", "occupation"]
-    #     with open(self.file_name, "r") as csvfile6, tempfile:
-    #         reader = csv.DictReader(csvfile6, fieldnames=fields)
-    #         writer = csv.DictWriter(tempfile, fieldnames=fields)
-
-    #         for row in reader:
-    #             if row["kt"] == kt_employee_to_update:
                     
-
     def read_all_pilots(self): 
         pilot_list = []
         with open(self.pilots_csv_file , newline="", encoding="utf-8") as csvfile4:
