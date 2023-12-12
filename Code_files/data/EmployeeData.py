@@ -4,12 +4,11 @@ from model.employee import Employee
 
 class EmployeeData:
     def __init__(self):
-        print("inside data")
         self.file_name = "data/all_staff.csv"
         self.pilots_csv_file = "data/files/pilots.csv"
         self.flight_attendants_csv_file = "data/files/flight_attendants.csv"
 
-    def read_all_employees(self):
+    def read_all_employees(self) -> list:
         ret_list = [] 
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)

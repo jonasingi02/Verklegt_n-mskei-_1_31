@@ -12,6 +12,7 @@ class Logic_wrapper:
         self.employee_logic = EmployeeLogic(self.data_wrapper)
         self.fmvoyage_logic = FmvoyageLogic(self.data_wrapper)
 
+
     def create_plane(self, plane):
         """Takes in a plane object and forwards it to the data layer"""
         return self.plane_logic.create_plane(plane)
@@ -28,6 +29,9 @@ class Logic_wrapper:
     
     def create_employee(self, e):
         return self.employee_logic.create_employee(e)
+    
+    def read_all_employees(self):
+        return self.employee_logic.read_all_employees()
     
     def create_fmvoyage(self, v):
         return self.fmvoyage_logic.create_fmvoyage(v)

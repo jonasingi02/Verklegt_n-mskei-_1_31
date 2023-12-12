@@ -1,4 +1,5 @@
 from logic.logic_wrapper import Logic_wrapper
+from logic.EmployeeLogic import EmployeeLogic
 from model.employee import Employee
 from .input_validators import ValidatingStaffInput
 from .ascii_art import AsciiArt
@@ -17,8 +18,15 @@ class EmployeeUI:
         while True:
             self.menu_output()
             command = input("Innsláttarreitur: ").lower()
+            
             if command == "1":
-                pass
+                #TODO
+                all_employees = Logic_wrapper.read_all_employees(self)
+                for sublist in all_employees:
+                    for elem in sublist:
+                        print(elem)
+                
+            
             elif command == "2":
                 e = Employee()
                 

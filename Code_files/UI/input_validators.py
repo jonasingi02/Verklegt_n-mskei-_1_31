@@ -1,9 +1,6 @@
 # Input Validators
 
 
-class NameLengthException(Exception):
-    print("Þessi strengur er lengri en 50 stafir.")
-
 
 # Validating staff information
 class ValidatingStaffInput:
@@ -150,24 +147,41 @@ class ValidatePlaneInfo:
     def __init__(self) -> None:
         pass
 
+    def validate_string(self, name):
+        """Check length of name and strings."""
+        if len(name) >= 50:
+            return None
+        elif len(name) <= 0:
+            return None
+        else:
+            return name
+        
+    def get_validated_string(self, what_input:str):
+        """Validate that a string was put in."""
+        valid = True
+        while valid:
+            user_input = input(what_input)
+            validated_name = self.validate_string(user_input)
+
+            if validated_name != None:
+                valid = False
+                return validated_name
+            else:
+                lower_what_input = what_input.rstrip(what_input[-1]).lower()
+                print(f"Vinsamlegast sláðu inn {lower_what_input}.")    
+        
     def validate_num_seats(self):
         """Check if number of seats input is only integers"""
-        valid: bool = self.isnumeric()
-
-        if valid:
-            return self
-        else:
-            print(
-                "Þetta virðist hafa farið úrskeiðis. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi."
-            )
-            return 0
-
-    def validate_plane_string(self):
-        """Check length of input"""
-        if len(self) >= 50:
-            raise NameLengthException()
-        else:
-            return ""
+        check = True
+        while check:
+            user_input = input("Fjöldi sæta: ")
+            valid: bool = user_input.isnumeric()
+            if valid:
+                check = False
+                return user_input
+            else:
+                print("Þetta virðist hafa farið úrskeiðis. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi.")
+                
 
 
 # Validate Voyage information
@@ -178,7 +192,7 @@ class ValidateVoyageInput:
     def validate_voyage_string(self):
         """Check length of input"""
         if len(self) >= 50:
-            raise NameLengthException()
+            print("Þessi strengur er lengri en 50 stafir.")
         else:
             return self
 
@@ -199,7 +213,7 @@ class ValidateDestinationInputs:
     def validate_destination_string(self):
         """Check length of input"""
         if len(self) >= 50:
-            raise NameLengthException()
+            print("Þessi strengur er lengri en 50 stafir.")
         else:
             return self
 
