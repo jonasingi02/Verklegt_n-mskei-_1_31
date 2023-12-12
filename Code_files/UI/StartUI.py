@@ -2,7 +2,7 @@ from .EmployeeUI import EmployeeUI
 from .ShiftManagerUI import ShiftManagerUI
 from .FlightManagerUI import FlightManagerUI
 from .ascii_art import AsciiArt
-
+from .CrewUI import CrewUI
 
 class StartUI:
     def __init__(self):
@@ -21,7 +21,7 @@ class StartUI:
             command = input("\nInnsláttarreitur: ")
             command = command.lower()
             if command == "1":
-                uie = EmployeeUI()
+                uie = CrewUI()
                 menu = uie.input_prompt()
                 if menu == "q":
                     return "q"
