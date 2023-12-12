@@ -91,3 +91,29 @@ class EmployeeData:
                             "occupation": employee.occupation,
                         }
                     )
+
+    def read_all_pilots(self): 
+        pilot_list = []
+        with open(self.pilots_csv_file , newline="", encoding="utf-8") as csvfile4:
+            reader = csv.DictReader(csvfile4)
+            for row in reader:
+                pilot_list.append(
+                    Employee(
+                        row["name"], row["kt"], row["phone_number"], row["address"] , row["postal_code"], row["occupation"]
+                    )
+                )
+        return pilot_list
+    
+    def read_all_flight_attendants(self):
+        flight_attendants_list = []
+        with open(self.flight_attendants_csv_file , newline="", encoding="utf-8") as csvfile5:
+            reader = csv.DictReader(csvfile5)
+            for row in reader:
+                flight_attendants_list.append(
+                    Employee(
+                        row["name"], row["kt"], row["phone_number"], row["address"] , row["postal_code"], row["occupation"]
+                    )
+                )
+        return flight_attendants_list
+
+
