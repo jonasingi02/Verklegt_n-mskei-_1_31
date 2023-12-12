@@ -10,7 +10,7 @@ class FMVoyageUI:
     def menu_output(self):
         print("Velkomin/n ferðastjóri")
         print(
-            "Hvað má bjóða þér að gera?\n\n1: birta öll hálfkláraðar vinnuferðir\n2: bæta við hálfkláraðri vinnuferð\n3: uppfæra hálfklárðar vinnuferðir\nQ: Hætta\nB: til baka"
+            "Hvað má bjóða þér að gera?\n\n1: Birta öll hálfkláraðar vinnuferðir\n2: Bæta við hálfkláraðri vinnuferð\n3: Uppfæra hálfkláraðar vinnuferðir\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):

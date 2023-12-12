@@ -1,4 +1,5 @@
 from logic.logic_wrapper import Logic_wrapper
+from logic.EmployeeLogic import EmployeeLogic
 from model.employee import Employee
 from .input_validators import ValidatingStaffInput
 from .ascii_art import AsciiArt
@@ -17,11 +18,11 @@ class EmployeeUI:
         while True:
             self.menu_output()
             command = input("Innsláttarreitur: ").lower()
+            
             if command == "1":
                 result = self.logic_wrapper.get_all_employees()
                 for elem in result:
                    print(f"Nafn {elem.name}, Kennitala: {elem.kt}") 
-
             elif command == "2":
                 e = Employee()
                 
