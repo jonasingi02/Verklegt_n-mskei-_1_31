@@ -24,7 +24,6 @@ class EmployeeUI:
                 print(f'\n{"Allir starfsmenn NaN Air":^55}')
                 print(f'{"_"*55}\n')
                 
-                
                 for elem in result:
                    print(f"Nafn: {elem.name} kennitala: {elem.kt}")
 
@@ -70,13 +69,30 @@ class EmployeeUI:
 
                 print(f"\nÞú hefur uppfært {info} starfsmanns með kennitöluna {kt}.")
                 self.logic_wrapper.update_employee(kt, column_to_update, new_info)
+            
             elif command == "4":
                 #Get information for a specific employee.
                 print("\nÞú hefur valið að sækja upplýsingar um ákveðinn starfsmann. Sláði inn kennitölu hans.\n")
-                user_input = input("Kennitala starfsmanns: ")
+                validating_input = ValidatingStaffInput()
+                user_input = validating_input.get_validated_kennitala()
+
                 staff = self.logic_wrapper.get_certain_employee(user_input)
-                for elem in staff:
-                    print(elem, end="")
+                valid = True
+                while valid:
+                    if staff != None:
+                        staff_str = ""
+                        for elem in staff:
+                            for elem2 in elem:
+                                staff_str += elem2 + ", "
+                        staff_str = staff_str[:-2]
+                        print(staff_str)
+                        print()
+                        valid = False
+                    else:
+                        print("Þessi kennitala er ekki til í kerfinu. Reyndu aftur.")
+                        user_input = validating_input.get_validated_kennitala()
+                        staff = self.logic_wrapper.get_certain_employee(user_input)
+
 
             elif command == "q":
                 return "q"
