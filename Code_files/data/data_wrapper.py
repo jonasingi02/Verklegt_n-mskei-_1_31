@@ -29,6 +29,9 @@ class data_wrapper:
     def create_employee(self, employee): 
         return self.employee_data.create_employee(employee)
     
+    def update_employee(self,kt_employee_to_update, column_to_update, new_info):
+        return self.employee_data.update_employee(kt_employee_to_update, column_to_update, new_info)
+
     def create_fmvoyage(self, fmvoyage):
         return self.FmvoyageData.create_fmvoyage(fmvoyage)
     

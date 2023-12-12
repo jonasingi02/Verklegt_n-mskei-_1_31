@@ -13,3 +13,11 @@ Morgunfundur:
 Erum á ágætum stað, þurfum smá hörku í vikunni.
 Mæta og vinna.
 Ingi talar inná myndbandið.
+
+Samantekt:
+Náðum að klára input fields á nokkrum stöðum.
+Grúska í kóða.
+
+Þriðjudagur 12. des
+Mæting 8:30
+

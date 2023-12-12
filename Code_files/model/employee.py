@@ -9,3 +9,4 @@ class Employee:
 
     def __repr__(self):
         return f"Employee(name='{self.name}', kt='{self.kt}', phone_number='{self.phone_number}', address='{self.address}', postal_code='{self.postal_code}', occupation='{self.occupation}')"
+

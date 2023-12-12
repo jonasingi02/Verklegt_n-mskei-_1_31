@@ -30,6 +30,9 @@ class Logic_wrapper:
     def create_employee(self, e):
         return self.employee_logic.create_employee(e)
     
+    def update_employee(self,kt_employee_to_update, column_to_update, new_info):
+        return self.employee_logic.update_employee(kt_employee_to_update, column_to_update, new_info)
+
     def read_all_employees(self):
         return self.employee_logic.read_all_employees()
     

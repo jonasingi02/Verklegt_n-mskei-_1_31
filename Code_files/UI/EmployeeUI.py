@@ -42,7 +42,32 @@ class EmployeeUI:
                 print(f"\nÞú hefur bætt við starfsmanninum: {e.name}, {e.occupation}.")
 
             elif command == "3":
-                pass
+                validating_input = ValidatingStaffInput()
+
+                print("Þú hefur valið að uppfæra upplýsingar um starfsmann.\nSláðu inn kennitölu starfsmanns til að finna þann sem þú ætlar að breyta upplýsingum um.")
+                kt = validating_input.get_validated_kennitala()
+                print("Hvað má bjóða þér að uppfæra hjá starfsmanni?\n")
+                print("1. Símanúmer \n2. Heimilisfang \n3. Póstnúmer \n4. Starfsheiti")
+                user_input = int(input("\nInnsláttarreitur: "))
+                if user_input == 1:
+                    info = "símanúmer"    
+                    column_to_update = 2
+                    new_info = validating_input.get_validated_phone_number()
+                elif user_input == 2:
+                    info = "heimilisfang"
+                    column_to_update = 3
+                    new_info = validating_input.get_validated_address()
+                elif user_input == 3:
+                    info = "póstnúmer"
+                    column_to_update = 4
+                    new_info = validating_input.get_validated_pc()
+                elif user_input == 4:
+                    info = "starfsheiti"
+                    column_to_update = 5
+                    new_info = validating_input.get_validated_occupation()
+
+                print(f"\nÞú hefur uppfært {info} starfsmanns með kennitöluna {kt}.")
+                self.logic_wrapper.update_employee(kt, column_to_update, new_info)
             elif command == "q":
                 return "q"
             elif command == "b":
