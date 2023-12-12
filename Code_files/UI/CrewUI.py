@@ -5,8 +5,8 @@ from .input_validators import ValidatingStaffInput
 from .ascii_art import AsciiArt
 
 class CrewUI:
-    def __init__(self, logic_connection):
-        self.logic_wrapper = logic_connection
+    def __init__(self):
+        self.logic_wrapper = Logic_wrapper()
 
     def menu_output(self):
         # AsciiArt.airplane_1_ascii()
@@ -21,9 +21,9 @@ class CrewUI:
             if command == "1":
                 result = self.logic_wrapper.read_all_employees()
                 for elem in result:
-                   print(f"Nafn {elem.name}, Kennitala: {elem.kt}")
+                   print(f"Nafn {elem.name}, Starfsheiti: {elem.occupation}")
 
-           # if command == "2":
-            #    result = self.logic_wrapper.get_all_employees()
-            #    for elem in result:
-            #        print(f"Nafn {elem.name}, Kennitala: {elem.kt}")  
+            if command == "2":
+                result = self.logic_wrapper.get_all_fmvoyages()
+                for elem in result:
+                    print(f"Flugnúmer: {elem.id}, Dagsetning: {elem.date}, Flugvél: {elem.plane}, Flugvöllur: {elem.airport}")  
