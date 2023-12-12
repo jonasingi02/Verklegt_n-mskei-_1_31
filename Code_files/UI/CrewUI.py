@@ -23,7 +23,4 @@ class CrewUI:
                 for elem in result:
                    print(f"Nafn {elem.name}, Kennitala: {elem.kt}")
 
-           # if command == "2":
-            #    result = self.logic_wrapper.get_all_employees()
-            #    for elem in result:
-            #        print(f"Nafn {elem.name}, Kennitala: {elem.kt}")  
+

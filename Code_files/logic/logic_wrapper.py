@@ -44,6 +44,9 @@ class Logic_wrapper:
     
     def read_all_employees(self):
         return self.employee_logic.read_all_employees()
+    
+    def get_certain_employee(self, kt):
+        return self.data_wrapper.get_certain_employee(kt)
 
     def get_all_flight_attendants(self): 
         return self.employee_logic.get_all_flight_attendantds()

@@ -12,7 +12,7 @@ class EmployeeUI:
     def menu_output(self):
         # AsciiArt.airplane_1_ascii()
         # print("Velkomin/n vaktstjóri")
-        print("Hvað má bjóða þér að gera:\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\nQ: Hætta\nB: Til baka\n")
+        print("Hvað má bjóða þér að gera?\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\n4. Sækja upplýsingar um ákveðinn starfsmann.\nQ: Hætta\nB: Til baka\n")
 
     def input_prompt(self):
         while True:
@@ -21,8 +21,13 @@ class EmployeeUI:
             
             if command == "1":
                 result = self.logic_wrapper.read_all_employees()
+                print(f'\n{"Allir starfsmenn NaN Air":^55}')
+                print(f'{"_"*55}\n')
+                
+                
                 for elem in result:
-                   print(f"Nafn {elem.name}, Kennitala: {elem.kt}") 
+                   print(f"Nafn: {elem.name} kennitala: {elem.kt}")
+
             elif command == "2":
                 e = Employee()
                 
@@ -45,6 +50,7 @@ class EmployeeUI:
                 print("Hvað má bjóða þér að uppfæra hjá starfsmanni?\n")
                 print("1. Símanúmer \n2. Heimilisfang \n3. Póstnúmer \n4. Starfsheiti")
                 user_input = int(input("\nInnsláttarreitur: "))
+                
                 if user_input == 1:
                     info = "símanúmer"    
                     column_to_update = 2
@@ -64,6 +70,14 @@ class EmployeeUI:
 
                 print(f"\nÞú hefur uppfært {info} starfsmanns með kennitöluna {kt}.")
                 self.logic_wrapper.update_employee(kt, column_to_update, new_info)
+            elif command == "4":
+                #Get information for a specific employee.
+                print("\nÞú hefur valið að sækja upplýsingar um ákveðinn starfsmann. Sláði inn kennitölu hans.\n")
+                user_input = input("Kennitala starfsmanns: ")
+                staff = self.logic_wrapper.get_certain_employee(user_input)
+                for elem in staff:
+                    print(elem, end="")
+
             elif command == "q":
                 return "q"
             elif command == "b":

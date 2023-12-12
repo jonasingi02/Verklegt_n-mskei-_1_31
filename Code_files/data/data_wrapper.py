@@ -23,6 +23,9 @@ class data_wrapper:
     def create_destination(self, destination):
         return self.destination_data.create_destination(destination)
     
+    def get_certain_employee(self, kt):
+        return self.employee_data.get_certain_employee(kt)
+    
     def read_all_employees(self):
         return self.employee_data.read_all_employees()
     
