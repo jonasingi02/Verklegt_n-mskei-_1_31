@@ -1,4 +1,5 @@
 from .EmployeeUI import EmployeeUI
+from .VoyageUI import VoyageUI
 from logic.logic_wrapper import Logic_wrapper
 
 
@@ -23,7 +24,10 @@ class ShiftManagerUI:
                 if menu == "q":
                     return "q"
             elif command == "2":
-                pass
+                uiv = VoyageUI(self.logic_wrapper)
+                menu = uiv.input_prompt()
+                if menu == "q":
+                    return "q"
             elif command == "3":
                 pass
             elif command == "q":
