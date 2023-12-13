@@ -4,7 +4,7 @@ from model.voyagexpilots import voyagexpilots
 from model.employee import Employee
 from .input_validators import ValidateFMVoyageInfo
 from model.voyagexattendant import voyagexattendant
-
+from prettytable import PrettyTable
 
 class VoyageUI:
     def __init__(self, logic_connection):
@@ -13,14 +13,14 @@ class VoyageUI:
     def menu_output(self):
         print("Velkomin/n Ferðastjóri")
         print(
-            "Hvað má bjóða þér að gera?\n\n1: birta allar vinnuferðir\n2: bæta við vinnuferð\n3: uppfæra vinnuferðir\nQ: Hætta\nB: til baka"
+            "Hvað má bjóða þér að gera?\n\n1: Birta allar vinnuferðir\n2: Bæta við vinnuferð\n3: Uppfæra vinnuferðir\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
         Validator = ValidateFMVoyageInfo(self.logic_wrapper)
         while True:
             self.menu_output()
-            command = input("\nInnsláttarreitur:")
+            command = input("\nInnsláttarreitur: ")
             command = command.lower()
             if command == "1":
                 pass
@@ -31,43 +31,44 @@ class VoyageUI:
                 while id == "":
                     print("\nAllar hálfkláraðar vinnuferðir: ")
                     result = self.logic_wrapper.read_all_fmvoyages()
+                    #TODO: PrettyTable()
                     for elem in result:
                         print(f"id:{elem.id}, dagsetning: {elem.date}, flugvél: {elem.plane}, flugvöllur: {elem.airport}")
                         print("")
-                    id = Validator.validate_voyage(input("Hvaða vinnuferð villtu uppfæra (id)?"))
-                    print(id)
+                    id = Validator.validate_voyage(input("Hvaða vinnuferð viltu uppfæra (id)?"))
+                    print(f"Þú hefur valið að uppfæra vinnuferð {id}")
 
                 v = self.logic_wrapper.find_voyage_by_id(id)
 
                 voyage_list = self.logic_wrapper.same_date_voyage(v.date)
 
-                pilotnumber = input("hvað eiga margir flugmenn að vinna?")
-                for _ in range(int(pilotnumber)):
+                pilotnumber = Validator.validate_number_of_staff_on_voyage("flugmanna")
+                for _ in range(pilotnumber):
                     pilot = ""
                     while pilot == "" :
                         print("\nAllir tiltækir flugmenn:")
                     
                         pilots_list = self.logic_wrapper.pilots_not_in_voyage(voyage_list)
-
+                        #TODO: PrettyTable()
                         for i in pilots_list:
                             print(f"kt: {i.kt} nafn: {i.name}")   
                     
-                        pilot = Validator.validate_pilot(input("veldu flugmann (kt):"), pilots_list)
+                        pilot = Validator.validate_voyage_staff(input("veldu flugmann (kt):"), pilots_list)
                     vxp = voyagexpilots()
                     vxp.id = v.id
                     vxp.kt = pilot
                     self.logic_wrapper.create_voyagexpilot(vxp)
 
-                flight_attendant_number = input("hvað eiga að vera margir flugþjónar?")
+                flight_attendant_number = Validator.validate_number_of_staff_on_voyage("flugþjóna")
                 for _ in range(int(flight_attendant_number)):
-                    print("\n Allir tiltækir flugþjónar:\n")
+                    print("\nAllir tiltækir flugþjónar:\n")
 
                     flight_attendant_list = self.logic_wrapper.flight_attendants_not_in_voyage(voyage_list)
-
+                    #TODO: PrettyTable()
                     for i in flight_attendant_list:
                         print(f"kt: {i.kt} nafn: {i.name}")
 
-                    flight_attendant = Validator.validate_flight_attendant(input("veldu flugþjón (kt):"), flight_attendant_list)
+                    flight_attendant = Validator.validate_voyage_staff(input("veldu flugþjón (kt):"), flight_attendant_list)
                 vxf = voyagexattendant()
                 vxf.id = v.id
                 vxf.kt = flight_attendant

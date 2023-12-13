@@ -1,7 +1,6 @@
 import csv
 from model.employee import Employee
 import os
-from tempfile import NamedTemporaryFile
 
 class EmployeeData:
     def __init__(self):

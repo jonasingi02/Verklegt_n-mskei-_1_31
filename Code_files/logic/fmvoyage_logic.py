@@ -28,7 +28,7 @@ class FmvoyageLogic:
         return FMvoyage()
     
     def same_date_voyage(self, date):
-        voyage = self.data_wrapper.get_all_fmvoyages()
+        voyage = self.data_wrapper.read_all_fmvoyages()
         voyage_list = []
         for elem in voyage:
             if elem.date == date:

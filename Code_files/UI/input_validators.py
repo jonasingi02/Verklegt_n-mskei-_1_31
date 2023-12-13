@@ -272,11 +272,13 @@ class ValidateFMVoyageInfo:
         print("\nþað er engin vinnuferð í kerfinu með þetta id")
         return ""
 
-    def validate_pilot(self, pilot, list):
+    def validate_voyage_staff(self, pilot, list):
         for i in list:
             if pilot == i.kt:
                 return pilot
         return ""
+    
+
     
     def validate_number_of_staff_on_voyage(self, occupation):
         user_input = int(input(f"Veldu magn {occupation}: "))

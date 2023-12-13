@@ -11,14 +11,14 @@ class FMVoyageUI:
     def menu_output(self):
         print("Velkomin/n ferðastjóri")
         print(
-            "Hvað má bjóða þér að gera?\n\n1: Birta öll hálfkláraðar vinnuferðir\n2: Bæta við hálfkláraðri vinnuferð\n3: Uppfæra hálfkláraðar vinnuferðir\nQ: Hætta\nB: Til baka"
+            "Hvað má bjóða þér að gera?\n\n1: Birta allar hálfkláraðar vinnuferðir\n2: Bæta við hálfkláraðri vinnuferð\n3: Uppfæra hálfkláraðar vinnuferðir\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
         Validator = ValidateFMVoyageInfo(self.logic_wrapper)
         while True:
             self.menu_output()
-            command = input("\nInnsláttarreitur:")
+            command = input("\nInnsláttarreitur: ")
             command = command.lower()
             if command == "1":
                 pass
