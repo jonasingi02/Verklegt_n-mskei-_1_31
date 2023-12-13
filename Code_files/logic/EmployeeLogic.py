@@ -12,16 +12,12 @@ class EmployeeLogic:
 
     def read_all_employees(self):
         return self.data_wrapper.read_all_employees()
-    
     def get_all_flight_attendantds(self):
         return self.data_wrapper.read_all_flight_attendants()
     
     def get_all_pilots(self): 
         return self.data_wrapper.read_all_pilots()
-    
-    
 
-      
 
 
 

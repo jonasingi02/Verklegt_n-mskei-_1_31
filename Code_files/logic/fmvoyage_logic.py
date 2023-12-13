@@ -1,5 +1,6 @@
 from model.FMVoyage import FMvoyage
 from data.plane_data import PlaneData
+from model.voyagexpilots import voyagexpilots
 
 class FmvoyageLogic:
     def __init__(self, data_connection):
@@ -11,3 +12,9 @@ class FmvoyageLogic:
 
     def get_all_fmvoyages(self):
         return self.data_wrapper.get_all_fmvoyages()
+    
+    def create_voyagexpilots(self, voyagexpilots):
+        return self.data_wrapper.create_voyagexpilots()
+    
+    def get_all_voyagexpilots(self):
+        return self.data_wrapper.get_all_voyagexpilots()

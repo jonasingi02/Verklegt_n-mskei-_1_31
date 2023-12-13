@@ -35,3 +35,8 @@ class data_wrapper:
     def get_all_fmvoyages(self):
         return self.FmvoyageData.read_all_fmvoyages()
 
+    def create_voyagexpilots(self, vxp):
+        return self.FmvoyageData.create_voyagexpilots(vxp)
+    
+    def read_all_voyagexpilots(self):
+        return self.FmvoyageData.get_all_voyagexpilots()
