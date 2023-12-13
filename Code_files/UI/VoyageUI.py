@@ -3,6 +3,7 @@ from model.FMVoyage import FMvoyage
 from model.voyagexpilots import voyagexpilots
 from model.employee import Employee
 from .input_validators import ValidateFMVoyageInfo
+from model.voyagexattendant import voyagexattendant
 
 
 class VoyageUI:
@@ -37,41 +38,40 @@ class VoyageUI:
                     print(id)
 
                 v = self.logic_wrapper.find_voyage_by_id(id)
-                pilotnumber = Validator.validate_number_of_staff_on_voyage("flugmanna")
-                
-                for _ in range(pilotnumber):
+
+                voyage_list = self.logic_wrapper.same_date_voyage(v.date)
+
+                pilotnumber = input("hvað eiga margir flugmenn að vinna?")
+                for _ in range(int(pilotnumber)):
                     pilot = ""
                     while pilot == "" :
                         print("\nAllir tiltækir flugmenn:")
-                        pilots_list = []
-                        voyage_list = []
-                        voyage = self.logic_wrapper.read_all_fmvoyages()
-                        for elem in voyage:
-                            if elem.date == v.date:
-                                voyage_list.append(elem.id)
-                        
-                        vxp = self.logic_wrapper.get_all_voyagexpilots()
-                        for elem in vxp:
-                            for j in voyage_list:
-                                if elem.id == j:
-                                    pilots_list.append(elem.kt)
-
-                        input_validator_list = []
-                        pilots = self.logic_wrapper.get_all_pilots()
-                        for i in pilots:
-                            bool = True
-                            for j in pilots_list:
-                                if i.kt == j:
-                                    bool = False
-                            if bool == True:
-                                input_validator_list.append(i.kt)
-                                print(f"kt: {i.kt} nafn: {i.name}")
                     
-                        pilot = Validator.validate_pilot(input("veldu flugmann (kt):"), input_validator_list)
+                        pilots_list = self.logic_wrapper.pilots_not_in_voyage(voyage_list)
+
+                        for i in pilots_list:
+                            print(f"kt: {i.kt} nafn: {i.name}")   
+                    
+                        pilot = Validator.validate_pilot(input("veldu flugmann (kt):"), pilots_list)
                     vxp = voyagexpilots()
                     vxp.id = v.id
                     vxp.kt = pilot
                     self.logic_wrapper.create_voyagexpilot(vxp)
+
+                flight_attendant_number = input("hvað eiga að vera margir flugþjónar?")
+                for _ in range(int(flight_attendant_number)):
+                    print("\n Allir tiltækir flugþjónar:\n")
+
+                    flight_attendant_list = self.logic_wrapper.flight_attendants_not_in_voyage(voyage_list)
+
+                    for i in flight_attendant_list:
+                        print(f"kt: {i.kt} nafn: {i.name}")
+
+                    flight_attendant = Validator.validate_flight_attendant(input("veldu flugþjón (kt):"), flight_attendant_list)
+                vxf = voyagexattendant()
+                vxf.id = v.id
+                vxf.kt = flight_attendant
+
 
                     
 
