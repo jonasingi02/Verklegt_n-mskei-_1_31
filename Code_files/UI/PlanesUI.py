@@ -20,6 +20,7 @@ class planesUI:
             command = command.lower()
 
             if command == "1":
+                #TODO: prettytable
                 result = self.logic_wrapper.get_all_planes()
                 for elem in result:
                     print(f"Tegund: {elem.manufacturer}, {elem.type}, nafn: {elem.name}")

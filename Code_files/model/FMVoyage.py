@@ -1,9 +1,10 @@
 from datetime import datetime
 
 class FMvoyage:
-    def __init__(self, id = "", date = "", plane = "", airport = ""):
+    def __init__(self, id="", date = "",time="", plane = "", airport = ""):
         self.id = id
         self.date = date
+        self.time = time
         self.plane = plane
         self.airport = airport
 

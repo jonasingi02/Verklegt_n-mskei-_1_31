@@ -39,8 +39,8 @@ class Logic_wrapper:
     def get_all_pilots(self): 
         return self.employee_logic.get_all_pilots()
     
-    def get_all_fmvoyages(self):
-        return self.fmvoyage_logic.get_all_fmvoyages()
+    def read_all_fmvoyages(self):
+        return self.fmvoyage_logic.read_all_fmvoyages()
     
     def read_all_employees(self):
         return self.employee_logic.read_all_employees()
@@ -54,8 +54,8 @@ class Logic_wrapper:
     def get_all_flight_attendants(self): 
         return self.employee_logic.get_all_flight_attendantds()
 
-    def get_all_fmvoyages(self):
-        return self.fmvoyage_logic.get_all_fmvoyages()
+    def read_all_fmvoyages(self):
+        return self.fmvoyage_logic.read_all_fmvoyages()
     
     def create_voyagexpilot(self, vxp):
         return self.fmvoyage_logic.create_voyagexpilot(vxp)
@@ -66,6 +66,9 @@ class Logic_wrapper:
     def find_voyage_by_id(self, id):
         return self.fmvoyage_logic.find_voyage_by_id(id)
     
+    def create_fmvoyage(self,voyage):
+        self.fmvoyage_logic.create_fmvoyage(voyage)
+        
     def same_date_voyage(self, date):
         return self.fmvoyage_logic.same_date_voyage(date)
     
