@@ -20,6 +20,7 @@ class EmployeeUI:
             command = input("Innsláttarreitur: ").lower()
             
             if command == "1":
+                # Print all employess of NaN Air.
                 result = self.logic_wrapper.read_all_employees()
                 print(f'\n{"Allir starfsmenn NaN Air":^55}')
                 print(f'{"_"*55}\n')
@@ -28,6 +29,7 @@ class EmployeeUI:
                    print(f"Nafn: {elem.name} kennitala: {elem.kt}")
 
             elif command == "2":
+                # Adding an employee to the system.
                 e = Employee()
                 
                 validating_input = ValidatingStaffInput()
@@ -42,14 +44,15 @@ class EmployeeUI:
                 print(f"\nÞú hefur bætt við starfsmanninum: {e.name}, {e.occupation}.")
 
             elif command == "3":
+                # Update info for an employee in the system.
                 validating_input = ValidatingStaffInput()
-
+                
                 print("Þú hefur valið að uppfæra upplýsingar um starfsmann.\nSláðu inn kennitölu starfsmanns til að finna þann sem þú ætlar að breyta upplýsingum um.")
                 kt = validating_input.get_validated_kennitala()
                 print("Hvað má bjóða þér að uppfæra hjá starfsmanni?\n")
                 print("1. Símanúmer \n2. Heimilisfang \n3. Póstnúmer \n4. Starfsheiti")
                 user_input = int(input("\nInnsláttarreitur: "))
-                
+
                 if user_input == 1:
                     info = "símanúmer"    
                     column_to_update = 2
@@ -72,27 +75,20 @@ class EmployeeUI:
             
             elif command == "4":
                 #Get information for a specific employee.
-                print("\nÞú hefur valið að sækja upplýsingar um ákveðinn starfsmann. Sláði inn kennitölu hans.\n")
+                print("\nÞú hefur valið að sækja upplýsingar um ákveðinn starfsmann. \nSláðu inn nafn starfsmanns (nóg er að skrifa inn fyrsta nafn).\n")
                 validating_input = ValidatingStaffInput()
-                user_input = validating_input.get_validated_kennitala()
+                user_input = validating_input.get_validated_name()
 
-                staff = self.logic_wrapper.get_certain_employee(user_input)
                 valid = True
                 while valid:
-                    if staff != None:
-                        staff_str = ""
-                        for elem in staff:
-                            for elem2 in elem:
-                                staff_str += elem2 + ", "
-                        staff_str = staff_str[:-2]
+                    staff_str = self.logic_wrapper.return_certain_employee(user_input)
+                    if staff_str != None:
+                        print(f"\nStarfsmenn í kerfinu með nafnið {user_input}.")
                         print(staff_str)
-                        print()
                         valid = False
                     else:
-                        print("Þessi kennitala er ekki til í kerfinu. Reyndu aftur.")
-                        user_input = validating_input.get_validated_kennitala()
-                        staff = self.logic_wrapper.get_certain_employee(user_input)
-
+                        print("Þetta nafn er ekki til í kerfinu. Reyndu aftur.\n")
+                        break
 
             elif command == "q":
                 return "q"
