@@ -253,14 +253,15 @@ class ValidateFMVoyageInfo:
     def validate_voyage(self, voyage):
         result = self.logic_wrapper.get_all_fmvoyages()
         for elem in result:
-            if elem.id == voyage.id:
-                return result
+            if elem.id == voyage:
+                return elem.id
         print("\nþað er engin vinnuferð í kerfinu með þetta id")
         return ""
 
     def validate_pilot(self, pilot, list):
+        print(list)
         for i in list:
-            if pilot.kt == list[i]:
+            if pilot == i:
                 return pilot
         return ""
 

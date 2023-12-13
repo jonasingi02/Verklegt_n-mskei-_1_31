@@ -19,7 +19,7 @@ class EmployeeLogic:
         return self.data_wrapper.read_all_flight_attendants()
     
     def get_all_pilots(self): 
-        return self.data_wrapper.read_all_pilots()
+        return self.data_wrapper.get_all_pilots()
 
 
 

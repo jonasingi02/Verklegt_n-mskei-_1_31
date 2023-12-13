@@ -146,7 +146,7 @@ class EmployeeData:
             for row in reader:
                 pilot_list.append(
                     Employee(
-                        row["name"], row["kt"], row["phone_number"], row["address"] , row["postal_code"], row["occupation"]
+                        row["name"], row["kt"], row["phone_number"], row["home_address"] , row["postal_code"], row["occupation"]
                     )
                 )
         return pilot_list
@@ -158,7 +158,7 @@ class EmployeeData:
             for row in reader:
                 flight_attendants_list.append(
                     Employee(
-                        row["name"], row["kt"], row["phone_number"], row["address"] , row["postal_code"], row["occupation"]
+                        row["name"], row["kt"], row["phone_number"], row["home_address"] , row["postal_code"], row["occupation"]
                     )
                 )
         return flight_attendants_list

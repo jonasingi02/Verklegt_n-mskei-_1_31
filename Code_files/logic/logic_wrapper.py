@@ -54,8 +54,12 @@ class Logic_wrapper:
     def get_all_fmvoyages(self):
         return self.fmvoyage_logic.get_all_fmvoyages()
     
-    def create_voyagexpilots(self,vxp):
-        return self.fmvoyage_logic.create_voyagexpilots(vxp)
+    def create_voyagexpilot(self, vxp):
+        return self.fmvoyage_logic.create_voyagexpilot(vxp)
     
     def get_all_voyagexpilots(self):
         return self.fmvoyage_logic.get_all_voyagexpilots()
+    
+    def find_voyage_by_id(self, id):
+        return self.fmvoyage_logic.find_voyage_by_id(id)
+    

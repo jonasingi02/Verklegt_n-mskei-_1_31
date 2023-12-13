@@ -34,7 +34,7 @@ class FmvoyageData:
                 }
             )
     
-    def create_voyagexpilots(self, vxp):
+    def create_voyagexpilot(self, vxp):
         with open(self.file_name2, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = ["id", "kt"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -48,7 +48,7 @@ class FmvoyageData:
 
     def read_all_voyagexpilots(self):
         ret_list = []
-        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
+        with open(self.file_name2, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 ret_list.append(
