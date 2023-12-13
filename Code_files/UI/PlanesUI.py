@@ -1,6 +1,7 @@
 from model.planes import Planes
 from .input_validators import ValidatePlaneInfo
 from logic.logic_wrapper import Logic_wrapper
+from prettytable import PrettyTable
 
 
 class planesUI:
@@ -16,14 +17,17 @@ class planesUI:
     def input_prompt(self):
         while True:
             self.menu_output()
-            command = input("\nInnsláttareitur: ")
+            command = input("\nInnsláttarreitur: ")
             command = command.lower()
 
             if command == "1":
-                #TODO: prettytable
+                plane_table = PrettyTable()
+                plane_table.field_names = ["Nafn", "Tegund", "Framleiðandi", "Fjöldi sæta"]
                 result = self.logic_wrapper.get_all_planes()
                 for elem in result:
-                    print(f"Tegund: {elem.manufacturer}, {elem.type}, nafn: {elem.name}")
+                    plane_table.add_row([elem.name, elem.type, elem.manufacturer, elem.numseats])
+                plane_table.align = "l"
+                print(plane_table)
             
             elif command == "2":
                 p = Planes()

@@ -21,16 +21,17 @@ class EmployeeUI:
             if command == "1":
                 # Print all employess of NaN Air.
                 table = PrettyTable()
+                table.field_names = ["Nafn", "Kennitala", "Starfsheiti"]
                 result = self.logic_wrapper.read_all_employees()
                 print(f'\n{"Allir starfsmenn NaN Air":^60}')
                 print(f'{"_"*60}\n')
-                table.field_names = ["Nafn", "Kennitala", "Starfsheiti"]
                 
                 for elem in result:
                    table.add_row([elem.name, elem.kt, elem.occupation])
                 
                 table.align = "l"
                 print(table)
+
             elif command == "2":
                 # Adding a new employee to the system.
                 e = Employee()
@@ -90,6 +91,7 @@ class EmployeeUI:
                             print(f"\nÞað eru {count} starfsmenn í kerfinu með nafnið {user_input}.\n")
                         else:
                             print(f"\nÞað eru {count} starfsmaður í kerfinu með nafnið {user_input}.\n")
+                        
                         print(staff_str)
                         valid = False
                     else:
@@ -101,4 +103,4 @@ class EmployeeUI:
             elif command == "b":
                 return "b"
             else:
-                print("Invalid input, try again.")
+                print("Ógilt. Reyndu aftur.")
