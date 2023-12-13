@@ -23,8 +23,8 @@ class data_wrapper:
     def create_destination(self, destination):
         return self.destination_data.create_destination(destination)
     
-    def get_certain_employee(self, kt):
-        return self.employee_data.get_certain_employee(kt)
+    def get_certain_employee(self, name):
+        return self.employee_data.get_certain_employee(name)
     
     def read_all_employees(self):
         return self.employee_data.read_all_employees()
@@ -41,3 +41,8 @@ class data_wrapper:
     def get_all_fmvoyages(self):
         return self.FmvoyageData.read_all_fmvoyages()
 
+    def create_voyagexpilots(self, vxp):
+        return self.FmvoyageData.create_voyagexpilots(vxp)
+    
+    def read_all_voyagexpilots(self):
+        return self.FmvoyageData.get_all_voyagexpilots()

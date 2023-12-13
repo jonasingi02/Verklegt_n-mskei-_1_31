@@ -1,5 +1,5 @@
 # Input Validators
-
+from model.FMVoyage import FMvoyage
 
 
 # Validating staff information
@@ -248,6 +248,20 @@ class ValidateFMVoyageInfo:
             if elem.name == plane:
                 return plane
         print("\nengin flugvél í kerfinu með þetta nafn.")
+        return ""
+    
+    def validate_voyage(self, voyage):
+        result = self.logic_wrapper.get_all_fmvoyages()
+        for elem in result:
+            if elem.id == voyage.id:
+                return result
+        print("\nþað er engin vinnuferð í kerfinu með þetta id")
+        return ""
+
+    def validate_pilot(self, pilot, list):
+        for i in list:
+            if pilot.kt == list[i]:
+                return pilot
         return ""
 
 
