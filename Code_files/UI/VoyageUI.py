@@ -30,10 +30,9 @@ class VoyageUI:
                 id = v.id
                 while id == "":
                     print("\nAllar hálfkláraðar vinnuferðir:")
-                    result = self.logic_wrapper.read_all_fmvoyages()
-                    for elem in result:
-                        print(f"id:{elem.id}, dagsetning: {elem.date}, flugvél: {elem.plane}, flugvöllur: {elem.airport}")
-                        print("")
+
+                    fmvoyages = self.logic_wrapper.get_all_half_finished_voyages()
+                    
                     id = Validator.validate_voyage(input("hvaða Vinnuferð villtu uppfæra (id)?"))
                     print(id)
 

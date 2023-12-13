@@ -72,3 +72,22 @@ class FmvoyageLogic:
             if bool == True:
                 input_validator_list.append(i)
         return input_validator_list
+    
+    def get_all_half_finished_voyages(self):
+        fmvoyages = self.data_wrapper.read_all_fmvoyages()
+        vxp = self.data_wrapper.get_all_voyagexpilots()
+        vxa = self.data_wrapper.get_all_voyagexattendants()
+        result = []
+
+        for i in fmvoyages:
+            bool = True
+            for j in vxp:
+                if i.id == j.id:
+                    bool = False
+            for j in vxa:
+                if i.id == j.id:
+                    bool = False
+            if bool == True:
+                result.append
+
+        return result

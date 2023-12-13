@@ -78,3 +78,6 @@ class Logic_wrapper:
     def flight_attendants_not_in_voyage(self, list):
         return self.fmvoyage_logic.flight_attendants_not_in_voyage(list)
     
+    def get_all_half_finished_voyages(self):
+        return self.fmvoyage_logic.get_all_half_finished_voyages()
+    
