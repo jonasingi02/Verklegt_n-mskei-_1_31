@@ -62,16 +62,22 @@ class FMVoyageUI:
                 time = input("Brottfarartími(00:00): ")
                 validation = Validator.validate_time_of_takeoff(v.date ,time)
                 taken_times_table = PrettyTable()
-                taken_times_table.field_names = ["Flugvöllur", "Dagsetning", "Tími"]
+                taken_times_table.field_names = ["Vinnuferð til", "Dagsetning", "Tími"]
                 taken_times_table.align = "l"
 
-                if validation == None:
-                    v.time = time
-                else:
-                    for elem in validation:
-                        taken_times_table.add_row([elem.airport, elem.date, elem.time])
-
-                print(taken_times_table)    
+                valid = True
+                while valid:
+                    if validation == None:
+                        v.time = time
+                        valid = False
+                    else:
+                        for elem in validation:
+                            taken_times_table.add_row([elem.airport, elem.date, elem.time])
+                        print(taken_times_table)
+                        print("Þessi brottfarartími er ekki laus. Veldu annan")
+                        time = input("Brottfarartími(00:00): ")
+                        validation = Validator.validate_time_of_takeoff(v.date ,time)
+                
                 self.logic_wrapper.create_fmvoyage(v)
                 print(f"\nÞú hefur bætt við vinnuferðinni:\nFlugvöllur: {v.airport}\nFlugvél: {v.plane}\nDagsetning: {v.date}\nBrottfarartími: {v.time}")
 

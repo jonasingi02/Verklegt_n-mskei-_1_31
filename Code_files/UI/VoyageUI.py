@@ -28,17 +28,18 @@ class VoyageUI:
                 v = FMvoyage()
                 id = v.id
                 while id == "":
-                    print("\nAllar hálfkláraðar vinnuferðir:")
+                    print("\nAllar hálfkláraðar vinnuferðir: ")
                     result = self.logic_wrapper.read_all_fmvoyages()
                     for elem in result:
                         print(f"id:{elem.id}, dagsetning: {elem.date}, flugvél: {elem.plane}, flugvöllur: {elem.airport}")
                         print("")
-                    id = Validator.validate_voyage(input("hvaða Vinnuferð villtu uppfæra (id)?"))
+                    id = Validator.validate_voyage(input("Hvaða vinnuferð villtu uppfæra (id)?"))
                     print(id)
 
                 v = self.logic_wrapper.find_voyage_by_id(id)
-                pilotnumber = input("hvað eiga margir flugmenn að vinna?")
-                for _ in range(int(pilotnumber)):
+                pilotnumber = Validator.validate_number_of_staff_on_voyage("flugmanna")
+                
+                for _ in range(pilotnumber):
                     pilot = ""
                     while pilot == "" :
                         print("\nAllir tiltækir flugmenn:")
