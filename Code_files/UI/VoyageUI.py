@@ -72,6 +72,10 @@ class VoyageUI:
                     vxp.kt = pilot
                     self.logic_wrapper.create_voyagexpilot(vxp)
 
+                flight_attendant_number = input("hvað eiga að vera margir flugþjónar")
+                for _ in range(int(flight_attendant_number)):
+                    
+
                     
 
             elif command == "3":

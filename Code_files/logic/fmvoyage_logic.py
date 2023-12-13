@@ -23,7 +23,6 @@ class FmvoyageLogic:
     def find_voyage_by_id(self, id):
         result = self.data_wrapper.get_all_fmvoyages()
         for i in result:
-            print(f"result:{i}, id:{id}")
             if i.id == id:
                 return i
         return FMvoyage()
