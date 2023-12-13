@@ -53,6 +53,5 @@ class data_wrapper:
     def get_all_flight_attendants(self):
         return self.employee_data.read_all_flight_attendants()
         
-    
     def get_all_voyagexattendants(self):
         return self.FmvoyageData.read_all_voyagexattendants()

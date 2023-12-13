@@ -239,7 +239,7 @@ class ValidateFMVoyageInfo:
         for elem in result:
             if elem.airport == dest:
                 return dest
-        print("\nengin áfangastaður í kerfinu með þennan flugvöll.")
+        print("\nEnginn áfangastaður í kerfinu með þennan flugvöll.")
         return ""
 
     def validate_voyage_plane(self, plane):
@@ -247,10 +247,11 @@ class ValidateFMVoyageInfo:
         for elem in result:
             if elem.name == plane:
                 return plane
-        print("\nengin flugvél í kerfinu með þetta nafn.")
+        print("\nEngin flugvél í kerfinu með þetta nafn.")
         return ""
     
     def validate_time_of_takeoff(self, date, time):
+        """Check if there is a scheduled takeoff at the same time"""
         validate_time = self.logic_wrapper.read_all_fmvoyages()
         time_list = []
 
@@ -269,10 +270,10 @@ class ValidateFMVoyageInfo:
         for elem in result:
             if elem.id == voyage:
                 return elem.id
-        print("\nþað er engin vinnuferð í kerfinu með þetta id")
+        print("\nEngin vinnuferð í kerfinu með þetta ID")
         return ""
 
-    def validate_pilot(self, pilot, list):
+    def validate_voyage_staff(self, pilot, list):
         for i in list:
             if pilot == i.kt:
                 return pilot
