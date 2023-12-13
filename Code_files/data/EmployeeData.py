@@ -22,13 +22,13 @@ class EmployeeData:
                 )
         return ret_list
     
-    def get_certain_employee(self, kt) -> list:
+    def get_certain_employee(self, name:str) -> list:
         certain_employee = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile_certain:
             reader = csv.DictReader(csvfile_certain)
         
             for row in reader:
-                if row["kt"] == kt:
+                if name.lower() in row["name"].lower():
                     certain_employee.append([
                     row["name"],
                     row["kt"],
@@ -37,11 +37,10 @@ class EmployeeData:
                     row["postal_code"],
                     row["occupation"]
                 ])
-                    return certain_employee
-            else:
-                    return None
-        
-
+        if certain_employee == []:
+            return None  
+        else: 
+            return certain_employee
 
     def create_employee(self, employee):
 

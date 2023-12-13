@@ -26,4 +26,10 @@ class CrewUI:
             if command == "2":
                 result = self.logic_wrapper.get_all_fmvoyages()
                 for elem in result:
-                    print(f"Flugnúmer: {elem.id}, Dagsetning: {elem.date}, Flugvél: {elem.plane}, Flugvöllur: {elem.airport}")  
+                    print(f"Flugnúmer: {elem.id}, Dagsetning: {elem.date}, Flugvél: {elem.plane}, Flugvöllur: {elem.airport}")
+
+            if command == "b":
+                return "b"
+            
+            if command == "q":
+                break 
