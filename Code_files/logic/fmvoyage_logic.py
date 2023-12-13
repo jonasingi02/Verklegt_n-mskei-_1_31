@@ -11,8 +11,8 @@ class FmvoyageLogic:
         """"""
         self.data_wrapper.create_fmvoyage(FMvoyage)
 
-    def get_all_fmvoyages(self):
-        return self.data_wrapper.get_all_fmvoyages()
+    def read_all_fmvoyages(self):
+        return self.data_wrapper.read_all_fmvoyages()
     
     def create_voyagexpilot(self, vxp):
         return self.data_wrapper.create_voyagexpilot(vxp)
@@ -75,3 +75,22 @@ class FmvoyageLogic:
             if bool == True:
                 input_validator_list.append(i)
         return input_validator_list
+    
+    def get_unmanned_voyages(self):
+        fmvoyages = self.data_wrapper.get_all_fmvoyages()
+        vxp = self.data_wrapper.get_all_voyagexpilots()
+        vxa = self.data_wrapper.get_all_voyagexattendants()
+        result = []
+
+        for i in fmvoyages:
+            bool = True
+            for j in vxp:
+                if i.id == j.id:
+                    bool = False
+            for j in vxa:
+                if i.id == j.id:
+                    bool = False
+            if bool == True:
+                result.append(i)
+
+        return result

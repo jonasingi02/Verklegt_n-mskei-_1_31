@@ -250,9 +250,8 @@ class ValidateFMVoyageInfo:
         print("\nengin flugvél í kerfinu með þetta nafn.")
         return ""
     
-    def validate_voyage(self, voyage):
-        result = self.logic_wrapper.get_all_fmvoyages()
-        for elem in result:
+    def validate_voyage(self, voyage, list):
+        for elem in list:
             if elem.id == voyage:
                 return elem.id
         print("\nþað er engin vinnuferð í kerfinu með þetta id")

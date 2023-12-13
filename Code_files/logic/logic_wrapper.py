@@ -77,3 +77,6 @@ class Logic_wrapper:
     
     def create_voyagexattendant(self, vxa):
         return self.fmvoyage_logic.create_voyagexattendant(vxa)
+    
+    def get_unmanned_voyages(self):
+        return self.fmvoyage_logic.get_unmanned_voyages()
