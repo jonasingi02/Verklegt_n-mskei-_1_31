@@ -260,7 +260,7 @@ class ValidateFMVoyageInfo:
 
     def validate_pilot(self, pilot, list):
         for i in list:
-            if pilot == i:
+            if pilot == i.kt:
                 return pilot
         return ""
 

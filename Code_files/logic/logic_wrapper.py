@@ -66,3 +66,12 @@ class Logic_wrapper:
     def find_voyage_by_id(self, id):
         return self.fmvoyage_logic.find_voyage_by_id(id)
     
+    def same_date_voyage(self, date):
+        return self.fmvoyage_logic.same_date_voyage(date)
+    
+    def pilots_not_in_voyage(self, list):
+        return self.fmvoyage_logic.pilots_not_in_voyage(list)
+    
+    def flight_attendants_not_in_voyage(self, list):
+        return self.fmvoyage_logic.flight_attendants_not_in_voyage(list)
+    

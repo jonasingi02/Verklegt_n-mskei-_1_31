@@ -1,12 +1,14 @@
 import csv
 from model.FMVoyage import FMvoyage
 from model.voyagexpilots import voyagexpilots
+from model.voyagexattendant import voyagexattendant as vxa
 
 
 class FmvoyageData:
     def __init__(self):
         self.file_name = "data/files/fmvoyage.csv"
         self.file_name2 = "data/files/voyagexpilots.csv"
+        self.file_name3 = "data/files/voyagexpilots.csv"
 
     def read_all_fmvoyages(self):
         ret_list = []
@@ -57,3 +59,27 @@ class FmvoyageData:
                     )
                 )
         return ret_list
+    
+    def read_all_voyagexattendants(self):
+        ret_list = []
+        with open(self.file_name3, newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                ret_list.append(
+                    vxa(
+                        row["id"], row["kt"]
+                    )
+                )
+        return ret_list
+    
+    def create_voyagexattendant(self, vxa):
+        with open(self.file_name3, "a", newline="", encoding="utf-8") as csvfile:
+            fieldnames = ["id", "kt"]
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+            writer.writerow(
+                {
+                    "id": vxa.id,
+                    "kt": vxa.kt
+                }
+            )
