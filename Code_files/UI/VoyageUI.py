@@ -68,9 +68,10 @@ class VoyageUI:
                         print(f"kt: {i.kt} nafn: {i.name}")
 
                     flight_attendant = Validator.validate_flight_attendant(input("veldu flugþjón (kt):"), flight_attendant_list)
-                vxf = voyagexattendant()
-                vxf.id = v.id
-                vxf.kt = flight_attendant
+                vxa = voyagexattendant()
+                vxa.id = v.id
+                vxa.kt = flight_attendant
+                self.logic_wrapper.create_voyagexattendant(vxa)
 
 
                     

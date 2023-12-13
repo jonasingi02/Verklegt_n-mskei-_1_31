@@ -264,6 +264,11 @@ class ValidateFMVoyageInfo:
                 return pilot
         return ""
 
+    def validate_flight_attendant(self, attendant, list):
+        for i in list:
+            if attendant == i.kt:
+                return attendant
+        return ""
 
 # d.country = input("nafn áfangastaðs (string):")
 # d.airport = input("nafn flugvallar (string):")

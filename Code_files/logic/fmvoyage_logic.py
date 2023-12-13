@@ -20,6 +20,9 @@ class FmvoyageLogic:
     def get_all_voyagexpilots(self):
         return self.data_wrapper.get_all_voyagexpilots()
     
+    def create_voyagexattendant(self, vxa):
+        return self.data_wrapper.create_voyagexattendant(vxa)
+    
     def find_voyage_by_id(self, id):
         result = self.data_wrapper.get_all_fmvoyages()
         for i in result:

@@ -8,7 +8,7 @@ class FmvoyageData:
     def __init__(self):
         self.file_name = "data/files/fmvoyage.csv"
         self.file_name2 = "data/files/voyagexpilots.csv"
-        self.file_name3 = "data/files/voyagexpilots.csv"
+        self.file_name3 = "data/files/voyagexattendants.csv"
 
     def read_all_fmvoyages(self):
         ret_list = []
