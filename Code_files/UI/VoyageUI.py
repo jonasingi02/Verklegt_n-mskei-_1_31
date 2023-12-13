@@ -29,7 +29,7 @@ class VoyageUI:
                 id = v.id
                 while id == "":
                     print("\nAllar hálfkláraðar vinnuferðir:")
-                    result = self.logic_wrapper.get_all_fmvoyages()
+                    result = self.logic_wrapper.read_all_fmvoyages()
                     for elem in result:
                         print(f"id:{elem.id}, dagsetning: {elem.date}, flugvél: {elem.plane}, flugvöllur: {elem.airport}")
                         print("")
@@ -44,7 +44,7 @@ class VoyageUI:
                         print("\nAllir tiltækir flugmenn:")
                         pilots_list = []
                         voyage_list = []
-                        voyage = self.logic_wrapper.get_all_fmvoyages()
+                        voyage = self.logic_wrapper.read_all_fmvoyages()
                         for elem in voyage:
                             if elem.date == v.date:
                                 voyage_list.append(elem.id)

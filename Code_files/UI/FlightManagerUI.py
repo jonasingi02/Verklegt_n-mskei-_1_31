@@ -16,7 +16,7 @@ class FlightManagerUI:
     def input_prompt(self):
         while True:
             self.menu_output()
-            command = input("\nInnsláttarreitur:")
+            command = input("\nInnsláttarreitur: ")
             command = command.lower()
             if command == "1":
                 uiv = FMVoyageUI(self.logic_wrapper)

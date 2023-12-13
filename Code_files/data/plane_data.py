@@ -9,8 +9,8 @@ class PlaneData:
 
     def read_all_planes(self):
         ret_list = []
-        with open(self.file_name, newline="", encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
+        with open(self.file_name, newline="", encoding="utf-8") as csvfile1:
+            reader = csv.DictReader(csvfile1)
             for row in reader:
                 ret_list.append(
                     Planes(
@@ -20,9 +20,9 @@ class PlaneData:
         return ret_list
 
     def create_plane(self, plane):
-        with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
+        with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile2:
             fieldnames = ["name", "type", "numseats", "manufacturer"]
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer = csv.DictWriter(csvfile2, fieldnames=fieldnames)
 
             writer.writerow(
                 {

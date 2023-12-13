@@ -250,8 +250,22 @@ class ValidateFMVoyageInfo:
         print("\nengin flugvél í kerfinu með þetta nafn.")
         return ""
     
+    def validate_time_of_takeoff(self, date, time):
+        validate_time = self.logic_wrapper.read_all_fmvoyages()
+        time_list = []
+
+        for elem in validate_time:
+            if elem.time == time and elem.date == date:
+                time_list.append(elem)
+
+        if time_list:
+            return time_list
+        else:
+            return None
+
+    
     def validate_voyage(self, voyage):
-        result = self.logic_wrapper.get_all_fmvoyages()
+        result = self.logic_wrapper.read_all_fmvoyages()
         for elem in result:
             if elem.id == voyage:
                 return elem.id
@@ -264,12 +278,23 @@ class ValidateFMVoyageInfo:
             if pilot == i:
                 return pilot
         return ""
-
-
-# d.country = input("nafn áfangastaðs (string):")
-# d.airport = input("nafn flugvallar (string):")
-# d.flighttime = input("flugtími (datetime hours):")
-# d.distance = input("vegalengd í km (int):")
-# d.name = input("nafn tengiliðs (string):")
-# d.phone = input("símanúmer tengiliðs (int):")
-# self.logic_wrapper.create_destination(d)
+    
+    def validate_number_of_staff_on_voyage(self, occupation):
+        user_input = int(input(f"Veldu magn {occupation}: "))
+        valid = True
+        
+        while valid:
+            if occupation == "flugþjóna":
+                if user_input < 1:
+                    print("Það þarf að vera a.m.k einn fljugþjónn í hverri ferð.")
+                    user_input = int(input(f"Veldu magn {occupation}: "))
+                else:
+                    valid = False
+                    return user_input
+            elif occupation == "flugmanna":
+                if user_input < 2:
+                    print("Það þarf að vera a.m.k tveir flugmenn í hverri ferð.")
+                    user_input = int(input(f"Veldu magn {occupation}: "))
+                else:
+                    valid = False
+                    return user_input

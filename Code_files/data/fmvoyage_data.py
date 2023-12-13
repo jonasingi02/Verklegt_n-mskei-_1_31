@@ -15,20 +15,21 @@ class FmvoyageData:
             for row in reader:
                 ret_list.append(
                     FMvoyage(
-                        row["id"], row["date"], row["plane"], row["airport"]
+                        row["id"], row["date"], row["time"], row["plane"], row["airport"]
                     )
                 )
         return ret_list
 
     def create_fmvoyage(self, fmvoyage):
         with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
-            fieldnames = ["id", "date", "plane", "airport"]
+            fieldnames = ["id", "date", "time", "plane", "airport"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
             writer.writerow(
                 {
                     "id": fmvoyage.id,
                     "date": fmvoyage.date,
+                    "time": fmvoyage.time,
                     "plane": fmvoyage.plane,
                     "airport": fmvoyage.airport
                 }

@@ -7,8 +7,8 @@ class destination_data:
     
     def read_all_destinations(self):
         ret_list = []
-        with open(self.file_name, newline='', encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
+        with open(self.file_name, newline='', encoding="utf-8") as csvfile1:
+            reader = csv.DictReader(csvfile1)
             for row in reader:
                 ret_list.append(destination(row["country"], row["airport"], row["flighttime"], row["distance"], row["name"], row["phone"]))
         return ret_list

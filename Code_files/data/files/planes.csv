@@ -1,6 +1,6 @@
-name       ,type  ,numseats ,manufacturer
-Krummi     ,737   ,     172 ,Boeing
-Kári       ,A320  ,     132 ,Airbus
-Norðurljós ,A320  ,     129 ,Airbus
-Vél        ,A230  ,     129 ,Airbus
-Flugél     ,Flele ,     123 ,Gæjinn
+name,type,numseats,manufacturer
+Krummi,737,172,Boeing
+Kári,A320,132,Airbus
+Norðurljós,A320,129,Airbus
+Vél,A230,129,Airbus
+Flugél,Flele,123,Gæjinn
