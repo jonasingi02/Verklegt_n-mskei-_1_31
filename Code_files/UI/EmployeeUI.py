@@ -3,6 +3,7 @@ from logic.EmployeeLogic import EmployeeLogic
 from model.employee import Employee
 from .input_validators import ValidatingStaffInput
 from .ascii_art import AsciiArt
+from prettytable import PrettyTable
 
 
 class EmployeeUI:
@@ -10,9 +11,7 @@ class EmployeeUI:
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
-        # AsciiArt.airplane_1_ascii()
-        # print("Velkomin/n vaktstjóri")
-        print("Hvað má bjóða þér að gera?\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\n4. Sækja upplýsingar um ákveðinn starfsmann.\nQ: Hætta\nB: Til baka\n")
+        print("Hvað má bjóða þér að gera?\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\n4. Sækja upplýsingar um einstakan starfsmann\nQ: Hætta\nB: Til baka\n")
 
     def input_prompt(self):
         while True:
@@ -21,15 +20,19 @@ class EmployeeUI:
             
             if command == "1":
                 # Print all employess of NaN Air.
+                table = PrettyTable()
                 result = self.logic_wrapper.read_all_employees()
-                print(f'\n{"Allir starfsmenn NaN Air":^55}')
-                print(f'{"_"*55}\n')
+                print(f'\n{"Allir starfsmenn NaN Air":^60}')
+                print(f'{"_"*60}\n')
+                table.field_names = ["Nafn", "Kennitala", "Starfsheiti"]
                 
                 for elem in result:
-                   print(f"Nafn: {elem.name} kennitala: {elem.kt}")
-
+                   table.add_row([elem.name, elem.kt, elem.occupation])
+                
+                table.align = "l"
+                print(table)
             elif command == "2":
-                # Adding an employee to the system.
+                # Adding a new employee to the system.
                 e = Employee()
                 
                 validating_input = ValidatingStaffInput()
@@ -75,15 +78,18 @@ class EmployeeUI:
             
             elif command == "4":
                 #Get information for a specific employee.
-                print("\nÞú hefur valið að sækja upplýsingar um ákveðinn starfsmann. \nSláðu inn nafn starfsmanns (nóg er að skrifa inn fyrsta nafn).\n")
+                print("\nÞú hefur valið að sækja upplýsingar um einstakan starfsmann. \nSláðu inn nafn starfsmanns (nóg er að skrifa inn fyrsta nafn).\n")
                 validating_input = ValidatingStaffInput()
                 user_input = validating_input.get_validated_name()
 
                 valid = True
                 while valid:
-                    staff_str = self.logic_wrapper.return_certain_employee(user_input)
+                    staff_str, count = self.logic_wrapper.return_certain_employee(user_input)
                     if staff_str != None:
-                        print(f"\nStarfsmenn í kerfinu með nafnið {user_input}.")
+                        if count >= 2:
+                            print(f"\nÞað eru {count} starfsmenn í kerfinu með nafnið {user_input}.\n")
+                        else:
+                            print(f"\nÞað eru {count} starfsmaður í kerfinu með nafnið {user_input}.\n")
                         print(staff_str)
                         valid = False
                     else:

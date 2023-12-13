@@ -20,16 +20,16 @@ class EmployeeLogic:
         staff:list = self.get_certain_employee(input)        
         if staff is not None:
             staff_str: str = ""
-                        
+            count = 0  
             for list in staff:
+                count += 1
                 for elem2 in list:
-                    if elem2 == input:
-                        staff_str += "\n" + elem2 + ", "
-                    elif elem2 == "flugmaður" or elem2 == "flugþjónn":
+                    if elem2 == "flugmaður" or elem2 == "flugþjónn":
                         staff_str += elem2 + "\n"
                     else:
                         staff_str += elem2 + ", "
-            return staff_str
+                
+            return staff_str, count
         else:
             return None        
 
