@@ -32,6 +32,9 @@ class Logic_wrapper:
     
     def update_employee(self,kt_employee_to_update, column_to_update, new_info):
         return self.employee_logic.update_employee(kt_employee_to_update, column_to_update, new_info)
+    
+    def update_flight_info(self, flight_id_to_update, column_to_update, new_info): 
+        return self.fmvoyage_logic.update_flight_info(flight_id_to_update, column_to_update, new_info)
 
     def read_all_employees(self):
         return self.employee_logic.read_all_employees()
