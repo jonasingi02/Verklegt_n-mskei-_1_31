@@ -73,7 +73,7 @@ class VoyageUI:
                         available_pilots.align = "l"
                         print(available_pilots)
                     
-                        pilot = Validator.validate_voyage_staff(input("Veldu flugmann (kt):"), pilots_list)
+                        pilot = Validator.validate_voyage_staff(input("Veldu flugmann (kt): "), pilots_list)
                     
                     vxp = voyagexpilots()
                     vxp.id = v.id
@@ -94,7 +94,7 @@ class VoyageUI:
                     available_attendants.align = "l"
                     print(available_attendants)
                     
-                    flight_attendant = Validator.validate_voyage_staff(input("Veldu flugþjón (kt):"), flight_attendant_list)
+                    flight_attendant = Validator.validate_voyage_staff(input("Veldu flugþjón (kt): "), flight_attendant_list)
                 
                 vxf = voyagexattendant()
                 vxf.id = v.id
