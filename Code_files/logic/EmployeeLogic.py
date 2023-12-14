@@ -1,7 +1,10 @@
 from data.EmployeeData import EmployeeData
 from model.employee import Employee
 from model.staff_and_dest import staff_and_dest as sd
+from model.StaffShifts import staffshifts
 from data.data_wrapper import data_wrapper
+from datetime import datetime as dt
+from datetime import timedelta
 
 class EmployeeLogic:
     def __init__(self, data_connection):
@@ -90,11 +93,67 @@ class EmployeeLogic:
                     staffreturn.append(a)
 
         return staffreturn
-
-
- 
     
+    def change_date_to_datetime(self, date):
+        fdate = dt.strptime(date, "%d-%m-%y")
+        return fdate
+    
+    def get_all_voyages_from_kt(self, kt):
+        voyage = self.data_wrapper.read_all_fmvoyages()
+        vxa = self.data_wrapper.get_all_voyagexattendants()
+        vxp = self.data_wrapper.get_all_voyagexpilots()
+        staff = self.data_wrapper.read_all_employees()
+        voyagelist = []
 
+        person = ""
+        for i in staff:
+            if staff.id == kt:
+                person = kt
+            else:
+                voyagelist.append("error")
+        
+        list = []
 
+        for i in vxa:
+            if person == i.kt:
+                list.apped(i.id)
+        
+        for i in vxp:
+            if person == i.kt:
+                list.apped(i.id)
+        
 
+        for i in list:
+            for j in voyage:
+                if j.id == i.id:
+                    ss = staffshifts()
+                    ss.date = self.change_date_to_datetime(j.date)
+                    ss.time = j.time
+                    ss.dest = j.airport
+                    voyagelist.append(ss)
 
+        return voyagelist
+    
+    def get_staff_voyages_today(self, kt, date):
+
+        all_voyages = self.get_all_voyages_from_kt(kt)
+
+        if all_voyages[0] == "error":
+            return "error"
+        for i in all_voyages: 
+            if i.date == self.change_date_to_datetime(date):
+                return i
+        return "no work today"
+    
+    def get_staff_voyages_week(self, kt, date):
+        
+        all_voyages = self.get_all_voyages_from_kt(kt)
+
+        if all_voyages[0] == "error":
+            return "error"
+        
+        voyages = []
+        for i in all_voyages: 
+            if i.date <= self.change_date_to_datetime(date) and i.date > (self.change_date_to_datetime(date) + timedelta(days = 7)):
+                voyages.append(i)
+        return i

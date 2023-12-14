@@ -87,3 +87,6 @@ class Logic_wrapper:
     
     def get_staff_and_dest_by_date(self, date):
         return self.employee_logic.get_staff_and_dest_by_date(date)
+    
+    def change_date_to_datetime(self, date):
+        return self.employee_logic.change_date_to_datetime(date)
