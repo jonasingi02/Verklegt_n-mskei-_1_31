@@ -55,3 +55,6 @@ class data_wrapper:
         
     def get_all_voyagexattendants(self):
         return self.FmvoyageData.read_all_voyagexattendants()
+    
+    def create_voyagexattendant(self, vxa):
+        return self.FmvoyageData.create_voyagexattendant(vxa)

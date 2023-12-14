@@ -265,9 +265,8 @@ class ValidateFMVoyageInfo:
             return None
 
     
-    def validate_voyage(self, voyage):
-        result = self.logic_wrapper.read_all_fmvoyages()
-        for elem in result:
+    def validate_voyage(self, voyage, list):
+        for elem in list:
             if elem.id == voyage:
                 return elem.id
         print("\nEngin vinnuferð í kerfinu með þetta ID")

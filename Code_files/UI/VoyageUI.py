@@ -29,8 +29,7 @@ class VoyageUI:
                 v = FMvoyage()
                 id = v.id
                 while id == "":
-                    print("\nAllar ómannaðar vinnuferðir: ")
-                    result = self.logic_wrapper.read_all_fmvoyages()
+                    result = self.logic_wrapper.get_unmanned_voyages()
                 
                     voyage_table = PrettyTable()
                     voyage_table.field_names = ["ID", "Dagsetning", "Flugvél", "Flugvöllur"]
@@ -41,7 +40,7 @@ class VoyageUI:
                     voyage_table.align = "l"
                     print(voyage_table)
                     
-                    id = Validator.validate_voyage(input("Hvaða vinnuferð viltu manna? (Id dæmi: 1)"))
+                    id = Validator.validate_voyage(input("Hvaða vinnuferð viltu manna? (Id dæmi: 1)"), result)
                     print(f"Þú hefur valið að uppfæra vinnuferð {id}")
 
                 v = self.logic_wrapper.find_voyage_by_id(id)
@@ -74,7 +73,7 @@ class VoyageUI:
                 flight_attendant_number = Validator.validate_number_of_staff_on_voyage("flugþjóna")
                 for _ in range(int(flight_attendant_number)):
                     print("\nAllir tiltækir flugþjónar:\n")
-                    flight_attendant_list = self.logic_wrapper.flight_attendant_not_in_voyage(voyage_list)
+                    flight_attendant_list = self.logic_wrapper.flight_attendants_not_in_voyage(voyage_list)
                     
                     available_attendants = PrettyTable()
                     available_attendants.field_names = ["Nafn", "Kennitala"]

@@ -79,8 +79,11 @@ class Logic_wrapper:
     def flight_attendants_not_in_voyage(self, list):
         return self.fmvoyage_logic.flight_attendants_not_in_voyage(list)
     
-    def get_all_half_finished_voyages(self):
-        return self.fmvoyage_logic.get_all_half_finished_voyages()
+    def create_voyagexattendant(self, vxa):
+        return self.fmvoyage_logic.create_voyagexattendant(vxa)
     
-    def find_voyage_by_date(self, date):
-        return self.fmvoyage_logic.find_voyage_by_date(date)
+    def get_unmanned_voyages(self):
+        return self.fmvoyage_logic.get_unmanned_voyages()
+    
+    def get_staff_and_dest_by_date(self, date):
+        return self.employee_logic.get_staff_and_dest_by_date(date)

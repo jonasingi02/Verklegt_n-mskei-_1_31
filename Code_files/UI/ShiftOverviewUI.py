@@ -23,7 +23,7 @@ class ShiftOverviewUI:
             
             if command == "1":
                 date = input("Veldu dagsetningu (01-01-01) : ")
-                print("Þú hefur valið dagsetninguna: " +date)
+                print("Þú hefur valið dagsetninguna: " + date)
 
                 # dates = PrettyTable()
                 # dates.field_names = ["Date", "id"]
