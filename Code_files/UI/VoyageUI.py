@@ -23,7 +23,17 @@ class VoyageUI:
             command = input("\nInnsláttarreitur: ")
             command = command.lower()
             if command == "1":
-                pass
+                  # Print all voyages.
+                all_voyages:list = self.logic_wrapper.read_all_fmvoyages()
+                all_voyages_table = PrettyTable()
+                all_voyages_table.field_names = ["ID", "Dagsetning", "Brottfarartími", "Flugvél", "Flugvöllur"]
+
+                for elem in all_voyages:
+                    all_voyages_table.add_row([elem.id, elem.date, elem.time, elem.plane, elem.airport])
+
+                all_voyages_table.align = "l"
+                print(all_voyages_table)
+
             elif command == "2":
 
                 v = FMvoyage()
