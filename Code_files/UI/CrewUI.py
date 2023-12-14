@@ -39,7 +39,7 @@ class CrewUI:
                 date_today = input("Sláðu inn dagsetninguna í dag (01-01-01): ")
 
                 if user_input == "1":
-                    #Prints the user´s voyages (shitfts) for that day.
+                    #Prints the user´s voyages (shitfts) according to date input.
                     today = self.logic_wrapper.get_staff_voyages_today(user_kt, date_today)
                     shift_today = PrettyTable()
                     shift_today.field_names = ["ID", "Dagsetning", "Brottfarartími", "Vinnuferð til"]
