@@ -104,3 +104,7 @@ class Logic_wrapper:
     
     def get_staff_by_date(self, date):
         return self.employee_logic.get_all_employees_working_on_date(date)
+    
+    def update_unmanned_voyages(self, voyage_id, updated_atributes):
+        return self.fmvoyage_logic.update_unmanned_voyages(voyage_id, updated_atributes)
+
