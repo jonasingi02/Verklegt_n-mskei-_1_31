@@ -1,7 +1,7 @@
 from datetime import datetime
 
 class staffshifts:
-    def __init__(self, date = datetime(0, 0, 0), dest = "", time = ""):
+    def __init__(self, date = None, dest = "", time = ""):
         self.date = date
         self.dest = dest
         self.time = time
