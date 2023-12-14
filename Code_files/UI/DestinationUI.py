@@ -21,6 +21,7 @@ class destinationUI:
             command = command.lower()
             
             if command == "1":
+                # Print all destinations in system
                 destination_table = PrettyTable()
                 destination_table.field_names = ["Land", "Flugvöllur"]
                 result = self.logic_wrapper.get_all_destinations()
@@ -30,7 +31,8 @@ class destinationUI:
                 print(destination_table)
 
             elif command == "2":
-                print("Þú hefur valið að bæta við nýjum áfangstað.\n")
+                #Add destination to system
+                print("\nÞú hefur valið að bæta við nýjum áfangstað.\n")
                 d = destination()
                 d.country = input("Nafn lands: ")
                 d.airport = input("Nafn flugvallar: ")
@@ -51,8 +53,10 @@ class destinationUI:
             elif command == "3":
                 pass
             elif command == "q":
+                #Quit
                 return "q"
             elif command == "b":
+                #Back
                 return "b"
             else:
                 print("Virkaði ekki, reyndu aftur.")
