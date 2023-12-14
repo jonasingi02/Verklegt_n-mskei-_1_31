@@ -19,6 +19,7 @@ class FlightManagerUI:
             command = input("\nInnsláttarreitur: ")
             command = command.lower()
             if command == "1":
+                
                 uiv = FMVoyageUI(self.logic_wrapper)
                 menu = uiv.input_prompt()
                 if menu == "q":
