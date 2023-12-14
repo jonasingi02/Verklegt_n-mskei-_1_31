@@ -37,11 +37,29 @@ class CrewUI:
 
                 if user_input == "1":
                     today = self.logic_wrapper.get_staff_voyages_today(user_kt, date_today)
-                    print(today)
+                    shift_today = PrettyTable()
+                    shift_today.field_names = ["ID", "Dagsetning", "Brottfarartími", "Vinnuferð til"]
+                    
+                    if today != None:
+                        for elem in today:
+                            shift_today.add_row([elem.id, elem.date, elem.time, elem.dest])
+                        shift_today.align = "l"
+                        print(shift_today)
+                    else:
+                        print("Engar vaktir í dag.")
+
                 elif user_input == "2":
                     week = self.logic_wrapper.get_staff_voyages_week(user_kt, date_today)
-                    print(week)
-
+                    shift_week = PrettyTable()
+                    shift_week.field_names = ["ID", "Dagsetning", "Brottfarartími", "Vinnuferð til"]
+                    
+                    if week != None:
+                        for elem in week:
+                            shift_week.add_row([elem.id, elem.date, elem.time, elem.dest])
+                        shift_week.align = "l"
+                        print(shift_week)
+                    else:
+                        print("Engar vaktir á næstu 7 dögum.")
             
             if command == "b":
                 #Back

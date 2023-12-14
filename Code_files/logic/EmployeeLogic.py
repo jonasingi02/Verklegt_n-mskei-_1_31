@@ -100,61 +100,64 @@ class EmployeeLogic:
         return fdate
     
     def get_all_voyages_from_kt(self, kt):
-        voyage = self.data_wrapper.read_all_fmvoyages()
+        voyages = self.data_wrapper.read_all_fmvoyages()
         vxa = self.data_wrapper.get_all_voyagexattendants()
         vxp = self.data_wrapper.get_all_voyagexpilots()
-        staff = self.data_wrapper.read_all_employees()
+        staff = self.read_all_employees()
         voyagelist = []
+        
 
-        person = ""
-        for i in staff:
-            if staff.kt == kt:
+        for employee in staff:
+            if employee.kt == kt:
                 person = kt
-            else:
-                voyagelist.append("error")
-        
-        list = []
+                break
+        else:
+            return voyagelist
 
-        for i in vxa:
-            if person == i.kt:
-                list.apped(i.id)
-        
-        for i in vxp:
-            if person == i.kt:
-                list.apped(i.id)
-        
+        flight_ids = []
+        for pilot in vxp:
+            if person == pilot.kt:
+                flight_ids.append(pilot.id)
 
-        for i in list:
-            for j in voyage:
-                if j.id == i.id:
-                    ss = staffshifts()
-                    ss.date = self.change_date_to_datetime(j.date)
-                    ss.time = j.time
-                    ss.dest = j.airport
-                    voyagelist.append(ss)
+        for attendant in vxa:
+            if person == attendant.kt:
+                flight_ids.append(attendant.id)
+
+        for voyage in voyages:
+            if voyage.id in flight_ids:
+                ss = staffshifts()
+                ss.id = voyage.id
+                ss.date = self.change_date_to_datetime(voyage.date)
+                ss.time = voyage.time
+                ss.dest = voyage.airport
+                voyagelist.append(ss)
 
         return voyagelist
-    
+
     def get_staff_voyages_today(self, kt, date):
-
         all_voyages = self.get_all_voyages_from_kt(kt)
 
-        if all_voyages[0] == "error":
-            return "Engar vaktir í dag."
-        for i in all_voyages: 
-            if i.date == self.change_date_to_datetime(date):
-                return i
-        return "Engar vaktir í dag."
-    
+        if not all_voyages:
+            return None
+
+        today_voyages = [i for i in all_voyages if i.date == self.change_date_to_datetime(date)]
+
+        if not today_voyages:
+            return None
+
+        return today_voyages
+
+
     def get_staff_voyages_week(self, kt, date):
-        
         all_voyages = self.get_all_voyages_from_kt(kt)
 
-        if all_voyages[0] == "error":
-            return "Engar vaktir í vikunni."
-        
-        voyages = []
-        for i in all_voyages: 
-            if i.date <= self.change_date_to_datetime(date) and i.date > (self.change_date_to_datetime(date) + timedelta(days = 7)):
-                voyages.append(i)
-        return voyages
+        if not all_voyages:
+            return None
+
+        week_start = self.change_date_to_datetime(date)
+        week_end = week_start + timedelta(days=7)
+
+        week_voyages = [i for i in all_voyages if week_start <= i.date <= week_end]
+
+        return week_voyages
+
