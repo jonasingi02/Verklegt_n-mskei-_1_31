@@ -93,7 +93,7 @@ class ValidatingStaffInput:
                 print("Vinsamlegast sláðu inn heimilisfang starfsmanns.")
 
     def validate_postal_code(self, pc):
-        """Validate postal codes by icelandic standards. Three number and only numerical."""
+        """Validate postal codes by icelandic standards. Three numbers and only numerical."""
         if len(pc) == 3:
             try:
                 self = int(pc)
@@ -235,6 +235,7 @@ class ValidateFMVoyageInfo:
         self.logic_wrapper = logic_connection
 
     def validate_voyage_dest(self, dest):
+        """Validate that there is an airport in the system with that name"""
         result = self.logic_wrapper.get_all_destinations()
         for elem in result:
             if elem.airport == dest:
@@ -243,6 +244,7 @@ class ValidateFMVoyageInfo:
         return ""
 
     def validate_voyage_plane(self, plane):
+        """Validate that there is a plane in the system with that name"""
         result = self.logic_wrapper.get_all_planes()
         for elem in result:
             if elem.name == plane:
@@ -266,6 +268,7 @@ class ValidateFMVoyageInfo:
 
     
     def validate_voyage(self, voyage, list):
+        """Validate chosen voyage ID"""
         for elem in list:
             if elem.id == voyage:
                 return elem.id
@@ -273,12 +276,14 @@ class ValidateFMVoyageInfo:
         return ""
 
     def validate_voyage_staff(self, pilot, list):
+        "Validate the staff on the voyage"
         for i in list:
             if pilot == i.kt:
                 return pilot
         return ""
     
     def validate_number_of_staff_on_voyage(self, occupation):
+        """Validate the minimum staff on shift"""
         user_input = int(input(f"Veldu magn {occupation}: "))
         valid = True
         

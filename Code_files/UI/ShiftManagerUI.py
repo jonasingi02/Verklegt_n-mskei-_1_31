@@ -12,7 +12,7 @@ class ShiftManagerUI:
         AsciiArt.airplane_2_ascii()
         print("Velkomin/n Vaktstjóri")
         print(
-            "Hvað má bjóða þér að gera?\n\n1: Uppfæra starfsmenn\n2: Uppfæra vinnuferðir\n3: Birta alla starfsmenn \n4: Skoða vaktir \nQ: Hætta\nB: Til baka"
+            "Hvað má bjóða þér að gera?\n\n1: Uppfæra starfsmenn\n2: Uppfæra vinnuferðir\n3: Skoða vaktir \nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
@@ -32,10 +32,8 @@ class ShiftManagerUI:
                 menu = uiv.input_prompt()
                 if menu == "q":
                     return "q"
-            
+
             elif command == "3":
-                pass
-            elif command == "4":
                 uie = ShiftOverviewUI(self.logic_wrapper)
                 menu = uie.input_prompt()
             elif command == "q":

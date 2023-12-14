@@ -21,6 +21,7 @@ class FMVoyageUI:
             command = input("\nInnsláttarreitur: ")
             command = command.lower()
             if command == "1":
+                # Print all unmanned voyages.
                 all_voyages:list = self.logic_wrapper.read_all_fmvoyages()
                 all_voyages_table = PrettyTable()
                 all_voyages_table.field_names = ["ID", "Dagsetning", "Brottfarartími", "Flugvél", "Flugvöllur"]
@@ -32,6 +33,8 @@ class FMVoyageUI:
                 print(all_voyages_table)
 
             elif command == "2":
+                # Add new unmanned voyage to system.
+                print("Þú hefur valið að bæta við vinnuferð.\n")
                 v = FMvoyage()
                 v.id = 1
                 result = self.logic_wrapper.read_all_fmvoyages()
@@ -42,7 +45,7 @@ class FMVoyageUI:
                     v.id = str(v.id)
 
                 while v.airport == "" :
-                    print("Allir áfangastaðir í kerfinu: ")
+                    print("\nAllir áfangastaðir í kerfinu: ")
                     result = self.logic_wrapper.get_all_destinations()
                     
                     destination_table = PrettyTable()
@@ -60,7 +63,7 @@ class FMVoyageUI:
                     plane_table = PrettyTable()
                     plane_table.field_names = ["Nafn", "Tegund", "Fjöldi sæta", "Framleiðandi"]
                     
-                    print("Allar flugvélar í kerfinu: ")
+                    print("\nAllar flugvélar í kerfinu: ")
                     result = self.logic_wrapper.get_all_planes()
                     
                     for elem in result:
@@ -70,8 +73,8 @@ class FMVoyageUI:
                     print(plane_table)
                     v.plane = Validator.validate_voyage_plane(input("Hvaða flugvél vilt þú nota (nafn): "))
 
-                v.date = input("Dagsetning(01-01-01): ")
-                time = input("Brottfarartími(00:00): ")
+                v.date = input("\nDagsetning(01-01-01): ")
+                time = input("\nBrottfarartími(00:00): ")
                 validation = Validator.validate_time_of_takeoff(v.date ,time)
                 
                 taken_times_table = PrettyTable()
@@ -80,6 +83,7 @@ class FMVoyageUI:
 
                 valid = True
                 while valid:
+                    #Check if take-off time is available
                     if validation == None:
                         v.time = time
                         valid = False
@@ -94,7 +98,7 @@ class FMVoyageUI:
                         validation = Validator.validate_time_of_takeoff(v.date ,time)
                 
                 self.logic_wrapper.create_fmvoyage(v)
-                print(f"\nÞú hefur bætt við vinnuferðinni:\nFlugvöllur: {v.airport}\nFlugvél: {v.plane}\nDagsetning: {v.date}\nBrottfarartími: {v.time}")
+                print(f"\nÞú hefur bætt við vinnuferðinni:\n\nFlugvöllur: {v.airport}\nFlugvél: {v.plane}\nDagsetning: {v.date}\nBrottfarartími: {v.time}\n")
 
             elif command == "3":
                 #TODO: Bæta við.

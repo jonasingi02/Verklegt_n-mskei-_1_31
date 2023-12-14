@@ -21,19 +21,19 @@ class EmployeeUI:
             if command == "1":
                 # Print all employess of NaN Air.
                 table = PrettyTable()
-                table.field_names = ["Nafn", "Kennitala", "Starfsheiti"]
+                table.field_names = ["Nafn", "Kennitala", "Símanúmer", "Heimilisfang", "Póstnúmer", "Starfsheiti"]
                 result = self.logic_wrapper.read_all_employees()
-                print(f'\n{"Allir starfsmenn NaN Air":^60}')
-                print(f'{"_"*60}\n')
+                print(f'\n{"Allir starfsmenn NaN Air":^99}')
                 
                 for elem in result:
-                   table.add_row([elem.name, elem.kt, elem.occupation])
+                   table.add_row([elem.name, elem.kt, elem.phone_number, elem.address, elem.postal_code, elem.occupation])
                 
                 table.align = "l"
                 print(table)
 
             elif command == "2":
                 # Adding a new employee to the system.
+                print("\nÞú hefur valið að bæta við starfsmanni í kerfið.\n")
                 e = Employee()
                 
                 validating_input = ValidatingStaffInput()
@@ -51,7 +51,7 @@ class EmployeeUI:
                 # Update info for an employee in the system.
                 validating_input = ValidatingStaffInput()
                 
-                print("Þú hefur valið að uppfæra upplýsingar um starfsmann.\nSláðu inn kennitölu starfsmanns til að finna þann sem þú ætlar að breyta upplýsingum um.")
+                print("\nÞú hefur valið að uppfæra upplýsingar um starfsmann.\n\nSláðu inn kennitölu starfsmanns til að finna þann sem þú ætlar að breyta upplýsingum um.")
                 kt = validating_input.get_validated_kennitala()
                 print("Hvað má bjóða þér að uppfæra hjá starfsmanni?\n")
                 print("1. Símanúmer \n2. Heimilisfang \n3. Póstnúmer \n4. Starfsheiti")
@@ -74,7 +74,7 @@ class EmployeeUI:
                     column_to_update = 5
                     new_info = validating_input.get_validated_occupation()
 
-                print(f"\nÞú hefur uppfært {info} starfsmanns með kennitöluna {kt}.")
+                print(f"\nÞú hefur uppfært {info} starfsmanns með kennitöluna {kt}\n.")
                 self.logic_wrapper.update_employee(kt, column_to_update, new_info)
             
             elif command == "4":
@@ -88,9 +88,9 @@ class EmployeeUI:
                     staff_str, count = self.logic_wrapper.return_certain_employee(user_input)
                     if staff_str != None:
                         if count >= 2:
-                            print(f"\nÞað er {count} starfsmenn í kerfinu með nafnið {user_input}.\n")
+                            print(f"\nÞað eru {count} starfsmenn í kerfinu með nafnið {user_input}.\n")
                         else:
-                            print(f"\nÞað eru {count} starfsmaður í kerfinu með nafnið {user_input}.\n")
+                            print(f"\nÞað er {count} starfsmaður í kerfinu með nafnið {user_input}.\n")
                         
                         print(staff_str)
                         valid = False
@@ -99,8 +99,11 @@ class EmployeeUI:
                         break
 
             elif command == "q":
+                #Quit
                 return "q"
             elif command == "b":
+                #Back
                 return "b"
             else:
+                #Invalid Input
                 print("Ógilt. Reyndu aftur.")

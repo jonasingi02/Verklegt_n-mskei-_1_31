@@ -6,6 +6,7 @@ class AsciiArt:
         pass
 
     def nan_logo():
+        """Ascii art for the Logo of NaN Air"""
         print()
         print("███    ██  █████  ███    ██      █████  ██ ██████")
         print("████   ██ ██   ██ ████   ██     ██   ██ ██ ██   ██")
@@ -15,6 +16,7 @@ class AsciiArt:
         print()
 
     def airplane_1_ascii():
+        """Airplane 1 Ascii art"""
         print()
         print("__  _")
         print("\ `/ |")
@@ -30,6 +32,7 @@ class AsciiArt:
         print()
 
     def airplane_2_ascii():
+        """Airplane 2 Ascii art"""
         print()
         print("                             |")
         print("                       --====|====--")
@@ -46,6 +49,7 @@ class AsciiArt:
         print()
 
     def airplane_3_ascii():
+        """Airplane 3 Ascii Art"""
         print("           _")
         print("         -=\`\ ")
         print("     |\ ____\_\__")
@@ -65,6 +69,7 @@ class AsciiArt:
         print()
 
     def airport_1_ascii():
+        """Airport 1 Ascii art"""
         print()
         print("__|__")
         print("\___/")

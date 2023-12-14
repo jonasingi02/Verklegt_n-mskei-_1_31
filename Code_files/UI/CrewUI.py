@@ -10,12 +10,12 @@ class CrewUI:
         self.logic_wrapper = Logic_wrapper()
 
     def menu_output(self):
-        # AsciiArt.airplane_1_ascii()
         print("Velkomin/n flugáhafnarmeðlimur")
         print("Hvað má bjóða þér að gera?\n\n1: Sjá samstarfsfólk \n2: Sjá vinnuferðir \nQ: Hætta\nB: Til baka\n")
 
     def input_prompt(self):
         while True:
+            AsciiArt.airplane_1_ascii()
             self.menu_output()
             command = input("Innsláttarreitur: ").lower()
             
