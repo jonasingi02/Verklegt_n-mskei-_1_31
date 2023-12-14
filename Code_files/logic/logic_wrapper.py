@@ -95,3 +95,6 @@ class Logic_wrapper:
         
     def get_staff_voyages_week(self, kt, date):
         return self.employee_logic.get_staff_voyages_week(kt, date)
+    
+    def read_all_fm_voyages(self):
+        return self.fmvoyage_logic.read_all_fmvoyages()
