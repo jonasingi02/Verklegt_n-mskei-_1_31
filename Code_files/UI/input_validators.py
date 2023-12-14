@@ -302,3 +302,31 @@ class ValidateFMVoyageInfo:
                 else:
                     valid = False
                     return user_input
+
+    def validate_voyage_id(self, voyage_list):
+        while True:
+            id_input = input("Sláðu inn id flugsins til að finna flugið sem þú ætlar að breyta upplýsingum um.\n")
+            for voyage in voyage_list:
+                if id_input == voyage.id:
+                    return id_input
+            print("Engin vinnuferð í kerfinu með þetta ID. Reyndu aftur.")
+
+    def get_validated_date(self): 
+        while True: 
+            new_date_input = input("Skráðu inn uppfærða dagsetningu: (DD-MM-ÁÁ) ")
+            date_splits = new_date_input.split("-")
+
+            if len(date_splits) == 3 and all(len(date_split) == 2 for date_split in date_splits):
+                return "-".join(date_splits)
+            else: 
+                print("Úps!, Passaðu að slá inn dagsetningu á eftirfarandi hátt: (DD-MM-ÁÁ) ")
+
+    def get_validated_time(self): 
+        while True:
+            new_time_input = input("Skráðu inn nýja tímasetningu: (00:00) ")
+            time_split = new_time_input.split(":")
+            
+            if len(time_split) == 2 and len(time_split[0]) == 2 and len(time_split[1]) == 2:
+                return ":".join(time_split)
+            else:
+                print("Úps!, Passaðu að slá inn dagsetningu á eftirfarandi hátt: (00:00) ")

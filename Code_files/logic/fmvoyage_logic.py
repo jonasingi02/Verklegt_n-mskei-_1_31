@@ -20,6 +20,9 @@ class FmvoyageLogic:
     def get_all_voyagexpilots(self):
         return self.data_wrapper.get_all_voyagexpilots()
     
+    def update_flight_info(self, flight_id_to_update, column_to_update, new_info):
+        return self.data_wrapper.update_flight_info(flight_id_to_update, column_to_update, new_info)
+    
     def create_voyagexattendant(self, vxa):
         return self.data_wrapper.create_voyagexattendant(vxa)
     
