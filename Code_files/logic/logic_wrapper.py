@@ -27,7 +27,32 @@ class Logic_wrapper:
     def create_employee(self, employee): 
         return self.employee_logic.create_employee(employee)
     
-    def get_all_employees(self):
-        return self.employee_logic.get_all_employees()
+    def update_employee(self,kt_employee_to_update, column_to_update, new_info):
+        return self.employee_logic.update_employee(kt_employee_to_update, column_to_update, new_info)
+
+    def read_all_employees(self):
+        return self.employee_logic.read_all_employees()
     
+    def get_all_pilots(self): 
+        return self.employee_logic.get_all_pilots()
     
+    def get_all_fmvoyages(self):
+        return self.fmvoyage_logic.get_all_fmvoyages()
+    
+    def read_all_employees(self):
+        return self.employee_logic.read_all_employees()
+    
+    def get_certain_employee(self, kt):
+        return self.data_wrapper.get_certain_employee(kt)
+
+    def get_all_flight_attendants(self): 
+        return self.employee_logic.get_all_flight_attendantds()
+
+    def get_all_fmvoyages(self):
+        return self.fmvoyage_logic.get_all_fmvoyages()
+    
+    def create_voyagexpilots(self,vxp):
+        return self.fmvoyage_logic.create_voyagexpilots(vxp)
+    
+    def get_all_voyagexpilots(self):
+        return self.fmvoyage_logic.get_all_voyagexpilots()
