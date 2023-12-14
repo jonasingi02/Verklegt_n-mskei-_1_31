@@ -25,6 +25,8 @@ class ShiftOverviewUI:
                 date = input("Veldu dagsetningu (01-01-01) : ")
                 print("Þú hefur valið dagsetninguna: " + date)
 
+                
+
                 # dates = PrettyTable()
                 # dates.field_names = ["Date", "id"]
                 result = self.logic_wrapper.find_voyage_by_date(date)

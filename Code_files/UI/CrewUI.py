@@ -11,7 +11,7 @@ class CrewUI:
 
     def menu_output(self):
         print("Velkomin/n flugáhafnarmeðlimur")
-        print("Hvað má bjóða þér að gera?\n\n1: Sjá samstarfsfólk \n2: Sjá vinnuferðir \nQ: Hætta\nB: Til baka\n")
+        print("Hvað má bjóða þér að gera?\n\n1: Sjá samstarfsfólk \n2: Sjá mínar vinnuferðir \nQ: Hætta\nB: Til baka\n")
 
     def input_prompt(self):
         while True:
@@ -30,18 +30,23 @@ class CrewUI:
                 print(all_staff)
 
             if command == "2":
-                result = self.logic_wrapper.read_all_fmvoyages()
-                all_voyages = PrettyTable()
-                all_voyages.field_names = ["Flugnúmer", "Dagsetning", "Brottfarartími", "Flugvél", "Flugvöllur"]
-                
-                for elem in result:
-                    all_voyages.add_row([elem.id, elem.date, elem.time, elem.plane, elem.airport])
-                
-                all_voyages.align = "l"
-                print(all_voyages)
+                print("Hvort vilt þú sjá?\n1. Þínar vinnuferðir í dag\n2. Þínar vinnuferðir á næstkomandi viku?\n")
+                user_input = input("Innsláttarreitur: ")
+                user_kt = input("\nSláðu inn kennitöluna þína: ")
+                date_today = input("Sláðu inn dagsetninguna í dag (01-01-01): ")
 
+                if user_input == "1":
+                    today = self.logic_wrapper.get_staff_voyages_today(user_kt, date_today)
+                    print(today)
+                elif user_input == "2":
+                    week = self.logic_wrapper.get_staff_voyages_week(user_kt, date_today)
+                    print(week)
+
+            
             if command == "b":
+                #Back
                 return "b"
             
             if command == "q":
+                #Quit
                 break 

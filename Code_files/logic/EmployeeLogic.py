@@ -41,6 +41,7 @@ class EmployeeLogic:
 
     def read_all_employees(self):
         return self.data_wrapper.read_all_employees()
+    
     def get_all_flight_attendantds(self):
         return self.data_wrapper.read_all_flight_attendants()
     
@@ -51,7 +52,7 @@ class EmployeeLogic:
         voyage = self.data_wrapper.read_all_fmvoyages()
         vxa = self.data_wrapper.get_all_voyagexattendants()
         vxp = self.data_wrapper.get_all_voyagexpilots()
-        staff = self.data_wrapper.read_all_employees()
+        staff = self.read_all_employees()
 
         staffreturn = []
         staffs = []
@@ -107,7 +108,7 @@ class EmployeeLogic:
 
         person = ""
         for i in staff:
-            if staff.id == kt:
+            if staff.kt == kt:
                 person = kt
             else:
                 voyagelist.append("error")
@@ -139,21 +140,21 @@ class EmployeeLogic:
         all_voyages = self.get_all_voyages_from_kt(kt)
 
         if all_voyages[0] == "error":
-            return "error"
+            return "Engar vaktir í dag."
         for i in all_voyages: 
             if i.date == self.change_date_to_datetime(date):
                 return i
-        return "no work today"
+        return "Engar vaktir í dag."
     
     def get_staff_voyages_week(self, kt, date):
         
         all_voyages = self.get_all_voyages_from_kt(kt)
 
         if all_voyages[0] == "error":
-            return "error"
+            return "Engar vaktir í vikunni."
         
         voyages = []
         for i in all_voyages: 
             if i.date <= self.change_date_to_datetime(date) and i.date > (self.change_date_to_datetime(date) + timedelta(days = 7)):
                 voyages.append(i)
-        return i
+        return voyages
