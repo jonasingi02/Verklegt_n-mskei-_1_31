@@ -161,3 +161,23 @@ class EmployeeLogic:
 
         return week_voyages
 
+    def get_all_employees_working_on_date(self, date):
+        employees = self.data_wrapper.read_all_employees()
+        fm_voyages = self.data_wrapper.read_all_fmvoyages()
+        vxa = self.data_wrapper.get_all_voyagexattendants()
+        vxp = self.data_wrapper.get_all_voyagexpilots()
+
+        voyage_date_staff = []
+
+        for voyage in fm_voyages:
+            if voyage.date == date:
+                for pilot in vxp:
+                    if pilot.id == voyage.id:
+                        for employee in employees:
+                            if pilot.kt == employee.kt:
+                                voyage_date_staff.append([pilot.id, employee.name, employee.kt, employee.occupation, voyage.date, voyage.time, voyage.airport])
+
+                            return voyage_date_staff
+                    else: return None
+            else: return None
+        

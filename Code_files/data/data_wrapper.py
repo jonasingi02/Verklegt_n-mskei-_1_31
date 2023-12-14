@@ -34,9 +34,6 @@ class data_wrapper:
     
     def update_employee(self,kt_employee_to_update, column_to_update, new_info):
         return self.employee_data.update_employee(kt_employee_to_update, column_to_update, new_info)
-    
-    def update_flight_info(self, flight_id_to_update, column_to_update, new_info):
-        return self.FmvoyageData.update_flight_info(flight_id_to_update, column_to_update, new_info)
 
     def create_fmvoyage(self, fmvoyage):
         return self.FmvoyageData.create_fmvoyage(fmvoyage)
@@ -61,3 +58,6 @@ class data_wrapper:
     
     def create_voyagexattendant(self, vxa):
         return self.FmvoyageData.create_voyagexattendant(vxa)
+
+    def read_all_fmvoyages(self):
+        return self.FmvoyageData.read_all_fmvoyages()
