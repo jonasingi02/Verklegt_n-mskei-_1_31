@@ -22,9 +22,9 @@ class CrewUI:
             if command == "1":
                 result = self.logic_wrapper.read_all_employees()
                 all_staff = PrettyTable()
-                all_staff.field_names = ["Nafn", "Kennitala", "Starfsheiti"]
+                all_staff.field_names = ["Nafn", "Símanúmer", "Starfsheiti"]
                 for elem in result:
-                   all_staff.add_row([elem.name, elem.kt, elem.occupation])
+                   all_staff.add_row([elem.name, elem.phone_number, elem.occupation])
 
                 all_staff.align = "l"
                 print(all_staff)

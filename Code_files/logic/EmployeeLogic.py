@@ -26,7 +26,7 @@ class EmployeeLogic:
                 if "flugmaður" in list_staff or "flugþjónn" in list_staff:
                     count += 1
                     
-                for elem2 in list:
+                for elem2 in list_staff:
                     if elem2 == "flugmaður" or elem2 == "flugþjónn":
                         staff_str += elem2 + "\n"
                     else:

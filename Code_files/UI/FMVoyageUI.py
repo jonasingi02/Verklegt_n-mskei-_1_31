@@ -59,10 +59,13 @@ class FMVoyageUI:
                 while v.plane == "" :
                     plane_table = PrettyTable()
                     plane_table.field_names = ["Nafn", "Tegund", "Fjöldi sæta", "Framleiðandi"]
+                    
                     print("Allar flugvélar í kerfinu: ")
                     result = self.logic_wrapper.get_all_planes()
+                    
                     for elem in result:
                         plane_table.add_row([elem.name, elem.type, elem.numseats, elem.manufacturer])
+                    
                     plane_table.align = "l"
                     print(plane_table)
                     v.plane = Validator.validate_voyage_plane(input("Hvaða flugvél vilt þú nota (nafn): "))
@@ -83,8 +86,10 @@ class FMVoyageUI:
                     else:
                         for elem in validation:
                             taken_times_table.add_row([elem.airport, elem.date, elem.time, elem.id])
+                        
                         print(taken_times_table)
                         print("Þessi brottfarartími er ekki laus. Veldu annan.")
+                        
                         time = input("Brottfarartími(00:00): ")
                         validation = Validator.validate_time_of_takeoff(v.date ,time)
                 

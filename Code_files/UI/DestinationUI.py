@@ -30,6 +30,7 @@ class destinationUI:
                 print(destination_table)
 
             elif command == "2":
+                print("Þú hefur valið að bæta við nýjum áfangstað.\n")
                 d = destination()
                 d.country = input("Nafn lands: ")
                 d.airport = input("Nafn flugvallar: ")
@@ -39,7 +40,14 @@ class destinationUI:
                 d.phone = input("Símanúmer tengiliðs (dæmi: 5812345): ")
                 self.logic_wrapper.create_destination(d)
 
-                #TODO: Bæta við staðfestingu
+                print("\nÞú hefur bætt við áfangastaðnum:")
+                
+                dest_table = PrettyTable()
+                dest_table.field_names = ["Land", "Flugvöllur", "Tengiliður"]
+                dest_table.add_row([d.country, d.airport, d.name])
+                dest_table.align = "l"
+                print(dest_table)
+
             elif command == "3":
                 pass
             elif command == "q":
