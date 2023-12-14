@@ -2,7 +2,7 @@ from .EmployeeUI import EmployeeUI
 from .VoyageUI import VoyageUI
 from logic.logic_wrapper import Logic_wrapper
 from .ascii_art import AsciiArt
-
+from .ShiftOverviewUI import ShiftOverviewUI 
 
 class ShiftManagerUI:
     def __init__(self):
@@ -36,7 +36,7 @@ class ShiftManagerUI:
             elif command == "3":
                 pass
             elif command == "4":
-                uie = EmployeeUI(self.logic_wrapper)
+                uie = ShiftOverviewUI(self.logic_wrapper)
                 menu = uie.input_prompt()
             elif command == "q":
                 return "q"

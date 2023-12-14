@@ -43,8 +43,8 @@ class EmployeeLogic:
     def get_all_pilots(self): 
         return self.data_wrapper.get_all_pilots()
     
-    # def get_all_shifts(self):
-    #     return self.data_wrapper.
+ 
+    
 
 
 
