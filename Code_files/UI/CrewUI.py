@@ -3,6 +3,7 @@ from logic.EmployeeLogic import EmployeeLogic
 from model.employee import Employee
 from .input_validators import ValidatingStaffInput
 from .ascii_art import AsciiArt
+from prettytable import PrettyTable
 
 class CrewUI:
     def __init__(self):
@@ -11,7 +12,7 @@ class CrewUI:
     def menu_output(self):
         # AsciiArt.airplane_1_ascii()
         print("Velkomin/n flugáhafnarmeðlimur")
-        print("Hvað má bjóða þér að gera:\n\n1: Sjá samstarfsfólk \n2: Sjá vinnuferðir \nQ: Hætta\nB: Til baka\n")
+        print("Hvað má bjóða þér að gera?\n\n1: Sjá samstarfsfólk \n2: Sjá vinnuferðir \nQ: Hætta\nB: Til baka\n")
 
     def input_prompt(self):
         while True:
@@ -20,13 +21,24 @@ class CrewUI:
             
             if command == "1":
                 result = self.logic_wrapper.read_all_employees()
+                all_staff = PrettyTable()
+                all_staff.field_names = ["Nafn", "Kennitala", "Starfsheiti"]
                 for elem in result:
-                   print(f"Nafn {elem.name}, Starfsheiti: {elem.occupation}")
+                   all_staff.add_row([elem.name, elem.kt, elem.occupation])
+
+                all_staff.align = "l"
+                print(all_staff)
 
             if command == "2":
-                result = self.logic_wrapper.get_all_fmvoyages()
+                result = self.logic_wrapper.read_all_fmvoyages()
+                all_voyages = PrettyTable()
+                all_voyages.field_names = ["Flugnúmer", "Dagsetning", "Brottfarartími", "Flugvél", "Flugvöllur"]
+                
                 for elem in result:
-                    print(f"Flugnúmer: {elem.id}, Dagsetning: {elem.date}, Flugvél: {elem.plane}, Flugvöllur: {elem.airport}")
+                    all_voyages.add_row([elem.id, elem.date, elem.time, elem.plane, elem.airport])
+                
+                all_voyages.align = "l"
+                print(all_voyages)
 
             if command == "b":
                 return "b"

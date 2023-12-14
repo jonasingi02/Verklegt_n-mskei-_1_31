@@ -1,2 +1,10 @@
-id,date,plane,airport
-1,12-02-02 7:00,Krummi,Mittarfik Nuuk
+id,date,time,plane,airport
+1,12-02-02,07:00,Krummi,Mittarfik Nuuk
+2,02-04-23,12:40,Norðurljós,Mittarfik Nuuk
+3,09-09-23,12:40,Krummi,Reykjavíkurflugvöllur
+4,04-04-24,09:10,Krummi,Mittarfik Nuuk
+5,02-04-24,11:45,Kári,Reykjavíkurflugvöllur
+6,09-09-23,12:40,Vél,Mittarfik Nuuk
+7,09-09-23,12:40,Vél,Mittarfik Nuuk
+8,09-09-23,12:40,Vél,Mittarfik Nuuk
+9,09-09-23,12:41,Vél,Mittarfik Nuuk

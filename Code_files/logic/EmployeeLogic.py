@@ -21,8 +21,10 @@ class EmployeeLogic:
         if staff is not None:
             staff_str: str = ""
             count = 0  
-            for list in staff:
-                count += 1
+            for list_staff in staff:
+                if "flugmaður" in list_staff or "flugþjónn" in list_staff:
+                    count += 1
+                    
                 for elem2 in list:
                     if elem2 == "flugmaður" or elem2 == "flugþjónn":
                         staff_str += elem2 + "\n"

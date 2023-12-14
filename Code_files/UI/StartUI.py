@@ -10,9 +10,10 @@ class StartUI:
 
     def menu_output(self):
         AsciiArt.nan_logo()
+        print(f"{'Where dividing by zero makes sense!':^50}\n")
 
         print(
-            "\nHvað má bjóða þér að sjá?\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nQ: Hætta"
+            "\nHvað má bjóða þér að sjá?\n\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nQ: Hætta"
         )
 
     def input_prompt(self):

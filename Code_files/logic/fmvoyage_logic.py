@@ -24,14 +24,14 @@ class FmvoyageLogic:
         return self.data_wrapper.create_voyagexattendant(vxa)
     
     def find_voyage_by_id(self, id):
-        result = self.data_wrapper.get_all_fmvoyages()
+        result = self.data_wrapper.read_all_fmvoyages()
         for i in result:
             if i.id == id:
                 return i
         return FMvoyage()
     
     def same_date_voyage(self, date):
-        voyage = self.data_wrapper.get_all_fmvoyages()
+        voyage = self.data_wrapper.read_all_fmvoyages()
         voyage_list = []
         for elem in voyage:
             if elem.date == date:
@@ -77,7 +77,7 @@ class FmvoyageLogic:
         return input_validator_list
     
     def get_unmanned_voyages(self):
-        fmvoyages = self.data_wrapper.get_all_fmvoyages()
+        fmvoyages = self.data_wrapper.read_all_fmvoyages()
         vxp = self.data_wrapper.get_all_voyagexpilots()
         vxa = self.data_wrapper.get_all_voyagexattendants()
         result = []
@@ -92,5 +92,4 @@ class FmvoyageLogic:
                     bool = False
             if bool == True:
                 result.append(i)
-
         return result

@@ -239,7 +239,7 @@ class ValidateFMVoyageInfo:
         for elem in result:
             if elem.airport == dest:
                 return dest
-        print("\nengin áfangastaður í kerfinu með þennan flugvöll.")
+        print("\nEnginn áfangastaður í kerfinu með þennan flugvöll.")
         return ""
 
     def validate_voyage_plane(self, plane):
@@ -247,32 +247,53 @@ class ValidateFMVoyageInfo:
         for elem in result:
             if elem.name == plane:
                 return plane
-        print("\nengin flugvél í kerfinu með þetta nafn.")
+        print("\nEngin flugvél í kerfinu með þetta nafn.")
         return ""
+    
+    def validate_time_of_takeoff(self, date, time):
+        """Check if there is a scheduled takeoff at the same time"""
+        validate_time = self.logic_wrapper.read_all_fmvoyages()
+        time_list = []
+
+        for elem in validate_time:
+            if elem.time == time and elem.date == date:
+                time_list.append(elem)
+
+        if time_list:
+            return time_list
+        else:
+            return None
+
     
     def validate_voyage(self, voyage, list):
         for elem in list:
             if elem.id == voyage:
                 return elem.id
-        print("\nþað er engin vinnuferð í kerfinu með þetta id")
+        print("\nEngin vinnuferð í kerfinu með þetta ID")
         return ""
 
-    def validate_pilot(self, pilot, list):
+    def validate_voyage_staff(self, pilot, list):
         for i in list:
             if pilot == i.kt:
                 return pilot
         return ""
-
-    def validate_flight_attendant(self, attendant, list):
-        for i in list:
-            if attendant == i.kt:
-                return attendant
-        return ""
-
-# d.country = input("nafn áfangastaðs (string):")
-# d.airport = input("nafn flugvallar (string):")
-# d.flighttime = input("flugtími (datetime hours):")
-# d.distance = input("vegalengd í km (int):")
-# d.name = input("nafn tengiliðs (string):")
-# d.phone = input("símanúmer tengiliðs (int):")
-# self.logic_wrapper.create_destination(d)
+    
+    def validate_number_of_staff_on_voyage(self, occupation):
+        user_input = int(input(f"Veldu magn {occupation}: "))
+        valid = True
+        
+        while valid:
+            if occupation == "flugþjóna":
+                if user_input < 1:
+                    print("Það þarf að vera a.m.k einn fljugþjónn í hverri ferð.")
+                    user_input = int(input(f"Veldu magn {occupation}: "))
+                else:
+                    valid = False
+                    return user_input
+            elif occupation == "flugmanna":
+                if user_input < 2:
+                    print("Það þarf að vera a.m.k tveir flugmenn í hverri ferð.")
+                    user_input = int(input(f"Veldu magn {occupation}: "))
+                else:
+                    valid = False
+                    return user_input
