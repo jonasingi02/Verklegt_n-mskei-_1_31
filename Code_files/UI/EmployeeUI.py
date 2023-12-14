@@ -88,7 +88,7 @@ class EmployeeUI:
                     staff_str, count = self.logic_wrapper.return_certain_employee(user_input)
                     if staff_str != None:
                         if count >= 2:
-                            print(f"\nÞað eru {count} starfsmenn í kerfinu með nafnið {user_input}.\n")
+                            print(f"\nÞað er {count} starfsmenn í kerfinu með nafnið {user_input}.\n")
                         else:
                             print(f"\nÞað eru {count} starfsmaður í kerfinu með nafnið {user_input}.\n")
                         

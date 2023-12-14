@@ -11,7 +11,7 @@ class planesUI:
     def menu_output(self):
         print("Velkomin/n ferðastjóri")
         print(
-            "Hvað má bjóða þér að gera?\n\n1: Birta allar flugvélar\n2: Bæta við flugvél\n3: Uppfæra flugvél\nQ: Hætta\nB: Til baka"
+            "Hvað má bjóða þér að gera?\n\n1: Birta allar flugvélar\n2: Bæta við flugvél\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
@@ -32,6 +32,7 @@ class planesUI:
             elif command == "2":
                 p = Planes()
                 input_field = True
+                
                 while input_field:
                     validate_planes = ValidatePlaneInfo()
                     p.name = validate_planes.get_validated_string("Nafn vélar: ")
@@ -42,9 +43,6 @@ class planesUI:
                     self.logic_wrapper.create_plane(p)
                     print(f"\nÞú hefur bætt við flugvélinni: {p.name}, {p.type}, fjöldi sæta {p.numseats}\n\n")
                     input_field = False
-
-            elif command == "3":
-                pass
 
             elif command == "q":
                 return "q"
