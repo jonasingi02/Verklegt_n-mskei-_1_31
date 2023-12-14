@@ -10,6 +10,7 @@ class CrewUI:
         self.logic_wrapper = Logic_wrapper()
 
     def menu_output(self):
+        """Displays the flight crew menu and all the commands follow"""
         print("Velkomin/n flugáhafnarmeðlimur")
         print("Hvað má bjóða þér að gera?\n\n1: Sjá samstarfsfólk \n2: Sjá mínar vinnuferðir \nQ: Hætta\nB: Til baka\n")
 
