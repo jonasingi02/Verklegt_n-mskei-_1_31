@@ -1,4 +1,4 @@
-from .plane_logic import plane_logic
+from .plane_logic import PlaneLogic
 from .destination_logic import destination_logic
 from .EmployeeLogic import EmployeeLogic
 from .fmvoyage_logic import FmvoyageLogic
@@ -7,7 +7,7 @@ from data.data_wrapper import data_wrapper
 class Logic_wrapper:
     def __init__(self):
         self.data_wrapper = data_wrapper()
-        self.plane_logic = plane_logic(self.data_wrapper)
+        self.plane_logic = PlaneLogic(self.data_wrapper)
         self.destination_logic = destination_logic(self.data_wrapper)
         self.employee_logic = EmployeeLogic(self.data_wrapper)
         self.fmvoyage_logic = FmvoyageLogic(self.data_wrapper)
