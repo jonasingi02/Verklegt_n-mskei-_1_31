@@ -72,7 +72,7 @@ class FMVoyageUI:
                 validation = Validator.validate_time_of_takeoff(v.date ,time)
                 
                 taken_times_table = PrettyTable()
-                taken_times_table.field_names = ["Vinnuferð til", "Dagsetning", "Tími"]
+                taken_times_table.field_names = ["Vinnuferð til", "Dagsetning", "Tími", "Flugnúmer"]
                 taken_times_table.align = "l"
 
                 valid = True
@@ -82,7 +82,7 @@ class FMVoyageUI:
                         valid = False
                     else:
                         for elem in validation:
-                            taken_times_table.add_row([elem.airport, elem.date, elem.time])
+                            taken_times_table.add_row([elem.airport, elem.date, elem.time, elem.id])
                         print(taken_times_table)
                         print("Þessi brottfarartími er ekki laus. Veldu annan.")
                         time = input("Brottfarartími(00:00): ")

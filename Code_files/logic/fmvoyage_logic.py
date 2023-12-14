@@ -93,3 +93,13 @@ class FmvoyageLogic:
             if bool == True:
                 result.append(i)
         return result
+    
+    def find_voyage_by_date(self, date):
+        result = self.data_wrapper.read_all_fmvoyages()
+        voyages = []
+        for i in result:
+            if i.date == date:
+                voyages.append(i)
+            
+        return voyages
+        
