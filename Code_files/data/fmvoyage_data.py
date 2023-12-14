@@ -2,6 +2,7 @@ import csv
 from model.FMVoyage import FMvoyage
 from model.voyagexpilots import voyagexpilots
 from model.voyagexattendant import voyagexattendant as vxa
+import os
 
 
 class FmvoyageData:
@@ -9,6 +10,7 @@ class FmvoyageData:
         self.file_name = "data/files/fmvoyage.csv"
         self.file_name2 = "data/files/voyagexpilots.csv"
         self.file_name3 = "data/files/voyagexattendants.csv"
+        self.update_file = "fmvoyage.csv"
 
     def read_all_fmvoyages(self):
         ret_list = []
@@ -84,3 +86,27 @@ class FmvoyageData:
                     "kt": vxa.kt
                 }
             )
+
+    def update_flight_info(self, flight_id_to_update, column_to_update, new_info):
+
+        file_name = "data/files/" + self.update_file    
+        with open(self.file_name, 'r+', newline='') as csvfile:
+            reader = csv.reader(csvfile)
+            rows = list(reader)
+        
+        valid = False
+        for row in rows:
+
+            if len(row) >= 0 and row[0] == flight_id_to_update:
+                valid = True
+
+                if row[column_to_update] in row:
+                    row[column_to_update] = new_info
+            
+        if valid:
+            update_employee_path = "data/files/new_" + self.update_file
+            with open(update_employee_path, 'w', newline='') as file_name:
+                writer = csv.writer(file_name)
+                writer.writerows(rows)
+            os.replace(update_employee_path, self.file_name)
+                    
