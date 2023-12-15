@@ -9,6 +9,11 @@ class StartUI:
         pass
 
     def menu_output(self):
+        """
+        Displays the main menu of the application with various options.
+
+        This method prints the NAN logo and a welcome message, followed by a menu offering choices for navigating to different sections of the application, such as the Airport (Flugáhöfn), Shift Manager (Vaktstjóri), Flight Manager (Ferðastjóri), and viewing major sponsors. It also provides an option to exit the application ('Quit').
+        """
         AsciiArt.nan_logo()
         print(f"{'Where dividing by zero makes sense!':^55}\n")
 
@@ -17,6 +22,11 @@ class StartUI:
         )
 
     def input_prompt(self):
+        """
+        Handles user input in response to the main menu options of the application.
+
+        This method displays the main menu and processes user input for navigating to different sections of the application, including the Crew UI, Shift Manager UI, and Flight Manager UI, as well as displaying sponsors' information. It also handles the 'Quit' command to exit the application. The method includes logic for user redirection and appropriate action based on the selected option.
+        """
         while True:
             self.menu_output()
             command = input("\nInnsláttarreitur: ")

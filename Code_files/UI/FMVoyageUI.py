@@ -9,12 +9,22 @@ class FMVoyageUI:
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
+        """
+        Displays a menu with various options for managing FMvoyages.
+
+        This method presents a list of choices for the user, including displaying all unmanned FMvoyages, adding a new FMvoyage, updating information for an existing FMvoyage, along with navigation options like 'Quit' and 'Back'.
+        """
         print("\nVelkomin/n ferðastjóri")
         print(
             "Hvað má bjóða þér að gera?\n\n1: Birta allar ómannaðar vinnuferðir\n2: Bæta við vinnuferð\n3: Uppfæra upplýsingar vinnuferðar\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
+        """
+        Handles user input in response to the FMVoyage management menu options.
+
+        This method continuously displays the menu and processes user input for various operations such as displaying all unmanned FMvoyages, adding a new FMvoyage, updating FMvoyage details, and handling navigation commands like 'Quit' and 'Back'. User responses lead to corresponding actions and validation steps as required.
+        """
         Validator = ValidateFMVoyageInfo(self.logic_wrapper)
         while True:
             self.menu_output()

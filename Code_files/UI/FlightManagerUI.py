@@ -9,11 +9,21 @@ class FlightManagerUI:
         self.logic_wrapper = Logic_wrapper()
 
     def menu_output(self):
+        """
+        Displays the main menu for the flight manager with various options.
+
+        This method prints an ASCII art representation of an airport followed by a welcome message. It then presents a menu offering choices related to managing voyages, destinations, and aircraft fleets, along with navigation options like 'Quit' and 'Back'.
+        """
         AsciiArt.airport_1_ascii()
         print("Velkomin/n ferðastjóri")
         print("Hvað má bjóða þér að vinna í?\n\n1: Vinnuferðum\n2: Áfangastaðalista\n3: Flugvélaflota\nQ: Hætta\nB: Til baka")
 
     def input_prompt(self):
+        """
+        Handles user input in response to the main menu options of the flight manager.
+
+        This method displays the main menu and processes user input, facilitating navigation to specific sub-menus for managing voyages, destinations, and aircraft fleets. It also handles exit ('q') and back ('b') commands. User responses are directed to the appropriate UI classes for further actions.
+        """
         while True:
             self.menu_output()
             command = input("\nInnsláttarreitur: ")

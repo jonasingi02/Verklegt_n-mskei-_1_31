@@ -11,12 +11,22 @@ class VoyageUI:
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
+        """
+        Displays a menu with options for managing FMvoyages.
+
+        This method presents a list of choices for the user, including displaying all incomplete FMvoyages, assigning crew to a voyage, and navigation options like 'Quit' and 'Back'. It's designed to guide the user through various aspects of voyage management.
+        """
         print("Velkomin/n vaktstjóri")
         print(
             "Hvað má bjóða þér að gera?\n\n1: Birta allar ókláraðar vinnuferðir\n2: Manna vinnuferð\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
+        """
+        Handles user input in response to the voyage management menu options.
+
+        This method displays the menu and processes user input for operations such as displaying all FMvoyages, manning a specific voyage, and handling navigation commands like 'Quit' and 'Back'. It includes steps for validating input, selecting and assigning crew members to voyages, and updating voyage details as per the user's choice.
+        """
         Validator = ValidateFMVoyageInfo(self.logic_wrapper)
         while True:
             self.menu_output()
