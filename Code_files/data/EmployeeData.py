@@ -10,6 +10,11 @@ class EmployeeData:
         self.update_file = "all_staff.csv"
 
     def read_all_employees(self) -> list:
+        """ Reads employee data from a CSV file and returns a list of employees as object.
+
+        Returns:
+            list[Employee]: A list of employees as objects with details like name, kt, phone number ect.
+        """
         ret_list = [] 
         with open(self.file_name, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
@@ -22,6 +27,14 @@ class EmployeeData:
         return ret_list
     
     def get_certain_employee(self, name:str) -> list:
+        """ Retrieves a list of employees matching a certain given name from a CSV file.
+
+        Args:
+            name (str): the name to search for as a stirng.
+
+        Returns:
+            list: A list of emplyees data if certain criteria matches.
+        """
         certain_employee = []
         with open(self.file_name, newline="", encoding="utf-8") as csvfile_certain:
             reader = csv.DictReader(csvfile_certain)
@@ -42,7 +55,13 @@ class EmployeeData:
             return certain_employee
 
     def create_employee(self, employee):
+        """ Writes and appends an employee's details to the main CSV file. 
+            Also writes and appends to a CSV file depending on their occupation if possible 
 
+
+        Args:
+            employee (Employee): An object representing and employee, Both peronal and job related.
+        """
         with open(self.file_name, "a", newline="", encoding="utf-8") as csvfile:
             fieldnames = [
                 "name",
@@ -115,7 +134,13 @@ class EmployeeData:
                     )
         
     def update_employee(self, kt_employee_to_update, column_to_update, new_info):
+        """ Uptades a specific in information for an employee in a CSV file.
 
+        Args:
+            kt_employee_to_update (str): The personal ID (kt) of the employee to be updated.
+            column_to_update (int): The index of the column where the information needs to be updated.
+            new_info (str): The new information to replace the existing data.
+        """
         file_name = "data/files/" + self.update_file    
         with open(self.file_name, 'r+', newline='') as csvfile6:
             reader = csv.reader(csvfile6)
@@ -138,6 +163,12 @@ class EmployeeData:
             os.replace(update_employee_path, self.file_name)
                     
     def read_all_pilots(self): 
+        """ Reads pilot data from a CSV file and returns a list of 'Employee' objects representing pilots.
+
+        Returns:
+            list[Employee]: A list of Employee objects with pilot details.
+
+        """
         pilot_list = []
         with open(self.pilots_csv_file , newline="", encoding="utf-8") as csvfile4:
             reader = csv.DictReader(csvfile4)
@@ -150,6 +181,12 @@ class EmployeeData:
         return pilot_list
     
     def read_all_flight_attendants(self):
+        """ Reads flight attendant data from a CSV file and returns a list of 'Employee' objects.
+
+
+        Returns:
+            list[Employee]: A list of employee as objects representing flight attendants.
+        """
         flight_attendants_list = []
         with open(self.flight_attendants_csv_file , newline="", encoding="utf-8") as csvfile5:
             reader = csv.DictReader(csvfile5)
