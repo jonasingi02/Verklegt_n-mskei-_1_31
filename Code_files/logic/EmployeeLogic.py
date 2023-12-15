@@ -108,6 +108,7 @@ class EmployeeLogic:
         
 
         for employee in staff:
+            print(employee.kt)
             if employee.kt == kt:
                 person = kt
                 break

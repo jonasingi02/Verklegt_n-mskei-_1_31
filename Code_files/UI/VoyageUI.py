@@ -50,12 +50,7 @@ class VoyageUI:
                     voyage_table.align = "l"
                     print(voyage_table)
                     
-                    id = Validator.validate_voyage(input("Hvaða vinnuferð viltu manna? (Id dæmi: 1)(b: til baka)"), result)
-
-                    if id == "b" or id == "B":
-                        return
-                    
-
+                    id = Validator.validate_voyage(input("\nHvaða vinnuferð viltu manna? (Id dæmi: 1)"), result)
                     print(f"Þú hefur valið að uppfæra vinnuferð {id}")
 
                 v = self.logic_wrapper.find_voyage_by_id(id)
@@ -63,7 +58,30 @@ class VoyageUI:
                 voyage_list = self.logic_wrapper.same_date_voyage(v.date)
 
                 pilotnumber = Validator.validate_number_of_staff_on_voyage("flugmanna")
-                for _ in range(pilotnumber):
+                pilot = ""
+                while pilot == "" :
+                    print("\nAllir tiltækir flugmenn:")
+                    pilots_list = self.logic_wrapper.pilots_not_in_voyage(voyage_list)
+                    
+                    available_pilots = PrettyTable()
+                    available_pilots.field_names = ["Nafn", "Kennitala"]
+                    
+                    for i in pilots_list:
+                        available_pilots.add_row([i.name, i.kt])
+                    
+                    available_pilots.align = "l"
+                    print(available_pilots)
+                
+                    pilot = Validator.validate_voyage_staff(input("\nVeldu Yfirflugmann (kt): "), pilots_list)
+                
+                vxp = voyagexpilots()
+                vxp.id = v.id
+                vxp.kt = pilot
+                vxp.main_pilot = True
+                self.logic_wrapper.create_voyagexpilot(vxp)
+
+
+                for _ in range(pilotnumber - 1):
                     pilot = ""
                     while pilot == "" :
                         print("\nAllir tiltækir flugmenn:")
@@ -78,17 +96,38 @@ class VoyageUI:
                         available_pilots.align = "l"
                         print(available_pilots)
                     
-                        pilot = Validator.validate_voyage_staff(input("Veldu flugmann (kt)(b: til baka):"), pilots_list)
-
-                        if pilot == "b" or pilot == "B":
-                            return
+                        pilot = Validator.validate_voyage_staff(input("\nVeldu flugmann (kt): "), pilots_list)
+                    
                     vxp = voyagexpilots()
                     vxp.id = v.id
                     vxp.kt = pilot
                     self.logic_wrapper.create_voyagexpilot(vxp)
 
+                
+                
                 flight_attendant_number = Validator.validate_number_of_staff_on_voyage("flugþjóna")
-                for _ in range(int(flight_attendant_number)):
+
+                print("\nAllir tiltækir flugþjónar:\n")
+                flight_attendant_list = self.logic_wrapper.flight_attendants_not_in_voyage(voyage_list)
+                
+                available_attendants = PrettyTable()
+                available_attendants.field_names = ["Nafn", "Kennitala"]
+            
+                for i in pilots_list:
+                    available_attendants.add_row([i.name, i.kt])
+                
+                available_attendants.align = "l"
+                print(available_attendants)
+                
+                flight_attendant = Validator.validate_voyage_staff(input("\nVeldu Yfirflugþjón (kt): "), flight_attendant_list)
+            
+                vxf = voyagexattendant()
+                vxf.id = v.id
+                vxf.kt = flight_attendant
+                vxf.main_attendant = True
+                self.logic_wrapper.create_voyagexattendant(vxf)
+
+                for _ in range(int(flight_attendant_number - 1)):
                     print("\nAllir tiltækir flugþjónar:\n")
                     flight_attendant_list = self.logic_wrapper.flight_attendants_not_in_voyage(voyage_list)
                     
@@ -101,15 +140,12 @@ class VoyageUI:
                     available_attendants.align = "l"
                     print(available_attendants)
                     
-                    flight_attendant = Validator.validate_voyage_staff(input("Veldu flugþjón (kt)(b: til baka):"), flight_attendant_list)
-
-                    if flight_attendant == "b" or flight_attendant == "B":
-                        return
+                    flight_attendant = Validator.validate_voyage_staff(input("\nVeldu flugþjón (kt): "), flight_attendant_list)
                 
-                vxf = voyagexattendant()
-                vxf.id = v.id
-                vxf.kt = flight_attendant
-                self.logic_wrapper.create_voyagexattendant(vxf)
+                    vxf = voyagexattendant()
+                    vxf.id = v.id
+                    vxf.kt = flight_attendant
+                    self.logic_wrapper.create_voyagexattendant(vxf)
                 
             elif command == "3":
                 # Update info for a flight in the system.
