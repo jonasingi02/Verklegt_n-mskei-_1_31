@@ -1,11 +1,12 @@
 # Input Validators
 from model.FMVoyage import FMvoyage
+from logic.logic_wrapper import Logic_wrapper
 
 
 # Validating staff information
 class ValidatingStaffInput:
     def __init__(self) -> None:
-        pass
+        self.logic_wrapper = Logic_wrapper
 
     def validate_name_and_string(self, name) -> str or None:
         """Check length of name and strings."""
@@ -30,9 +31,16 @@ class ValidatingStaffInput:
                 print("Vinsamlegast sláðu inn nafn starfsmanns.")
 
     def validate_kt(self, kt) -> str or None:
-        """Check if kennitala is 10 digits and all numeric characters.
-        If not prints out error message, try again."""
+        """Check if kennitala is 10 digits, is all numeric characters and if this kt is not already in the 
+           system. If not prints out error message, try again."""
         valid = kt.isnumeric()
+        logic_instance = self.logic_wrapper()
+        ktlist = logic_instance.read_all_employees()
+
+        for i in ktlist:
+            if i.kt == kt:
+                print("Þessi kennitala er nú þegar í kerfinu.")
+                return None
 
         if len(kt) != 10:
             print("Þessi kennitala var ekki 10 tölustafir.")
@@ -145,7 +153,7 @@ class ValidatingStaffInput:
 # Validate plane information
 class ValidatePlaneInfo:
     def __init__(self) -> None:
-        pass
+        self.logic_wrapper = Logic_wrapper
 
     def validate_string(self, name) -> str or None:
         """Check length of name and strings."""
@@ -168,7 +176,34 @@ class ValidatePlaneInfo:
                 return validated_name
             else:
                 lower_what_input = what_input.rstrip(what_input[-1]).lower()
-                print(f"Vinsamlegast sláðu inn {lower_what_input}.")    
+                print(f"Vinsamlegast sláðu inn {lower_what_input}.")   
+
+    def get_validated_plane_name(self, what_input):
+        """Validate that a string was put in."""
+
+        s = self.logic_wrapper()
+        list = s.get_all_planes()
+
+        valid = True
+
+
+        while valid:
+            user_input = input(what_input)
+
+            validated_name = self.validate_string(user_input)
+
+            for i in list:
+                if i.name == user_input:
+                    print("Það er önnur vél með þetta nafn")
+                    validated_name = None
+
+            if validated_name != None:
+                valid = False
+                return validated_name
+            else:
+                lower_what_input = what_input.rstrip(what_input[-1]).lower()
+                print(f"Vinsamlegast sláðu inn {lower_what_input}.")   
+
         
     def validate_num_seats(self) -> str:
         """Check if number of seats input is only integers"""
@@ -209,26 +244,43 @@ class ValidateVoyageInput:
 # Validate Destination inputs
 class ValidateDestinationInputs:
     def __init__(self) -> None:
-        pass
+        self.logic_wrapper = Logic_wrapper
 
-    def validate_destination_string(self) -> str:
+    def validate_destination_string(self, input) -> str:
         """Check length of input"""
-        if len(self) >= 50:
+        if len(input) >= 50:
             print("Þessi strengur er lengri en 50 stafir.")
+            return ""
         else:
-            return self
+            return input
+        
+    def validate_dest_airport(self, input):
 
-    def validate_contact_phone_number(self) -> str:
+        s = self.logic_wrapper()
+        list = s.get_all_destinations()
+        bool = True
+        for i in list:
+            if i.airport == input:
+                bool = False
+            
+        if len(input) >= 50:
+            print("Þessi strengur er lengri en 50 stafir.")
+        elif(bool == True):
+            return input
+        print("þessi flugvöllur er nú þegar í kerfinu veldu ")
+        return ""
+
+    def validate_contact_phone_number(self, phone) -> str:
         """Validate that the contact phone number is only numerical characters."""
-        valid = self.isnumeric()
+        valid = phone.isnumeric()
 
         if valid:
-            return self
+            return phone
         else:
             print(
                 "Þetta virðist ekki rétt. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi."
             )
-            return None
+            return ""
 
 
 class ValidateFMVoyageInfo:

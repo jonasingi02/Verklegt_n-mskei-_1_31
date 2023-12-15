@@ -34,12 +34,17 @@ class destinationUI:
                 #Add destination to system
                 print("\nÞú hefur valið að bæta við nýjum áfangstað.\n")
                 d = destination()
-                d.country = input("Nafn lands: ")
-                d.airport = input("Nafn flugvallar: ")
+
+                s = ValidateDestinationInputs()
+                while d.country == "":
+                    d.country = s.validate_destination_string(input("Nafn lands: "))
+                while d.airport == "":
+                    d.airport = s.validate_dest_airport(input("Nafn flugvallar: "))
                 d.flighttime = input("Flugtími í klukkutímum (dæmi: 3.5): ")
                 d.distance = input("Vegalengd í km (dæmi: 1234.5): ")
                 d.name = input("Nafn tengiliðs: ")
-                d.phone = input("Símanúmer tengiliðs (dæmi: 5812345): ")
+                while d.country == "":
+                    d.phone = s.validate_contact_phone_number(input("Símanúmer tengiliðs (dæmi: 5812345): "))
                 self.logic_wrapper.create_destination(d)
 
                 print("\nÞú hefur bætt við áfangastaðnum:")

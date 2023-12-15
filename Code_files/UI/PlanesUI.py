@@ -38,7 +38,7 @@ class planesUI:
                 print("Þú hefur valið að bæta við flugvél. \n")
                 
                 validate_planes = ValidatePlaneInfo()
-                p.name = validate_planes.get_validated_string("Nafn vélar: ")
+                p.name = validate_planes.get_validated_plane_name("Nafn vélar: ")
                 p.type = validate_planes.get_validated_string("Tegund vélar: ")
                 p.numseats = validate_planes.validate_num_seats()
                 p.manufacturer = validate_planes.get_validated_string("Framleiðandi vélar: ")
