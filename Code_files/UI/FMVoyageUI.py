@@ -101,20 +101,21 @@ class FMVoyageUI:
                 print(f"\nÞú hefur bætt við vinnuferðinni:\n\nFlugvöllur: {v.airport}\nFlugvél: {v.plane}\nDagsetning: {v.date}\nBrottfarartími: {v.time}\n")
 
             elif command == "3":
-                unmanned_voyages = self.logic_wrapper.update_unmanned_voyages()
-                print("Þú hefur valið að uppfæara ómannaðar vinnuferðir. ")
-                print("Hér eru vinnuferðirnar sem eru ómannaðar. ")
+                # This line should call the method to get unmanned voyages, not update them
+                unmanned_voyages = self.logic_wrapper.get_unmanned_voyages() 
+                print("Þú hefur valið að uppfæara ómannaðar vinnuferðir.\n ")
+                print("Hér eru vinnuferðirnar sem eru ómannaðar.\n ")
                 for voyage in unmanned_voyages:
-                    print(f"ID: {voyage.id}, Dagseting: {voyage.date}, Tímasetning: {voyage.time}, Flugvél: {voyage.plane}, Flugvöllur: {voyage.airport}.  ")
+                    print(f"ID: {voyage.id}, Dagsetning: {voyage.date}, Tímasetning: {voyage.time}, Flugvél: {voyage.plane}, Flugvöllur: {voyage.airport}.  ")
 
-                voyage_id = Validator.validate_voyage_id(input("Skráðu inn ID flugverðarinar sem þú vilt uppfæra: "))
+                voyage_id = input("Skráðu inn ID flugverðarinar sem þú vilt uppfæra: ")
                 
                 updates = {}
                 while True:
                     updated_atribute = input("Skáðu þann hlut sem þú vilt breyta við flugferðina (b ef þú vilt hætta): ")
                     if updated_atribute.lower() == "b":
                         break
-                    value = input("Skráðu nýja eiginleikan þú vilt bæta við: ")
+                    value = input("\nSkráðu nýja eiginleikan þú vilt bæta við: ")
                     updates[updated_atribute] = value
 
                 if updates:
@@ -122,6 +123,7 @@ class FMVoyageUI:
                     print("Vinnuferð hefur verið uppfærð. ")
                 else: 
                     print("Engar breytingar voru gerðar á vinnufeðinni. ")
+
             
             elif command == "q":
                 return "q"
