@@ -11,7 +11,7 @@ class FMVoyageUI:
     def menu_output(self):
         print("\nVelkomin/n ferðastjóri")
         print(
-            "Hvað má bjóða þér að gera?\n\n1: Birta allar ómannaðar vinnuferðir\n2: Bæta við vinnuferð\n3: Uppfæra ómannaðar vinnuferðir\nQ: Hætta\nB: Til baka"
+            "Hvað má bjóða þér að gera?\n\n1: Birta allar ómannaðar vinnuferðir\n2: Bæta við vinnuferð\n3:\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
@@ -99,30 +99,6 @@ class FMVoyageUI:
                 
                 self.logic_wrapper.create_fmvoyage(v)
                 print(f"\nÞú hefur bætt við vinnuferðinni:\n\nFlugvöllur: {v.airport}\nFlugvél: {v.plane}\nDagsetning: {v.date}\nBrottfarartími: {v.time}\n")
-
-            elif command == "3":
-                # This line should call the method to get unmanned voyages, not update them
-                unmanned_voyages = self.logic_wrapper.get_unmanned_voyages() 
-                print("Þú hefur valið að uppfæara ómannaðar vinnuferðir.\n ")
-                print("Hér eru vinnuferðirnar sem eru ómannaðar.\n ")
-                for voyage in unmanned_voyages:
-                    print(f"ID: {voyage.id}, Dagsetning: {voyage.date}, Tímasetning: {voyage.time}, Flugvél: {voyage.plane}, Flugvöllur: {voyage.airport}.  ")
-
-                voyage_id = input("Skráðu inn ID flugverðarinar sem þú vilt uppfæra: ")
-                
-                updates = {}
-                while True:
-                    updated_atribute = input("Skáðu þann hlut sem þú vilt breyta við flugferðina (b ef þú vilt hætta): ")
-                    if updated_atribute.lower() == "b":
-                        break
-                    value = input("\nSkráðu nýja eiginleikan þú vilt bæta við: ")
-                    updates[updated_atribute] = value
-
-                if updates:
-                    self.logic_wrapper.update_unmanned_voyages(voyage_id, updates)
-                    print("Vinnuferð hefur verið uppfærð. ")
-                else: 
-                    print("Engar breytingar voru gerðar á vinnufeðinni. ")
 
             
             elif command == "q":
