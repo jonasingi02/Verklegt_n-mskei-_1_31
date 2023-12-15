@@ -6,7 +6,8 @@ class destination_data:
         self.file_name = "data/files/destinations.csv"
     
     def read_all_destinations(self):
-        """ Pares a CSV file and returns a list of destinations as objects
+        """ 
+        Pares a CSV file and returns a list of destinations as objects
 
         Returns:
             List[destination]: Object representing destinations with atriubtes like countries, airport and ect.
@@ -20,7 +21,8 @@ class destination_data:
     
     
     def create_destination(self, destination):
-        """ Appends a new destination as an object to the csv file.
+        """
+        Appends a new destination as an object to the csv file.
 
         Args:
             destination (Destination): The destinations object to be added to the csv file.

@@ -14,14 +14,36 @@ class Logic_wrapper:
 
 
     def create_plane(self, plane):
-        """Takes in a plane object and forwards it to the data layer"""
+        """
+        Takes in a plane object and forwards it to the data layer for creation.
+
+        Args:
+            plane (Plane): An object representing the plane details.
+
+        Returns:
+            Any: The result of the plane creation operation in the data layer.
+        """
         return self.plane_logic.create_plane(plane)
 
     def get_all_planes(self):
+        """
+        Retrieves all plane records from the data layer.
+
+        Returns:
+            List[Plane]: A list of Plane objects representing all planes in the data source.
+        """
         return self.plane_logic.get_all_planes()
     
     def create_destination(self, destination):
-        """Takes in a destination object and forwards it to the data layer"""
+        """
+        Takes in a destination object and forwards it to the data layer for creation.
+
+        Args:
+            destination (Destination): An object representing the destination details.
+
+        Returns:
+            Any: The result of the destination creation operation in the data layer.    
+        """
         return self.destination_logic.create_destination(destination)
     
     def get_all_destinations(self):
