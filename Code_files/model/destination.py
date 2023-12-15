@@ -1,7 +1,7 @@
 from datetime import datetime
 
 class destination:
-    def __init__(self, country = "", airport = "", flighttime = 0, distance = 0, name = "", phone = 0):
+    def __init__(self, country = "", airport = "", flighttime = 0, distance = 0, name = "", phone = ""):
         self.country = country
         self.airport = airport
         self.flighttime = flighttime
