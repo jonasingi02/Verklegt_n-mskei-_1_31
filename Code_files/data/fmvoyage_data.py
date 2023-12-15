@@ -1,7 +1,7 @@
 import csv
 from model.FMVoyage import FMvoyage
 from model.voyagexpilots import voyagexpilots
-from model.voyagexattendant import voyagexattendant as vxa
+from model.voyagexattendant import voyagexattendant
 import os
 
 
@@ -102,7 +102,7 @@ class FmvoyageData:
             reader = csv.DictReader(csvfile3)
             for row in reader:
                 ret_list.append(
-                    vxa(
+                    voyagexattendant(
                         row["id"], row["kt"], row["main_attendant"]
                     )
                 )
