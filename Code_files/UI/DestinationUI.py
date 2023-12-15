@@ -43,7 +43,7 @@ class destinationUI:
                 d.flighttime = input("Flugtími í klukkutímum (dæmi: 3.5): ")
                 d.distance = input("Vegalengd í km (dæmi: 1234.5): ")
                 d.name = input("Nafn tengiliðs: ")
-                while d.country == "":
+                while d.phone == "":
                     d.phone = s.validate_contact_phone_number(input("Símanúmer tengiliðs (dæmi: 5812345): "))
                 self.logic_wrapper.create_destination(d)
 
