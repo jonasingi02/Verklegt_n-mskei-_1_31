@@ -33,24 +33,28 @@ class VoyageUI:
             command = input("\nInnsláttarreitur: ")
             command = command.lower()
             if command == "1":
-                  # Print all voyages.
+                # Print all voyages.
                 all_voyages:list = self.logic_wrapper.get_unmanned_voyages()
                 all_voyages_table = PrettyTable()
                 all_voyages_table.field_names = ["ID", "Dagsetning", "Brottfarartími", "Flugvél", "Flugvöllur"]
 
                 for elem in all_voyages:
+                    # Add each voyage detail to the table.
                     all_voyages_table.add_row([elem.id, elem.date, elem.time, elem.plane, elem.airport])
 
                 all_voyages_table.align = "l"
+                # left align for better readability.
                 print(all_voyages_table)
 
             elif command == "2":
-
+                # Assign crew to a voyage.
                 v = FMvoyage()
                 id = v.id
+
+                # loop until a valid voyage ID is selected.
                 while id == "":
                     result = self.logic_wrapper.get_unmanned_voyages()
-                
+                    # Fech unmanned voyages from the logic wrapper and display voyages table.
                     voyage_table = PrettyTable()
                     voyage_table.field_names = ["ID", "Dagsetning", "Flugvél", "Flugvöllur"]
                     
@@ -63,16 +67,18 @@ class VoyageUI:
                     id = Validator.validate_voyage(input("\nHvaða vinnuferð viltu manna? (Id dæmi: 1)"), result)
                     print(f"Þú hefur valið að uppfæra vinnuferð {id}")
 
+                # Find the voyage by ID to assign crew.
                 v = self.logic_wrapper.find_voyage_by_id(id)
-
+                # Fetch voyage on the same day to cheack the pilots availability
                 voyage_list = self.logic_wrapper.same_date_voyage(v.date)
-
+                # Assign pilots to the voyage.
                 pilotnumber = Validator.validate_number_of_staff_on_voyage("flugmanna")
                 pilot = ""
+                
                 while pilot == "" :
+                    # Display all available pilots. 
                     print("\nAllir tiltækir flugmenn:")
                     pilots_list = self.logic_wrapper.pilots_not_in_voyage(voyage_list)
-                    
                     available_pilots = PrettyTable()
                     available_pilots.field_names = ["Nafn", "Kennitala"]
                     
@@ -81,16 +87,16 @@ class VoyageUI:
                     
                     available_pilots.align = "l"
                     print(available_pilots)
-                
                     pilot = Validator.validate_voyage_staff(input("\nVeldu Yfirflugmann (kt): "), pilots_list)
                 
+                # Create an instace of the main pilot.
                 vxp = voyagexpilots()
                 vxp.id = v.id
                 vxp.kt = pilot
                 vxp.main_pilot = True
                 self.logic_wrapper.create_voyagexpilot(vxp)
 
-
+                # Iterate over pilots to find an available one.
                 for _ in range(pilotnumber - 1):
                     pilot = ""
                     while pilot == "" :
@@ -105,16 +111,15 @@ class VoyageUI:
                         
                         available_pilots.align = "l"
                         print(available_pilots)
-                    
                         pilot = Validator.validate_voyage_staff(input("\nVeldu flugmann (kt): "), pilots_list)
+                        # Prompt the user for a valid input of an additional pilot.
                     
+                    # Create and add the additional pilot to the voyage.
                     vxp = voyagexpilots()
                     vxp.id = v.id
                     vxp.kt = pilot
                     self.logic_wrapper.create_voyagexpilot(vxp)
 
-                
-                
                 flight_attendant_number = Validator.validate_number_of_staff_on_voyage("flugþjóna")
 
                 print("\nAllir tiltækir flugþjónar:\n")
@@ -130,7 +135,9 @@ class VoyageUI:
                 print(available_attendants)
                 
                 flight_attendant = Validator.validate_voyage_staff(input("\nVeldu Yfirflugþjón (kt): "), flight_attendant_list)
-            
+                #  Prompt for and validate the selection of a main flight attendant
+
+                # Create and add the main flight attendant to the voyage
                 vxf = voyagexattendant()
                 vxf.id = v.id
                 vxf.kt = flight_attendant
@@ -159,7 +166,11 @@ class VoyageUI:
 
             elif command == "q":
                 return "q"
+                # Exit the VoyageUI
+            
             elif command == "b":
                 return "b"
+                # Return to previous menu.
             else:
                 print("Virkaði ekki, reyndu aftur.")
+                

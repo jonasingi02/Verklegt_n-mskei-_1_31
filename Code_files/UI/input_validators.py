@@ -219,7 +219,6 @@ class ValidatePlaneInfo:
                 print("Þetta virðist hafa farið úrskeiðis. Reyndu aftur. Vinsamlegast sláðu bara inn tölustafi.")
                 
 
-
 # Validate Voyage information
 class ValidateVoyageInput:
     def __init__(self) -> None:

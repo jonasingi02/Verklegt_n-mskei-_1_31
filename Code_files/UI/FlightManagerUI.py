@@ -26,27 +26,41 @@ class FlightManagerUI:
         """
         while True:
             self.menu_output()
+            # Getting users input and converting it to lowercase for consistency.
             command = input("\nInnsláttarreitur: ")
             command = command.lower()
+
             if command == "1":
-                
+            # Creating an instance of FMvoyage and displaying its menu.
                 uiv = FMVoyageUI(self.logic_wrapper)
                 menu = uiv.input_prompt()
                 if menu == "q":
-                    return "q"
+                # Exit if "q" is selected
+                    return "q" 
+                
             elif command == "2":
+                # Hndle the destinations management operations.
                 uid = destinationUI(self.logic_wrapper)
                 menu = uid.input_prompt()
                 if menu == "q":
-                    return "q"
+                # Exit if "q" is selected.
+                    return "q" 
+                
             elif command == "3":
+                # Handle the airplane management operations.
                 uip = planesUI(self.logic_wrapper)
                 menu = uip.input_prompt()
                 if menu == "q":
-                    return "q"
+                # Exit if "q" is selected.
+                    return "q" 
+                
             elif command == "q":
-                return "q"
+                # Quit the application.
+                return "q" 
+            
             elif command == "b":
+                # Return to the previous menu.
                 return "b"
+            
             else:
                 print("Virkaði ekki, reyndu aftur.")

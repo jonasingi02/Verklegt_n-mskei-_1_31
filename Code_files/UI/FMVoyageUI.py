@@ -6,6 +6,7 @@ from prettytable import PrettyTable
 
 class FMVoyageUI:
     def __init__(self, logic_connection):
+        # Initialize the connection to the logic layer.
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
@@ -30,6 +31,7 @@ class FMVoyageUI:
             self.menu_output()
             command = input("\nInnsláttarreitur: ")
             command = command.lower()
+            
             if command == "1":
                 # Print all unmanned voyages.
                 all_voyages:list = self.logic_wrapper.get_unmanned_voyages()
@@ -38,7 +40,6 @@ class FMVoyageUI:
 
                 for elem in all_voyages:
                     all_voyages_table.add_row([elem.id, elem.date, elem.time, elem.plane, elem.airport])
-
                 all_voyages_table.align = "l"
                 print(all_voyages_table)
 
@@ -50,11 +51,14 @@ class FMVoyageUI:
                 result = self.logic_wrapper.read_all_fmvoyages()
 
                 for elem in result:
+                # Iterating over each voyage in the list of all voyages and add each detail to the table.
                     if int(elem.id) + 1 > int(v.id):
                         v.id = int(elem.id) + 1
                     v.id = str(v.id)
 
                 while v.airport == "" :
+                    # Display available destinations and prompt user to select a destination.
+                    # Loop continues unitl a valid destination is chosen.
                     print("\nAllir áfangastaðir í kerfinu: ")
                     result = self.logic_wrapper.get_all_destinations()
                     
@@ -70,6 +74,8 @@ class FMVoyageUI:
                     v.airport = Validator.validate_voyage_dest(input("Hvaða flugvöllur: "))
 
                 while v.plane == "" :
+                    # Display available planes and prompt for a plane selection.
+                    # Loop continues until a valid plane is chosen.
                     plane_table = PrettyTable()
                     plane_table.field_names = ["Nafn", "Tegund", "Fjöldi sæta", "Framleiðandi"]
                     
@@ -143,10 +149,13 @@ class FMVoyageUI:
                 self.logic_wrapper.update_flight_info(id, column_to_update, new_info)
             
             elif command == "q":
+                # Quit FMvoyage
                 return "q"
             
             elif command == "b":
+                # Return to previous menu.
                 return "b"
             
             else:
+                # Handle invalid inputþ.
                 print("Virkaði ekki, reyndu aftur.")

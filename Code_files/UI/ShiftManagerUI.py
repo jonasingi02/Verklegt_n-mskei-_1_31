@@ -32,18 +32,21 @@ class ShiftManagerUI:
             command = command.lower()
             
             if command == "1":
+                # Navigate to the Employee management interface.
                 uie = EmployeeUI(self.logic_wrapper)
                 menu = uie.input_prompt()
                 if menu == "q":
                     return "q"
             
             elif command == "2":
+                # Navigate to the Voyage management interface.
                 uiv = VoyageUI(self.logic_wrapper)
                 menu = uiv.input_prompt()
                 if menu == "q":
                     return "q"
 
             elif command == "3":
+                # Display shifts for a specific date.
                 print("\nÞú hefur valið að sjá alla starfsmenn sem eru að vinna á ákveðinni dagsetningu.\n")
                 date_input = input("Sláðu inn dagsetningu (DD-MM-ÁÁ): ")
                 dates_shifts = self.logic_wrapper.get_staff_by_date(date_input)
@@ -55,6 +58,7 @@ class ShiftManagerUI:
                 if dates_shifts != None:    
                     print(f"Allir starfsmenn á vakt þann {date_input}")
                     
+                    # Add each staff's detail to the table.
                     for elem in dates_shifts:
                         date_dest.add_row([elem[0],elem[1],elem[2],elem[3], elem[4],elem[5], elem[6]])
                     
@@ -62,16 +66,20 @@ class ShiftManagerUI:
                         for attendant in attendants_shift:
                             date_dest.add_row([elem[0],elem[1],elem[2],elem[3], elem[4],elem[5], elem[6]])
 
+                    # align content to the left for better readability.
                     date_dest.align = "l"
                     print(date_dest)
                 else:
                     print(f"\nEngar vinnuferðir eru skráðar þann {date_input}")
                                       
             elif command == "q":
+                # Quit the ShiftManagerUI
                 return "q"
             
             elif command == "b":
+                # Go back to the previous menu.
                 return "b"
             
             else:
+                # Handle invalid input.
                 print("Virkaði ekki, reyndu aftur.")
