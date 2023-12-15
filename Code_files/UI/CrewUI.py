@@ -44,31 +44,38 @@ class CrewUI:
                     today = self.logic_wrapper.get_staff_voyages_today(user_kt, date_today)
                     shift_occupation = self.logic_wrapper.get_staff_by_date(date_today)
                     shift_today = PrettyTable()
-                    shift_today.field_names = ["ID", "Dagsetning", "Brottfarartími", "Vinnuferð til", "Starfsheiti"]
+                    shift_today.field_names = ["ID", "Brottfarartími", "Vinnuferð til", "Starfsheiti"]
                     
                     for list in shift_occupation:
                         if today != None:
                             if user_kt in list:
                                 for elem in today:
-                                    shift_today.add_row([elem.id, list.date, elem.time, elem.dest, list[3]])
+                                    shift_today.add_row([elem.id, elem.time, elem.dest, list[3]])
                                 shift_today.align = "l"
+                                print("\nÞínar vaktir í dag.\n")
                                 print(shift_today)
                         else:
                             print("Engar vaktir í dag.")
 
                 elif user_input == "2":
-                    #Prints the user´s voyages (shifts) for the next 7 days.
+                    #Prints the user's voyages (shifts) for the next 7 days.
                     week = self.logic_wrapper.get_staff_voyages_week(user_kt, date_today)
                     shift_week = PrettyTable()
+                    shift_occupation = self.logic_wrapper.get_staff_by_date(date_today)
                     shift_week.field_names = ["ID", "Dagsetning", "Brottfarartími", "Vinnuferð til", "Starfsheiti"]
                     
-                    if week != None:
-                        for elem in week:
-                            shift_week.add_row([elem.id, list.date, elem.time, elem.dest, list[3]])
-                        shift_week.align = "l"
-                        print(shift_week)
-                    else:
-                        print("Engar vaktir á næstu 7 dögum.")
+                    for list in shift_occupation:
+                        if week != None:
+                            if user_kt in list:
+                                for elem in week:
+                                    date_str = str(elem.date)
+                                    date_format_str = date_str[8:10] + "-" + date_str[5:7] + "-" + date_str[2:4]
+                                    shift_week.add_row([elem.id, date_format_str, elem.time, elem.dest, list[3]])
+                                shift_week.align = "l"
+                                print("\nÞínar vaktir á næstu 7 dögum.\n")
+                                print(shift_week)
+                        else:
+                            print("Engar vaktir á næstu 7 dögum.")
             
             if command == "b":
                 #Back

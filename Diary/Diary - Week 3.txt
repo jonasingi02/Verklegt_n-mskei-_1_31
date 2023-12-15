@@ -64,5 +64,8 @@ Klára hönnunarskýrslu.
 Debugga kóða.
 Keyra milljón sinnum í gegnum öll functions.
 
+Samantekt:
+Klárðuðum bless.
+
 
 
