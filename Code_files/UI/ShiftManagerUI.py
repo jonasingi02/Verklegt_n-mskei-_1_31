@@ -10,7 +10,7 @@ class ShiftManagerUI:
 
     def menu_output(self):
         AsciiArt.airplane_2_ascii()
-        print("Velkomin/n Vaktstjóri")
+        print("Velkomin/n vaktstjóri")
         print(
             "Hvað má bjóða þér að gera?\n\n1: Uppfæra starfsmenn\n2: Uppfæra vinnuferðir\n3: Skoða vaktir \nQ: Hætta\nB: Til baka"
         )
@@ -42,7 +42,7 @@ class ShiftManagerUI:
                 date_dest.field_names = ["ID", "Nafn starfsmanns", "Kennitala", "Dagsetning", "Tími", "Vinnuferð til"]
                
                 if dates_shifts != None:    
-                    print(f"Allar starfsmenn á vakt þann {date_input}")
+                    print(f"Allir starfsmenn á vakt þann {date_input}")
                     
                     for elem in dates_shifts:
                         date_dest.add_row([elem[0],elem[1],elem[2],elem[4],elem[5], elem[6]])

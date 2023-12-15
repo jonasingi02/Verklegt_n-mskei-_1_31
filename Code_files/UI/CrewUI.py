@@ -34,13 +34,13 @@ class CrewUI:
 
             if command == "2":
                 #Input prompt for user ID(SSN) and date.
-                print("Hvort vilt þú sjá?\n1. Þínar vinnuferðir í dag\n2. Þínar vinnuferðir á næstkomandi viku?\n")
+                print("\nHvort vilt þú sjá?\n1. Þínar vinnuferðir í dag\n2. Þínar vinnuferðir á næstkomandi viku\n")
                 user_input = input("Innsláttarreitur: ")
                 user_kt = input("\nSláðu inn kennitöluna þína: ")
                 date_today = input("Sláðu inn dagsetninguna í dag (DD-MM-ÁÁ): ")
 
                 if user_input == "1":
-                    #Prints the user´s voyages (shitfts) according to date input.
+                    #Prints the user´s voyages (shifts) according to date input.
                     today = self.logic_wrapper.get_staff_voyages_today(user_kt, date_today)
                     shift_today = PrettyTable()
                     shift_today.field_names = ["ID", "Dagsetning", "Brottfarartími", "Vinnuferð til"]

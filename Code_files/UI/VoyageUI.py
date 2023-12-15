@@ -11,7 +11,7 @@ class VoyageUI:
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
-        print("Velkomin/n ferðastjóri")
+        print("Velkomin/n vaktstjóri")
         print(
             "Hvað má bjóða þér að gera?\n\n1: Birta allar vinnuferðir\n2: Bæta við vinnuferð\n3: Uppfæra vinnuferðir\nQ: Hætta\nB: Til baka"
         )
