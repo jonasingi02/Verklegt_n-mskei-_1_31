@@ -269,6 +269,9 @@ class ValidateFMVoyageInfo:
     
     def validate_voyage(self, voyage, list):
         """Validate chosen voyage ID"""
+        if voyage == "b" or voyage == "B":
+            return "b"
+        
         for elem in list:
             if elem.id == voyage:
                 return elem.id
@@ -277,6 +280,10 @@ class ValidateFMVoyageInfo:
 
     def validate_voyage_staff(self, pilot, list):
         "Validate the staff on the voyage"
+
+        if pilot == "b" or pilot == "B":
+            return "b"
+            
         for i in list:
             if pilot == i.kt:
                 return pilot
@@ -284,8 +291,16 @@ class ValidateFMVoyageInfo:
     
     def validate_number_of_staff_on_voyage(self, occupation):
         """Validate the minimum staff on shift"""
-        user_input = int(input(f"Veldu magn {occupation}: "))
         valid = True
+
+        if user_input == "b" or user_input == "B":
+            return "b"
+        
+        user_input = int(input(f"Veldu magn {occupation} (til baka: b): "))
+        
+        if type(user_input) != int :
+            print("Það þarf að vera tala")
+            valid = False
         
         while valid:
             if occupation == "flugþjóna":

@@ -40,7 +40,12 @@ class VoyageUI:
                     voyage_table.align = "l"
                     print(voyage_table)
                     
-                    id = Validator.validate_voyage(input("Hvaða vinnuferð viltu manna? (Id dæmi: 1)"), result)
+                    id = Validator.validate_voyage(input("Hvaða vinnuferð viltu manna? (Id dæmi: 1)(b: til baka)"), result)
+
+                    if id == "b" or id == "B":
+                        return
+                    
+
                     print(f"Þú hefur valið að uppfæra vinnuferð {id}")
 
                 v = self.logic_wrapper.find_voyage_by_id(id)
@@ -63,8 +68,10 @@ class VoyageUI:
                         available_pilots.align = "l"
                         print(available_pilots)
                     
-                        pilot = Validator.validate_voyage_staff(input("Veldu flugmann (kt):"), pilots_list)
-                    
+                        pilot = Validator.validate_voyage_staff(input("Veldu flugmann (kt)(b: til baka):"), pilots_list)
+
+                        if pilot == "b" or pilot == "B":
+                            return
                     vxp = voyagexpilots()
                     vxp.id = v.id
                     vxp.kt = pilot
@@ -84,13 +91,15 @@ class VoyageUI:
                     available_attendants.align = "l"
                     print(available_attendants)
                     
-                    flight_attendant = Validator.validate_voyage_staff(input("Veldu flugþjón (kt):"), flight_attendant_list)
+                    flight_attendant = Validator.validate_voyage_staff(input("Veldu flugþjón (kt)(b: til baka):"), flight_attendant_list)
+
+                    if flight_attendant == "b" or flight_attendant == "B":
+                        return
                 
                 vxf = voyagexattendant()
                 vxf.id = v.id
                 vxf.kt = flight_attendant
-                #TODO: Bæta við hérna
-                #self.logic_wrapper.crea
+                self.logic_wrapper.create_voyagexattendant(vxf)
                 
             elif command == "3":
                 pass
