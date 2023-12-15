@@ -54,8 +54,8 @@ class FmvoyageData:
 
     def read_all_voyagexpilots(self):
         ret_list = []
-        with open(self.file_name2, newline="", encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
+        with open(self.file_name2, newline="", encoding="utf-8") as csvfile2:
+            reader = csv.DictReader(csvfile2)
             for row in reader:
                 ret_list.append(
                     voyagexpilots(
@@ -66,8 +66,8 @@ class FmvoyageData:
     
     def read_all_voyagexattendants(self):
         ret_list = []
-        with open(self.file_name3, newline="", encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
+        with open(self.file_name3, newline="", encoding="utf-8") as csvfile3:
+            reader = csv.DictReader(csvfile3)
             for row in reader:
                 ret_list.append(
                     vxa(
@@ -88,6 +88,7 @@ class FmvoyageData:
                     "main_attendant": vxa.main_attendant
                 }
             )
+
 
     def update_flight_info(self, flight_id_to_update, column_to_update, new_info):
 

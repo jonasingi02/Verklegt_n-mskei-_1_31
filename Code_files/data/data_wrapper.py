@@ -62,3 +62,7 @@ class data_wrapper:
     def read_all_fmvoyages(self):
         return self.FmvoyageData.read_all_fmvoyages()
     
+    def update_flight_info(self, id, column, data):
+        return self.FmvoyageData.update_flight_info(id, column, data)
+
+    
