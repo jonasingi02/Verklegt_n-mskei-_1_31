@@ -1,1 +1,5 @@
-id,kt
+id,kt,main_attendant
+2,1234567890,True
+2,,False
+3,,True
+3,,False

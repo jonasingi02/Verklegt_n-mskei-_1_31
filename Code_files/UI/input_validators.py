@@ -344,12 +344,9 @@ class ValidateFMVoyageInfo:
     
     def validate_number_of_staff_on_voyage(self, occupation) -> int:
         """Validate the minimum staff on shift"""
-        valid = True
-
-        if user_input == "b" or user_input == "B":
-            return "b"
-        
         user_input = int(input(f"Veldu magn {occupation} (til baka: b): "))
+        valid = True
+        
         
         if type(user_input) != int :
             print("Það þarf að vera tala")

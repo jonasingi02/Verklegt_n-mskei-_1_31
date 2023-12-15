@@ -114,6 +114,7 @@ class EmployeeLogic:
         return week_voyages
 
     def get_all_employees_working_on_date(self, date):
+        """Check the csv files to see who is working on asked for date."""
         employees = self.data_wrapper.read_all_employees()
         fm_voyages = self.data_wrapper.read_all_fmvoyages()
         vxa = self.data_wrapper.get_all_voyagexattendants()
@@ -123,13 +124,33 @@ class EmployeeLogic:
 
         for voyage in fm_voyages:
             if voyage.date == date:
+                
                 for pilot in vxp:
+                    # Check pilots
                     if pilot.id == voyage.id:
+        
                         for employee in employees:
                             if pilot.kt == employee.kt:
-                                voyage_date_staff.append([pilot.id, employee.name, employee.kt, employee.occupation, voyage.date, voyage.time, voyage.airport])
+                                if pilot.main_pilot == "True":
+                                    main = "yfirflugmaður"
+                                    voyage_date_staff.append([pilot.id, employee.name, employee.kt, main, voyage.date, voyage.time, voyage.airport, attendant.main_attendant])
+                                else:
+                                    voyage_date_staff.append([pilot.id, employee.name, employee.kt, employee.occupation, voyage.date, voyage.time, voyage.airport])
+                
+                for attendant in vxa:
+                    # Check attendants
+                    if attendant.id == voyage.id:
+                        
+                        for employee in employees:
+                            if attendant.kt == employee.kt:
+                                if attendant.main_attendant == "True":
+                                    main = "Yfirflugþjónn"
+                                    voyage_date_staff.append([attendant.id, employee.name, employee.kt, main, voyage.date, voyage.time, voyage.airport, attendant.main_attendant])
+                                else:
+                                    voyage_date_staff.append([attendant.id, employee.name, employee.kt, employee.occupation, voyage.date, voyage.time, voyage.airport])
 
-                            return voyage_date_staff
-                    else: return None
-            else: return None
+        if voyage_date_staff != []:
+            return voyage_date_staff
+        else:
+            return None
         

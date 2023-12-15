@@ -41,13 +41,14 @@ class FmvoyageData:
     
     def create_voyagexpilot(self, vxp):
         with open(self.file_name2, "a", newline="", encoding="utf-8") as csvfile:
-            fieldnames = ["id", "kt"]
+            fieldnames = ["id", "kt", "main_pilot"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
             writer.writerow(
                 {
                     "id": vxp.id,
-                    "kt": vxp.kt
+                    "kt": vxp.kt,
+                    "main_pilot": vxp.main_pilot
                 }
             )
 
@@ -58,7 +59,7 @@ class FmvoyageData:
             for row in reader:
                 ret_list.append(
                     voyagexpilots(
-                        row["id"], row["kt"]
+                        row["id"], row["kt"], row["main_pilot"]
                     )
                 )
         return ret_list
@@ -70,20 +71,21 @@ class FmvoyageData:
             for row in reader:
                 ret_list.append(
                     vxa(
-                        row["id"], row["kt"]
+                        row["id"], row["kt"], row["main_attendant"]
                     )
                 )
         return ret_list
     
     def create_voyagexattendant(self, vxa):
         with open(self.file_name3, "a", newline="", encoding="utf-8") as csvfile:
-            fieldnames = ["id", "kt"]
+            fieldnames = ["id", "kt", "main_attendant"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
             writer.writerow(
                 {
                     "id": vxa.id,
-                    "kt": vxa.kt
+                    "kt": vxa.kt,
+                    "main_attendant": vxa.main_attendant
                 }
             )
 
