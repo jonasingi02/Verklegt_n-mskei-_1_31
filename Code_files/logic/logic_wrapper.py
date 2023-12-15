@@ -107,4 +107,7 @@ class Logic_wrapper:
     
     def update_unmanned_voyages(self, voyage_id, updated_atributes):
         return self.fmvoyage_logic.update_unmanned_voyages(voyage_id, updated_atributes)
+    
+    def get_all_attendants_on_date(self, date):
+        return self.employee_logic.get_all_attendants_on_date(date)
 

@@ -34,10 +34,11 @@ class ShiftManagerUI:
                     return "q"
 
             elif command == "3":
-                print("\nÞú hefur valið að sjá allar mannaðar vinnuferðir á dagsetningu.\n")
+                print("\nÞú hefur valið að sjá alla starfsmenn sem eru að vinna á ákveðinni dagsetningu.\n")
                 date_input = input("Sláðu inn dagsetningu (DD-MM-ÁÁ): ")
                 dates_shifts = self.logic_wrapper.get_staff_by_date(date_input)
-                
+                attendants_shift = self.logic_wrapper.get_all_attendants_on_date(date_input)
+
                 date_dest = PrettyTable()
                 date_dest.field_names = ["ID", "Nafn starfsmanns", "Kennitala", "Starfsheiti", "Dagsetning", "Tími", "Vinnuferð til"]
                
@@ -47,6 +48,10 @@ class ShiftManagerUI:
                     for elem in dates_shifts:
                         date_dest.add_row([elem[0],elem[1],elem[2],elem[3], elem[4],elem[5], elem[6]])
                     
+                    if attendants_shift != None:
+                        for attendant in attendants_shift:
+                            date_dest.add_row([elem[0],elem[1],elem[2],elem[3], elem[4],elem[5], elem[6]])
+
                     date_dest.align = "l"
                     print(date_dest)
                 else:

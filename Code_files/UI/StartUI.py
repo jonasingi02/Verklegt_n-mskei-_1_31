@@ -13,7 +13,7 @@ class StartUI:
         print(f"{'Where dividing by zero makes sense!':^55}\n")
 
         print(
-            "\nHvað má bjóða þér að sjá?\n\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\n4. Helstu styrktaraðilars\nQ: Hætta"
+            "\nHvað má bjóða þér að sjá?\n\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\n4: Styrktaraðili\nQ: Hætta"
         )
 
     def input_prompt(self):

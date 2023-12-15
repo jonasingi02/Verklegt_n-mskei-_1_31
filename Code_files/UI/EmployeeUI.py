@@ -52,7 +52,7 @@ class EmployeeUI:
                 validating_input = ValidatingStaffInput()
                 
                 print("\nÞú hefur valið að uppfæra upplýsingar um starfsmann.\n\nSláðu inn kennitölu starfsmanns til að finna þann sem þú ætlar að breyta upplýsingum um.")
-                kt = validating_input.get_validated_kennitala()
+                kt = (input("Sláðu inn kennitölu: "))
                 print("Hvað má bjóða þér að uppfæra hjá starfsmanni?\n")
                 print("1. Símanúmer \n2. Heimilisfang \n3. Póstnúmer \n4. Starfsheiti")
                 user_input = int(input("\nInnsláttarreitur: "))

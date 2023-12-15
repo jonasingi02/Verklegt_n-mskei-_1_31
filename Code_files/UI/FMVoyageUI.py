@@ -129,7 +129,7 @@ class FMVoyageUI:
                     column_to_update = 4
                     new_info = validating_input.validate_voyage_dest()
 
-                print(f"\nÞú hefur uppfært eftirfarandi: {info}, við flugið {id}\n.")
+                print(f"\nÞú hefur uppfært eftirfarandi: {info}, við flugið {id}.\n")
                 self.logic_wrapper.update_flight_info(id, column_to_update, new_info)
             
             elif command == "q":

@@ -1,6 +1,7 @@
 id,kt,main_attendant
 2,1234567890,True
-2,,False
-3,,True
-3,,False
+2,2404002097,False
+3,1234567890,True
+3,2404002097,False
 15,2404002097,True
+17,1234512345,True

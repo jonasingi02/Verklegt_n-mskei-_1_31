@@ -24,7 +24,7 @@ class VoyageUI:
             command = command.lower()
             if command == "1":
                   # Print all voyages.
-                all_voyages:list = self.logic_wrapper.read_all_fmvoyages()
+                all_voyages:list = self.logic_wrapper.get_unmanned_voyages()
                 all_voyages_table = PrettyTable()
                 all_voyages_table.field_names = ["ID", "Dagsetning", "Brottfarartími", "Flugvél", "Flugvöllur"]
 
