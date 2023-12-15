@@ -1,5 +1,5 @@
 id,date,time,plane,airport
-1,12-02-02,07:00,Krummi,Mittarfik Nuuk
+1,02-02-23,07:00,Krummi,Mittarfik Nuuk
 2,12-02-02,12:40,Norðurljós,Mittarfik Nuuk
 3,12-02-02,12:40,Krummi,Reykjavíkurflugvöllur
 4,12-02-02,09:10,Krummi,Mittarfik Nuuk
@@ -14,3 +14,4 @@ id,date,time,plane,airport
 13,09-09-23,12:50,Krummi,Mittarfik Nuuk
 14,15-12-23,09:30,Karate Chop,Mariehamn
 15,14-02-02,07:00,Karate Chop,Jotoro
+16,15-12-23,12:40,Flosi,Jotoro

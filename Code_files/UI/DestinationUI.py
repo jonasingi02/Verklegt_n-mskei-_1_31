@@ -11,7 +11,7 @@ class destinationUI:
     def menu_output(self):
         print("Velkomin/n ferðastjóri")
         print(
-            "Hvað má bjóða þér að gera?\n\n1: Birta alla áfangastaði\n2: Bæta við áfangastað\n3: Uppfæra upplýsingar um áfangastað\nQ: Hætta\nB: Til baka"
+            "Hvað má bjóða þér að gera?\n\n1: Birta alla áfangastaði\n2: Bæta við áfangastað\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
@@ -55,8 +55,6 @@ class destinationUI:
                 dest_table.align = "l"
                 print(dest_table)
 
-            elif command == "3":
-                pass
             elif command == "q":
                 #Quit
                 return "q"

@@ -11,7 +11,7 @@ class FlightManagerUI:
     def menu_output(self):
         AsciiArt.airport_1_ascii()
         print("Velkomin/n ferðastjóri")
-        print("Hvað má bjóða þér að gera?\n\n1: Uppfæra vinnuferðir\n2: Uppfæra áfangastaðalista\n3: Uppfæra flugvélaflota\nQ: Hætta\nB: Til baka")
+        print("Hvað má bjóða þér að vinna í?\n\n1: Vinnuferðum\n2: Áfangastaðalista\n3: Flugvélaflota\nQ: Hætta\nB: Til baka")
 
     def input_prompt(self):
         while True:

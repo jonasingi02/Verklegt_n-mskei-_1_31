@@ -12,7 +12,7 @@ class ShiftManagerUI:
         AsciiArt.airplane_2_ascii()
         print("Velkomin/n vaktstjóri")
         print(
-            "Hvað má bjóða þér að gera?\n\n1: Uppfæra starfsmenn\n2: Uppfæra vinnuferðir\n3: Skoða vaktir \nQ: Hætta\nB: Til baka"
+            "Hvað má bjóða þér að vinna í?\n\n1: Starfsmenn\n2: Vinnuferðir\n3: Skoða vaktir á ákveðinni dagsetningu\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
@@ -34,7 +34,7 @@ class ShiftManagerUI:
                     return "q"
 
             elif command == "3":
-                print("\nÞú hefur valið að sjá allar vinnuferðir á dagsetningu.\n")
+                print("\nÞú hefur valið að sjá allar mannaðar vinnuferðir á dagsetningu.\n")
                 date_input = input("Sláðu inn dagsetningu (DD-MM-ÁÁ): ")
                 dates_shifts = self.logic_wrapper.get_staff_by_date(date_input)
                 
