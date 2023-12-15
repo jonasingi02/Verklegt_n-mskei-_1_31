@@ -61,3 +61,4 @@ class data_wrapper:
 
     def read_all_fmvoyages(self):
         return self.FmvoyageData.read_all_fmvoyages()
+    

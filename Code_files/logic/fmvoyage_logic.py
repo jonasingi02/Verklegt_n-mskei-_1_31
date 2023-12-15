@@ -107,7 +107,7 @@ class FmvoyageLogic:
         return voyages
     
     def update_unmanned_voyages(self, voyage_id, updated_atributes): 
-        unmanned_voyages = self.data_wrapper.get_unmanned_voyages()
+        unmanned_voyages = self.get_unmanned_voyages()
         for voyage in unmanned_voyages: 
             if voyage.id == voyage_id: 
                 for key, value in updated_atributes.items():
