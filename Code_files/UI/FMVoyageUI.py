@@ -22,7 +22,7 @@ class FMVoyageUI:
             command = command.lower()
             if command == "1":
                 # Print all unmanned voyages.
-                all_voyages:list = self.logic_wrapper.read_all_fmvoyages()
+                all_voyages:list = self.logic_wrapper.get_unmanned_voyages()
                 all_voyages_table = PrettyTable()
                 all_voyages_table.field_names = ["ID", "Dagsetning", "Brottfarartími", "Flugvél", "Flugvöllur"]
 
@@ -73,7 +73,7 @@ class FMVoyageUI:
                     print(plane_table)
                     v.plane = Validator.validate_voyage_plane(input("Hvaða flugvél vilt þú nota (nafn): "))
 
-                v.date = input("\nDagsetning(01-01-01): ")
+                v.date = input("\nDagsetning (DD-MM-ÁÁ): ")
                 time = input("\nBrottfarartími(00:00): ")
                 validation = Validator.validate_time_of_takeoff(v.date ,time)
                 
@@ -94,15 +94,34 @@ class FMVoyageUI:
                         print(taken_times_table)
                         print("Þessi brottfarartími er ekki laus. Veldu annan.")
                         
-                        time = input("Brottfarartími(00:00): ")
+                        time = input("Brottfarartími (00:00): ")
                         validation = Validator.validate_time_of_takeoff(v.date ,time)
                 
                 self.logic_wrapper.create_fmvoyage(v)
                 print(f"\nÞú hefur bætt við vinnuferðinni:\n\nFlugvöllur: {v.airport}\nFlugvél: {v.plane}\nDagsetning: {v.date}\nBrottfarartími: {v.time}\n")
 
             elif command == "3":
-                #TODO: Bæta við.
-                pass
+                unmanned_voyages = self.logic_wrapper.update_unmanned_voyages()
+                print("Þú hefur valið að uppfæara ómannaðar vinnuferðir. ")
+                print("Hér eru vinnuferðirnar sem eru ómannaðar. ")
+                for voyage in unmanned_voyages:
+                    print(f"ID: {voyage.id}, Dagseting: {voyage.date}, Tímasetning: {voyage.time}, Flugvél: {voyage.plane}, Flugvöllur: {voyage.airport}.  ")
+
+                voyage_id = Validator.validate_voyage_id(input("Skráðu inn ID flugverðarinar sem þú vilt uppfæra: "))
+                
+                updates = {}
+                while True:
+                    updated_atribute = input("Skáðu þann hlut sem þú vilt breyta við flugferðina (b ef þú vilt hætta): ")
+                    if updated_atribute.lower() == "b":
+                        break
+                    value = input("Skráðu nýja eiginleikan þú vilt bæta við: ")
+                    updates[updated_atribute] = value
+
+                if updates:
+                    self.logic_wrapper.update_unmanned_voyages(voyage_id, updates)
+                    print("Vinnuferð hefur verið uppfærð. ")
+                else: 
+                    print("Engar breytingar voru gerðar á vinnufeðinni. ")
             
             elif command == "q":
                 return "q"

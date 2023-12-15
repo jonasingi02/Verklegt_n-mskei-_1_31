@@ -10,10 +10,10 @@ class StartUI:
 
     def menu_output(self):
         AsciiArt.nan_logo()
-        print(f"{'Where dividing by zero makes sense!':^50}\n")
+        print(f"{'Where dividing by zero makes sense!':^55}\n")
 
         print(
-            "\nHvað má bjóða þér að sjá?\n\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\nQ: Hætta"
+            "\nHvað má bjóða þér að sjá?\n\n1: Flugáhöfn\n2: Vaktstjóri\n3: Ferðastjóri\n4. Helstu styrktaraðilars\nQ: Hætta"
         )
 
     def input_prompt(self):
@@ -36,6 +36,9 @@ class StartUI:
                 menu = uie.input_prompt()
                 if menu == "q":
                     return "q"
+            elif command == "4":
+                print()
+                AsciiArt.pepsi_max()
             elif command == "q":
                 AsciiArt.airplane_3_ascii()
                 print(f"Njóttu dagsins!\n")

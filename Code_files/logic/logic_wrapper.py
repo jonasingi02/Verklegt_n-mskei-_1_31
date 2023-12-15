@@ -32,6 +32,9 @@ class Logic_wrapper:
     
     def update_employee(self,kt_employee_to_update, column_to_update, new_info):
         return self.employee_logic.update_employee(kt_employee_to_update, column_to_update, new_info)
+    
+    def update_flight_info(self, flight_id_to_update, column_to_update, new_info): 
+        return self.fmvoyage_logic.update_flight_info(flight_id_to_update, column_to_update, new_info)
 
     def read_all_employees(self):
         return self.employee_logic.read_all_employees()
@@ -63,7 +66,6 @@ class Logic_wrapper:
     def get_all_voyagexpilots(self):
         return self.fmvoyage_logic.get_all_voyagexpilots()
 
-    
     def find_voyage_by_id(self, id):
         return self.fmvoyage_logic.find_voyage_by_id(id)
     
@@ -90,3 +92,19 @@ class Logic_wrapper:
     
     def change_date_to_datetime(self, date):
         return self.employee_logic.change_date_to_datetime(date)
+    
+    def get_staff_voyages_today(self, kt, date):
+        return self.employee_logic.get_staff_voyages_today(kt, date)
+        
+    def get_staff_voyages_week(self, kt, date):
+        return self.employee_logic.get_staff_voyages_week(kt, date)
+    
+    def read_all_fm_voyages(self):
+        return self.fmvoyage_logic.read_all_fmvoyages()
+    
+    def get_staff_by_date(self, date):
+        return self.employee_logic.get_all_employees_working_on_date(date)
+    
+    def update_unmanned_voyages(self, voyage_id, updated_atributes):
+        return self.fmvoyage_logic.update_unmanned_voyages(voyage_id, updated_atributes)
+
