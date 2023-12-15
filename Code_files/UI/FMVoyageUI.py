@@ -11,7 +11,7 @@ class FMVoyageUI:
     def menu_output(self):
         print("\nVelkomin/n ferðastjóri")
         print(
-            "Hvað má bjóða þér að gera?\n\n1: Birta allar ómannaðar vinnuferðir\n2: Bæta við vinnuferð\n3:\nQ: Hætta\nB: Til baka"
+            "Hvað má bjóða þér að gera?\n\n1: Birta allar ómannaðar vinnuferðir\n2: Bæta við vinnuferð\n3: Uppfæra upplýsingar vinnuferðar\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
@@ -100,6 +100,37 @@ class FMVoyageUI:
                 self.logic_wrapper.create_fmvoyage(v)
                 print(f"\nÞú hefur bætt við vinnuferðinni:\n\nFlugvöllur: {v.airport}\nFlugvél: {v.plane}\nDagsetning: {v.date}\nBrottfarartími: {v.time}\n")
 
+            elif command == "3":
+                # Update info for a flight in the system.
+                validating_input = ValidateFMVoyageInfo(self.logic_wrapper)
+                voyage_list = self.logic_wrapper.read_all_fmvoyages()
+                
+                print("\nÞú hefur valið að uppfæra upplýsingar um flug.")
+                id = id = validating_input.validate_voyage_id(voyage_list)
+
+                print("Hvað má bjóða þér að uppfæra við flugið?\n\n")
+                print("1. Dagsetning \n2. Tímasetning \n3. Flugvél \n4. Flugvöllur")
+                user_input = int(input("\nInnsláttarreitur: "))
+
+                if user_input == 1:
+                    info = "dagsetning"    
+                    column_to_update = 1
+                    new_info = validating_input.get_validated_date()
+                elif user_input == 2:
+                    info = "tími"
+                    column_to_update = 2
+                    new_info = validating_input.get_validated_time()
+                elif user_input == 3:
+                    info = "flugvél"
+                    column_to_update = 3
+                    new_info = validating_input.validate_voyage_plane()
+                elif user_input == 4:
+                    info = "flugvöllur"
+                    column_to_update = 4
+                    new_info = validating_input.validate_voyage_dest()
+
+                print(f"\nÞú hefur uppfært eftirfarandi: {info}, við flugið {id}\n.")
+                self.logic_wrapper.update_flight_info(id, column_to_update, new_info)
             
             elif command == "q":
                 return "q"

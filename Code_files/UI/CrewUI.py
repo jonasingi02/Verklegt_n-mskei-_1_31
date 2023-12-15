@@ -42,16 +42,19 @@ class CrewUI:
                 if user_input == "1":
                     #Prints the user´s voyages (shifts) according to date input.
                     today = self.logic_wrapper.get_staff_voyages_today(user_kt, date_today)
+                    shift_occupation = self.logic_wrapper.get_staff_by_date(date_today)
                     shift_today = PrettyTable()
-                    shift_today.field_names = ["ID", "Dagsetning", "Brottfarartími", "Vinnuferð til"]
+                    shift_today.field_names = ["ID", "Dagsetning", "Brottfarartími", "Vinnuferð til", "Starfsheiti"]
                     
-                    if today != None:
-                        for elem in today:
-                            shift_today.add_row([elem.id, elem.date, elem.time, elem.dest])
-                        shift_today.align = "l"
-                        print(shift_today)
-                    else:
-                        print("Engar vaktir í dag.")
+                    for list in shift_occupation:
+                        if today != None:
+                            if user_kt in list:
+                                for elem in today:
+                                    shift_today.add_row([elem.id, elem.date, elem.time, elem.dest, list[3]])
+                                shift_today.align = "l"
+                                print(shift_today)
+                        else:
+                            print("Engar vaktir í dag.")
 
                 elif user_input == "2":
                     #Prints the user´s voyages (shifts) for the next 7 days.
