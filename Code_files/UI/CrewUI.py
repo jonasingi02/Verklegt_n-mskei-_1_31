@@ -74,16 +74,23 @@ class CrewUI:
                     week = self.logic_wrapper.get_staff_voyages_week(user_kt, date_today)
                     shift_week = PrettyTable()
                     shift_occupation = self.logic_wrapper.get_staff_by_date(date_today)
+                    
                     shift_week.field_names = ["ID", "Dagsetning", "Brottfarartími", "Vinnuferð til", "Starfsheiti"]
                     
                     # Consturction a table to display all shifts for the week.
-                    if week != None:
-                        for elem in week:
-                            shift_week.add_row([elem.id, list.date, elem.time, elem.dest, list[3]])
-                        shift_week.align = "l"
-                        print(shift_week)
-                    else:
-                        print("Engar vaktir á næstu 7 dögum.")
+                    for list in shift_occupation:
+                        if week != None:
+                            if user_kt in list:
+                                for elem in week:
+                                    date = str(elem.date)
+                                    sliced_date = date[9:10] + "-" + date[5:7] + "-" + date[2:4]
+                                    shift_week.add_row([elem.id, sliced_date, elem.time, elem.dest, list[3]])
+                                
+                                shift_week.align = "l"
+                                print(shift_week)
+                            
+                            else:
+                                print("Engar vaktir á næstu 7 dögum.")
             
             if command == "b":
                 # Back

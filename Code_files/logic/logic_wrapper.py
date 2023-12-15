@@ -330,3 +330,14 @@ class Logic_wrapper:
         """
         return self.employee_logic.get_all_employees_working_on_date(date)
     
+    def get_all_attendants_on_date(self,date_input):
+        """
+        Retrieves a list of staff members working on a specific date.
+
+        Args:
+            date (str or datetime): The date for which to retrieve the staff members.
+
+        Returns:
+        List[Employee]: A list of Employee objects representing the staff members working on the specified date.
+        """
+        return self.employee_logic.get_all_attendants_on_date(date_input)
