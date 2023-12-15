@@ -50,7 +50,7 @@ class CrewUI:
                         if today != None:
                             if user_kt in list:
                                 for elem in today:
-                                    shift_today.add_row([elem.id, elem.date, elem.time, elem.dest, list[3]])
+                                    shift_today.add_row([elem.id, list.date, elem.time, elem.dest, list[3]])
                                 shift_today.align = "l"
                                 print(shift_today)
                         else:
@@ -60,11 +60,11 @@ class CrewUI:
                     #Prints the user´s voyages (shifts) for the next 7 days.
                     week = self.logic_wrapper.get_staff_voyages_week(user_kt, date_today)
                     shift_week = PrettyTable()
-                    shift_week.field_names = ["ID", "Dagsetning", "Brottfarartími", "Vinnuferð til"]
+                    shift_week.field_names = ["ID", "Dagsetning", "Brottfarartími", "Vinnuferð til", "Starfsheiti"]
                     
                     if week != None:
                         for elem in week:
-                            shift_week.add_row([elem.id, elem.date, elem.time, elem.dest])
+                            shift_week.add_row([elem.id, list.date, elem.time, elem.dest, list[3]])
                         shift_week.align = "l"
                         print(shift_week)
                     else:
