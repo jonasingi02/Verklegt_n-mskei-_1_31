@@ -113,7 +113,7 @@ class VoyageUI:
                 available_attendants = PrettyTable()
                 available_attendants.field_names = ["Nafn", "Kennitala"]
             
-                for i in pilots_list:
+                for i in flight_attendant_list:
                     available_attendants.add_row([i.name, i.kt])
                 
                 available_attendants.align = "l"
