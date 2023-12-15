@@ -73,7 +73,7 @@ class FMVoyageUI:
                     print(plane_table)
                     v.plane = Validator.validate_voyage_plane(input("Hvaða flugvél vilt þú nota (nafn): "))
 
-                v.date = input("\nDagsetning(01-01-01): ")
+                v.date = input("\nDagsetning (DD-MM-ÁÁ): ")
                 time = input("\nBrottfarartími(00:00): ")
                 validation = Validator.validate_time_of_takeoff(v.date ,time)
                 
@@ -94,7 +94,7 @@ class FMVoyageUI:
                         print(taken_times_table)
                         print("Þessi brottfarartími er ekki laus. Veldu annan.")
                         
-                        time = input("Brottfarartími(00:00): ")
+                        time = input("Brottfarartími (00:00): ")
                         validation = Validator.validate_time_of_takeoff(v.date ,time)
                 
                 self.logic_wrapper.create_fmvoyage(v)

@@ -37,7 +37,7 @@ class CrewUI:
                 print("Hvort vilt þú sjá?\n1. Þínar vinnuferðir í dag\n2. Þínar vinnuferðir á næstkomandi viku?\n")
                 user_input = input("Innsláttarreitur: ")
                 user_kt = input("\nSláðu inn kennitöluna þína: ")
-                date_today = input("Sláðu inn dagsetninguna í dag (01-01-01): ")
+                date_today = input("Sláðu inn dagsetninguna í dag (DD-MM-ÁÁ): ")
 
                 if user_input == "1":
                     #Prints the user´s voyages (shitfts) according to date input.

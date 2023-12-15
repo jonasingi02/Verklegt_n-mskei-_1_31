@@ -48,6 +48,21 @@ Samantektarfundur:
 A kröfur tilbúnar auk nokkurra b krafna.
 Hönnunarskýrsla komin vel á veg.
 Byrjuðum á undirbúning myndbands.
-Höfum verið að 
+
+Föstudagur 15. des
+
+Morgunfundur:
+Gera myndband.
+- Handrit
+- Path
+- Taka upp
+- Gera voice over
+- Splæsa saman.
+- Publish-a
+Uppfæra klasarit.
+Klára hönnunarskýrslu.
+Debugga kóða.
+Keyra milljón sinnum í gegnum öll functions.
+
 
 

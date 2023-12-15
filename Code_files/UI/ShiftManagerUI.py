@@ -35,7 +35,7 @@ class ShiftManagerUI:
 
             elif command == "3":
                 print("\nÞú hefur valið að sjá allar vinnuferðir á dagsetningu.\n")
-                date_input = input("Sláðu inn dagsetningu (01-01-01): ")
+                date_input = input("Sláðu inn dagsetningu (DD-MM-ÁÁ): ")
                 dates_shifts = self.logic_wrapper.get_staff_by_date(date_input)
                 
                 date_dest = PrettyTable()

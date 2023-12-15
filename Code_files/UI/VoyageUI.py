@@ -50,7 +50,7 @@ class VoyageUI:
                     voyage_table.align = "l"
                     print(voyage_table)
                     
-                    id = Validator.validate_voyage(input("Hvaða vinnuferð viltu manna? (Id dæmi: 1)"), result)
+                    id = Validator.validate_voyage(input("\nHvaða vinnuferð viltu manna? (Id dæmi: 1)"), result)
                     print(f"Þú hefur valið að uppfæra vinnuferð {id}")
 
                 v = self.logic_wrapper.find_voyage_by_id(id)
@@ -73,7 +73,7 @@ class VoyageUI:
                         available_pilots.align = "l"
                         print(available_pilots)
                     
-                        pilot = Validator.validate_voyage_staff(input("Veldu flugmann (kt): "), pilots_list)
+                        pilot = Validator.validate_voyage_staff(input("\nVeldu flugmann (kt): "), pilots_list)
                     
                     vxp = voyagexpilots()
                     vxp.id = v.id
@@ -94,7 +94,7 @@ class VoyageUI:
                     available_attendants.align = "l"
                     print(available_attendants)
                     
-                    flight_attendant = Validator.validate_voyage_staff(input("Veldu flugþjón (kt): "), flight_attendant_list)
+                    flight_attendant = Validator.validate_voyage_staff(input("\nVeldu flugþjón (kt): "), flight_attendant_list)
                 
                 vxf = voyagexattendant()
                 vxf.id = v.id
@@ -110,8 +110,8 @@ class VoyageUI:
                 print("\nÞú hefur valið að uppfæra upplýsingar um flug.")
                 id = id = validating_input.validate_voyage_id(voyage_list)
 
-                print("Hvað má bjóða þér að uppfæra við flugið?\n")
-                print("1. Dagsetning \n2. Tímasetning \n3. fluvél \n4. flugvöllur")
+                print("Hvað má bjóða þér að uppfæra við flugið?\n\n")
+                print("1. Dagsetning \n2. Tímasetning \n3. Flugvél \n4. Flugvöllur")
                 user_input = int(input("\nInnsláttarreitur: "))
 
                 if user_input == 1:
@@ -133,6 +133,7 @@ class VoyageUI:
 
                 print(f"\nÞú hefur uppfært eftirfarandi: {info}, við flugið {id}\n.")
                 self.logic_wrapper.update_flight_info(id, column_to_update, new_info)
+
             elif command == "q":
                 return "q"
             elif command == "b":
