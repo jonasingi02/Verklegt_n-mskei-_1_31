@@ -1,6 +1,5 @@
 from data.EmployeeData import EmployeeData
 from model.employee import Employee
-from model.staff_and_dest import staff_and_dest as sd
 from model.StaffShifts import staffshifts
 from data.data_wrapper import data_wrapper
 from datetime import datetime as dt
@@ -47,53 +46,6 @@ class EmployeeLogic:
     
     def get_all_pilots(self): 
         return self.data_wrapper.get_all_pilots()
-    
-    def get_staff_and_dest_by_date(self, date):
-        voyage = self.data_wrapper.read_all_fmvoyages()
-        vxa = self.data_wrapper.get_all_voyagexattendants()
-        vxp = self.data_wrapper.get_all_voyagexpilots()
-        staff = self.read_all_employees()
-
-        staffreturn = []
-        staffs = []
-        vlist = []
-
-        for elem in voyage:
-            if elem.date == date:
-                a = sd()
-                a.dest = elem.dest
-                a.id = elem.id
-                vlist.append(a)
-
-        for elem in vxa:
-            for i in vlist:
-                if elem.id == i.id:
-                    a = sd()
-                    a.dest = elem.dest
-                    a.id = elem.id
-                    a.kt = i.kt
-                    staffs.append(a)
-
-        for elem in vxp:
-            for i in vlist:
-                if elem.id == i.id:
-                    a = sd()
-                    a.dest = elem.dest
-                    a.id = elem.id
-                    a.kt = i.kt
-                    staffs.append(a)
-        
-        for i in staffs:
-            for j in staff:
-                if i.kt == j.kt:
-                    a = sd()
-                    a.dest = i.dest
-                    a.id = i.id
-                    a.kt = i.kt
-                    a.name = j.name
-                    staffreturn.append(a)
-
-        return staffreturn
     
     def change_date_to_datetime(self, date):
         fdate = dt.strptime(date, "%d-%m-%y")
