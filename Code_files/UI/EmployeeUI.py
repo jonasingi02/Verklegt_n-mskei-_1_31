@@ -11,9 +11,19 @@ class EmployeeUI:
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
+        """
+        Displays a menu with various employee management options.
+
+        This method prints a menu offering several choices, such as viewing all employees, adding a new employee, updating employee information, retrieving specific employee details, and navigation options like 'Quit' and 'Back'.
+        """
         print("Hvað má bjóða þér að gera?\n\n1: Sjá alla starfsmenn\n2: Bæta við starfsmanni\n3: Uppfæra upplýsingar starfsmanns\n4. Sækja upplýsingar um einstakan starfsmann\nQ: Hætta\nB: Til baka\n")
 
     def input_prompt(self):
+        """
+        Handles user input in response to the employee management menu options.
+
+        This method continuously displays the menu and processes user input. It supports various operations such as displaying all employees, adding new employees, updating employee information, retrieving specific employee details, and handling navigation commands like 'Quit' and 'Back'. Input validation and corresponding actions are performed based on the user's choice.
+        """
         while True:
             self.menu_output()
             command = input("Innsláttarreitur: ").lower()

@@ -9,6 +9,11 @@ class ShiftManagerUI:
         self.logic_wrapper = Logic_wrapper()
 
     def menu_output(self):
+        """
+        Displays a menu with various options for shift management activities.
+
+        This method prints an ASCII art representation of an airplane, followed by a greeting message. It then presents a menu offering choices related to managing employees, voyages, viewing shifts on a specific date, and navigation options like 'Quit' and 'Back'. It's designed to guide the shift manager through different management tasks.
+        """
         AsciiArt.airplane_2_ascii()
         print("Velkomin/n vaktstjóri")
         print(
@@ -16,6 +21,11 @@ class ShiftManagerUI:
         )
 
     def input_prompt(self):
+        """
+        Handles user input in response to the shift management menu options.
+
+        This method displays the menu and processes user input for various operations such as managing employees, voyages, viewing shifts on specific dates, and handling navigation commands like 'Quit' and 'Back'. It includes directing the user to different UI classes based on their selection and performing specific actions as required.
+        """
         while True:
             self.menu_output()
             command = input("\nInnsláttarreitur: ")

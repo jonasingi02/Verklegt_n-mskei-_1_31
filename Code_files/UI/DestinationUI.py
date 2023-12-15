@@ -9,12 +9,22 @@ class destinationUI:
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
+        """
+        Displays the travel manager menu with various options.
+
+        This method prints a greeting message and a list of commands for the travel manager, including options to display all destinations, add a new destination, and navigation commands like 'Quit' and 'Back'.
+        """
         print("Velkomin/n ferðastjóri")
         print(
             "Hvað má bjóða þér að gera?\n\n1: Birta alla áfangastaði\n2: Bæta við áfangastað\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
+        """
+        Handles user input in response to the travel manager menu options.
+
+        This method continuously displays the menu and processes user input. It supports various operations such as printing all destinations, adding a new destination, and navigation options like 'Quit' and 'Back'. User responses are handled with appropriate actions, including input validation and system updates.
+        """
         while True:
             self.menu_output()
             command = input("\nInnsláttarreitur: ")
@@ -22,20 +32,26 @@ class destinationUI:
             
             if command == "1":
                 # Print all destinations in system
+                # Fetch and prints out all the destinations from the system.
                 destination_table = PrettyTable()
                 destination_table.field_names = ["Land", "Flugvöllur"]
                 result = self.logic_wrapper.get_all_destinations()
+                
+                # Iterating over the list of destinations fetch from the system.
                 for elem in result:
+                    # Adding each destination´s country and airport to the table.
                     destination_table.add_row([elem.country, elem.airport])
+                    # Alining the table content to the left for better layout.
                 destination_table.align = "l"
                 print(destination_table)
 
             elif command == "2":
-                #Add destination to system
+                # Add destination to system
                 print("\nÞú hefur valið að bæta við nýjum áfangstað.\n")
                 d = destination()
 
                 s = ValidateDestinationInputs()
+                # Validate each input.
                 while d.country == "":
                     d.country = s.validate_destination_string(input("Nafn lands: "))
                 while d.airport == "":

@@ -9,12 +9,22 @@ class planesUI:
         self.logic_wrapper = logic_connection
 
     def menu_output(self):
+        """
+        Displays a menu with various options for managing aircraft in the system.
+
+        This method prints a menu offering choices such as viewing all aircraft, adding a new aircraft to the system, and navigation options like 'Quit' and 'Back'. It's designed to guide the user through the process of managing the aircraft fleet.
+        """
         print("\nVelkomin/n ferðastjóri")
         print(
             "Hvað má bjóða þér að gera?\n\n1: Birta allar flugvélar\n2: Bæta við flugvél\nQ: Hætta\nB: Til baka"
         )
 
     def input_prompt(self):
+        """
+        Handles user input in response to the aircraft management menu options.
+
+        This method continuously displays the menu and processes user input for operations such as displaying all aircraft in the system, adding new aircraft, and handling navigation commands like 'Quit' and 'Back'. It includes steps for input validation and appropriate actions based on the user's choice.
+        """
         while True:
             self.menu_output()
             command = input("\nInnsláttarreitur: ")

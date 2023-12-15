@@ -282,7 +282,6 @@ class ValidateDestinationInputs:
             )
             return ""
 
-
 class ValidateFMVoyageInfo:
     def __init__(self, logic_connection):
         self.logic_wrapper = logic_connection
@@ -319,7 +318,6 @@ class ValidateFMVoyageInfo:
         else:
             return None
 
-    
     def validate_voyage(self, voyage, list) -> str:
         """Validate chosen voyage ID"""
         if voyage == "b" or voyage == "B":
@@ -333,7 +331,6 @@ class ValidateFMVoyageInfo:
 
     def validate_voyage_staff(self, pilot, list) -> str:
         "Validate the staff on the voyage"
-
         if pilot == "b" or pilot == "B":
             return "b"
             
