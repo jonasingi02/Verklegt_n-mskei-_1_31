@@ -10,7 +10,8 @@ class EmployeeData:
         self.update_file = "all_staff.csv"
 
     def read_all_employees(self) -> list:
-        """ Reads employee data from a CSV file and returns a list of employees as object.
+        """ 
+        Reads employee data from a CSV file and returns a list of employees as object.
 
         Returns:
             list[Employee]: A list of employees as objects with details like name, kt, phone number ect.
@@ -27,7 +28,8 @@ class EmployeeData:
         return ret_list
     
     def get_certain_employee(self, name:str) -> list:
-        """ Retrieves a list of employees matching a certain given name from a CSV file.
+        """ 
+        Retrieves a list of employees matching a certain given name from a CSV file.
 
         Args:
             name (str): the name to search for as a stirng.
@@ -55,9 +57,9 @@ class EmployeeData:
             return certain_employee
 
     def create_employee(self, employee):
-        """ Writes and appends an employee's details to the main CSV file. 
-            Also writes and appends to a CSV file depending on their occupation if possible 
-
+        """ 
+        Writes and appends an employee's details to the main CSV file. 
+        Also writes and appends to a CSV file depending on their occupation if possible 
 
         Args:
             employee (Employee): An object representing and employee, Both peronal and job related.
@@ -134,7 +136,8 @@ class EmployeeData:
                     )
         
     def update_employee(self, kt_employee_to_update, column_to_update, new_info):
-        """ Uptades a specific in information for an employee in a CSV file.
+        """ 
+        Uptades a specific in information for an employee in a CSV file.
 
         Args:
             kt_employee_to_update (str): The personal ID (kt) of the employee to be updated.
@@ -163,7 +166,8 @@ class EmployeeData:
             os.replace(update_employee_path, self.file_name)
                     
     def read_all_pilots(self): 
-        """ Reads pilot data from a CSV file and returns a list of 'Employee' objects representing pilots.
+        """
+        Reads pilot data from a CSV file and returns a list of 'Employee' objects representing pilots.
 
         Returns:
             list[Employee]: A list of Employee objects with pilot details.
@@ -181,8 +185,8 @@ class EmployeeData:
         return pilot_list
     
     def read_all_flight_attendants(self):
-        """ Reads flight attendant data from a CSV file and returns a list of 'Employee' objects.
-
+        """ 
+        Reads flight attendant data from a CSV file and returns a list of 'Employee' objects.
 
         Returns:
             list[Employee]: A list of employee as objects representing flight attendants.
