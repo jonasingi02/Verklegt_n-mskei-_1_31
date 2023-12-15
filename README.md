@@ -18,4 +18,16 @@ Að sjálfsögðu er svo líka hægt að búa til nýjan starfsmann og veita hon
 **Hér má finna link að youtube sem inniheldur kennslumyndbandið:**
 https://www.youtube.com/watch?v=b_RyV1SWMpE&ab_channel=JohannaJohanns
 
+Það sem þarf að installa svo að hugbúnaðurinn virki eins og skyldi:
+**PrettyTable**
+
+Sækja frá Pip:
+python -m pip install -U prettytable
+
+Sækja nýjust development útgáfu:
+python -m pip install -U git+https://github.com/jazzband/prettytable
+
+Sækja úr requirement.txt:
+-e git://github.com/jazzband/prettytable.git#egg=prettytable
+
 
